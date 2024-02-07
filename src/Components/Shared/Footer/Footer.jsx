@@ -1,19 +1,24 @@
 import { Link } from "react-router-dom";
 import logo from "../../../assets/SCS-Logo-Light.png";
 import Button from "../../Button/Button";
+import stripeLogo from "../../../assets/Payment-Image/Stripe-Logo.png";
+import masterCardLogo from "../../../assets/Payment-Image/master-card-logo.png";
+import blueDebitCardLogo from "../../../assets/Payment-Image/blue-debit-card-logo.png";
+import creditAndDebitCardLogo from "../../../assets/Payment-Image/debit-card-credit-logo.png";
+import moment from "moment";
 
 const Footer = () => {
   return (
-    <footer className="dark:bg-gray-800">
+    <footer className="py-10 bg-gray-100 dark:bg-gray-800">
       <div className="container px-5 mx-auto">
-        <div className="grid items-start justify-center grid-cols-1 gap-5 md:grid-cols-4">
-          <div className="flex items-center gap-2">
+        <div className="grid items-start gap-5 md:grid-cols-2 lg:grid-cols-4">
+          <div className="flex items-center gap-2 ">
             <img className="w-auto h-8" src={logo} alt="" />
             <h2 className="self-center text-2xl font-semibold text-gray-800 whitespace-nowrap dark:text-white">
               SCS
             </h2>
           </div>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 ">
             <h2 className="text-sm font-semibold text-gray-500 uppercase dark:text-white">
               About
             </h2>
@@ -83,14 +88,29 @@ const Footer = () => {
               The latest news, articles, and resources, sent to your inbox
               weekly.
             </p>
-            <div>
+            <form>
               <input
                 type="email"
                 className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 dark:bg-gray-700 dark:text-white placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 dark:focus:ring-indigo-300 sm:text-sm sm:leading-6"
                 placeholder="Enter your email"
+                required
               />
-              <Button variant="red">Subscribe</Button>
-            </div>
+              <div className="mt-2">
+                <Button variant="primary">Subscribe</Button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <hr className="my-5 border-gray-300 md:my-7 dark:border-gray-300" />
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="flex flex-wrap items-center gap-3">
+            <img className="w-12" src={stripeLogo} alt="logo" />
+            <img className="w-12" src={masterCardLogo} alt="logo" />
+            <img className="w-12" src={blueDebitCardLogo} alt="logo" />
+            <img className="w-12" src={creditAndDebitCardLogo} alt="logo" />
+          </div>
+          <div>
+            <p className="hover:underline dark:text-gray-200">© {moment().format("YYYY")} Summer Course School</p>
           </div>
         </div>
       </div>
