@@ -142,7 +142,7 @@ const Header = () => {
                   <button onClick={toggleButton}>
                     <FormControlLabel
                       control={
-                        <MaterialUISwitch sx={{ m: 1 }} checked={checked} />
+                        <MaterialUISwitch sx={{ m: -1 }} checked={checked} />
                       }
                     />
                   </button>
@@ -220,7 +220,7 @@ const Header = () => {
                         ? "pending"
                         : isActive
                         ? "bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium hover:bg-gray-700 hover:text-white"
-                        : "block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                        : "block rounded-md px-3 py-2 text-base font-medium hover:bg-gray-700 hover:text-white text-gray-800 dark:text-gray-200"
                     }
                   >
                     {item.name}

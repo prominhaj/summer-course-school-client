@@ -95,7 +95,7 @@ const Footer = () => {
                 placeholder="Enter your email"
                 required
               />
-              <div className="mt-2">
+              <div className="mt-[10px]">
                 <Button variant="primary">Subscribe</Button>
               </div>
             </form>
