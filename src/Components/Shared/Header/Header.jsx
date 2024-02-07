@@ -142,7 +142,7 @@ const Header = () => {
                   <button onClick={toggleButton}>
                     <FormControlLabel
                       control={
-                        <MaterialUISwitch sx={{ m: -1 }} checked={checked} />
+                        <MaterialUISwitch sx={{ m: -1.5 }} checked={checked} />
                       }
                     />
                   </button>
