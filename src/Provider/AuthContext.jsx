@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
   sendEmailVerification,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import { app } from "../Firebase/Firebase.config";
 
@@ -29,13 +30,16 @@ const AuthContext = ({ children }) => {
     return sendEmailVerification(auth.currentUser);
   };
 
-  
+  const login = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
   const userInfo = {
     user,
     createAccount,
     updateNameAndPhoto,
     emailVerification,
+    login,
   };
 
   return (

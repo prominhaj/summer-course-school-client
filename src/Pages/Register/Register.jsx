@@ -67,11 +67,13 @@ const Register = () => {
                       });
                   })
                   .catch((error) => {
-                    console.log(error);
+                    setLoading(false);
+                    toast.error(error.message.substr(10));
                   });
               })
               .catch((error) => {
-                console.log(error);
+                setLoading(false);
+                toast.error(error.message.substr(10));
               });
           }
         });
@@ -326,7 +328,7 @@ const Register = () => {
             </div>
             <div className="mt-2 text-center">
               {loading ? (
-                <CircularProgress size={30} />
+                <div className="my-4"><CircularProgress size={30} /></div>
               ) : (
                 <Button
                   className={"md:w-1/2 w-full my-5"}

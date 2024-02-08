@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../../Components/Button/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 import { useForm } from "react-hook-form";
+import useAuth from "../../Hooks/useAuth/useAuth";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { toast } from "react-toastify";
+import { CircularProgress } from "@mui/material";
 
 const Login = () => {
+  const { login } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -13,7 +22,18 @@ const Login = () => {
   } = useForm();
 
   const handleLogin = (item) => {
-    console.log(item);
+    setLoading(true);
+    login(item.email, item.password)
+      .then(() => {
+        setLoading(false);
+        reset();
+        toast.success("Login SuccessFul");
+        navigate("/");
+      })
+      .catch((error) => {
+        setLoading(false);
+        toast.error(error.message.substr(10));
+      });
   };
 
   return (
@@ -60,15 +80,27 @@ const Login = () => {
               >
                 Password *
               </label>
-              <div className="mt-2">
+              <div className="relative mt-2">
                 <input
                   {...register("password", { required: true })}
                   id="password"
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   autoComplete="password"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   placeholder="Enter your Password"
                 />
+                {/* Show Password */}
+                <button
+                  type="button"
+                  className="absolute toggle-password right-3 bottom-[0.4rem]"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? (
+                    <FaRegEyeSlash className="text-2xl text-black dark:text-white" />
+                  ) : (
+                    <FaRegEye className="text-2xl text-black dark:text-white" />
+                  )}
+                </button>
                 {errors.password && (
                   <p className="text-red-600 dark:text-red-400">
                     <small>Password is required</small>
@@ -81,9 +113,19 @@ const Login = () => {
             <button className="text-indigo-500 hover:underline" type="button">
               Forget Password
             </button>
-            <Button className={"w-full mt-3"} variant={"primary"} type="submit">
-              Login
-            </Button>
+            {loading ? (
+              <div className="my-4 text-center">
+                <CircularProgress size={30} />
+              </div>
+            ) : (
+              <Button
+                className={"w-full mt-3"}
+                variant={"primary"}
+                type="submit"
+              >
+                Login
+              </Button>
+            )}
           </div>
           <p className="mt-2 text-gray-800 text-start dark:text-gray-100">
             Summer Course School New?{" "}
