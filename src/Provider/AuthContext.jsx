@@ -6,6 +6,7 @@ import {
   sendEmailVerification,
   signInWithEmailAndPassword,
   onAuthStateChanged,
+  signOut,
 } from "firebase/auth";
 import { app } from "../Firebase/Firebase.config";
 
@@ -36,6 +37,10 @@ const AuthContext = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  const logout = () => {
+    return signOut(auth);
+  };
+
   useEffect(() => {
     const disConnect = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -51,6 +56,7 @@ const AuthContext = ({ children }) => {
     updateNameAndPhoto,
     emailVerification,
     login,
+    logout,
   };
 
   return (

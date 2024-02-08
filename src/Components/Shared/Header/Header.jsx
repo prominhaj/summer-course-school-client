@@ -5,6 +5,7 @@ import logo from "../../../assets/SCS-Logo-light.png";
 import { Link, NavLink } from "react-router-dom";
 import { FormControlLabel, Switch, styled } from "@mui/material";
 import useAuth from "../../../Hooks/useAuth/useAuth";
+import { toast } from "react-toastify";
 
 // Switch
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
@@ -62,7 +63,7 @@ const navigation = [
 ];
 
 const Header = () => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const [theme, setTheme] = useState("light");
   const [checked, setChecked] = useState(true);
 
@@ -93,6 +94,16 @@ const Header = () => {
       setTheme("light");
       localStorage.setItem("theme", "light");
     }
+  };
+
+  const handleLogout = () => {
+    logout()
+      .then(() => {
+        toast.success("Logout SuccessFul");
+      })
+      .catch((error) => {
+        toast.error(error.message.substr(10));
+      });
   };
 
   return (
@@ -183,7 +194,10 @@ const Header = () => {
                               </Link>
                             </Menu.Item>
                             <Menu.Item>
-                              <button className="block w-full px-4 py-2 text-sm text-gray-900 text-start dark:text-gray-100 hover:dark:bg-black hover:dark:text-white hover:bg-gray-100 hover:text-black">
+                              <button
+                                onClick={handleLogout}
+                                className="block w-full px-4 py-2 text-sm text-gray-900 text-start dark:text-gray-100 hover:dark:bg-black hover:dark:text-white hover:bg-gray-100 hover:text-black"
+                              >
                                 Sign out
                               </button>
                             </Menu.Item>
