@@ -3,7 +3,7 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 const SocialLogin = () => {
   return (
     <div className="pt-4">
-      <h6 className="text-xl font-medium text-center">Social Login</h6>
+      <h6 className="text-xl font-medium text-center dark:text-gray-100">Social Login</h6>
       <div className="flex items-center justify-center gap-5 mt-3">
         <button
           type="button"

@@ -1,9 +1,12 @@
-import React from "react";
 import Button from "../../Components/Button/Button";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import { useState } from "react";
 
 const Register = () => {
+  const [passMatch, setPassMatch] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -13,7 +16,13 @@ const Register = () => {
   } = useForm();
 
   const handleRegister = (data) => {
-    console.log(data);
+    if (data.password !== data.confirmPassword) {
+      toast.error("Password Don't Match");
+      setPassMatch(true);
+    } else {
+      setPassMatch(false);
+      console.log(data);
+    }
   };
 
   return (
@@ -176,8 +185,8 @@ const Register = () => {
                   {errors.password?.type === "pattern" && (
                     <p className="text-red-600 dark:text-red-400">
                       <small>
-                        Password must have one uppercase one lower case, 
-                        one number and one special characters
+                        Password must have one uppercase one lower case, one
+                        number and one special characters
                       </small>
                     </p>
                   )}
@@ -193,12 +202,23 @@ const Register = () => {
                 </label>
                 <div className="mt-2">
                   <input
+                    {...register("confirmPassword", { required: true })}
                     id="confirmPassword"
                     type="password"
                     autoComplete="confirmPassword"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     placeholder="Enter your Confirm Password"
                   />
+                  {errors.confirmPassword && (
+                    <p className="text-red-600 dark:text-red-400">
+                      <small>Confirm Password is required</small>
+                    </p>
+                  )}
+                  {passMatch && (
+                    <p className="text-red-600 dark:text-red-400">
+                      <small>Password is Do Not Match</small>
+                    </p>
+                  )}
                 </div>
               </div>
               {/* Street Address */}
@@ -207,16 +227,22 @@ const Register = () => {
                   htmlFor="street-address"
                   className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-100"
                 >
-                  Street address (Optional)
+                  Street Address
                 </label>
                 <div className="mt-2">
                   <input
+                    {...register("address", { required: true })}
                     type="text"
                     id="street-address"
                     autoComplete="street-address"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     placeholder="Enter your address"
                   />
+                  {errors.gender && (
+                    <p className="text-red-600 dark:text-red-400">
+                      <small>Address is required</small>
+                    </p>
+                  )}
                 </div>
               </div>
               {/* Gender */}
@@ -229,6 +255,7 @@ const Register = () => {
                 </label>
                 <div className="w-full mt-2">
                   <select
+                    {...register("gender", { required: true })}
                     id="gender"
                     autoComplete="gender-name"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -236,6 +263,11 @@ const Register = () => {
                     <option>Male</option>
                     <option>Female</option>
                   </select>
+                  {errors.gender && (
+                    <p className="text-red-600 dark:text-red-400">
+                      <small>Gender is required</small>
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
