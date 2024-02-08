@@ -64,7 +64,7 @@ const Login = () => {
               Login
             </Button>
           </div>
-          <p className="text-gray-800 text-start dark:text-gray-100">
+          <p className="mt-2 text-gray-800 text-start dark:text-gray-100">
             Summer Course School New?{" "}
             <Link to="/register" className="text-red-500 hover:underline">
               Register

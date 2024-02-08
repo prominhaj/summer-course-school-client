@@ -166,10 +166,16 @@ const Register = () => {
                 </div>
               </div>
             </div>
-            <Button className={"md:w-1/2 w-full my-5"} variant={"red"} type="submit">
-              Register
-            </Button>
-            <p className="text-gray-800 text-start dark:text-gray-100">
+            <div className="mt-2 text-center">
+              <Button
+                className={"md:w-1/2 w-full my-5"}
+                variant={"red"}
+                type="submit"
+              >
+                Register
+              </Button>
+            </div>
+            <p className="text-center text-gray-800 dark:text-gray-100">
               Already Have a Account?{" "}
               <Link to="/login" className="text-blue-600 hover:underline">
                 Login
