@@ -157,8 +157,8 @@ const Header = () => {
                             <span className="sr-only">Open user menu</span>
                             <img
                               className="rounded-full w-9 h-9"
-                              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                              alt=""
+                              src={user && user?.photoURL}
+                              alt="Profile Photo"
                             />
                           </Menu.Button>
                         </div>
@@ -173,13 +173,13 @@ const Header = () => {
                         >
                           <Menu.Items className="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg dark:bg-gray-700 ring-1 ring-black ring-opacity-5 focus:outline-none">
                             <Menu.Item>
-                              <Link className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 hover:dark:bg-black hover:dark:text-white hover:bg-gray-100 hover:text-black">
-                                Your Profile
-                              </Link>
+                              <p className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 hover:dark:bg-black hover:dark:text-white hover:bg-gray-100 hover:text-black">
+                                {user && user?.displayName}
+                              </p>
                             </Menu.Item>
                             <Menu.Item>
                               <Link className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 hover:dark:bg-black hover:dark:text-white hover:bg-gray-100 hover:text-black">
-                                Settings
+                                Your Profile
                               </Link>
                             </Menu.Item>
                             <Menu.Item>

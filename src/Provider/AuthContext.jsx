@@ -1,10 +1,11 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import {
   getAuth,
   createUserWithEmailAndPassword,
   updateProfile,
   sendEmailVerification,
   signInWithEmailAndPassword,
+  onAuthStateChanged,
 } from "firebase/auth";
 import { app } from "../Firebase/Firebase.config";
 
@@ -14,6 +15,7 @@ const auth = getAuth(app);
 
 const AuthContext = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const createAccount = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -34,8 +36,17 @@ const AuthContext = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  useEffect(() => {
+    const disConnect = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+    });
+    return () => disConnect();
+  }, []);
+
   const userInfo = {
     user,
+    loading,
     createAccount,
     updateNameAndPhoto,
     emailVerification,
