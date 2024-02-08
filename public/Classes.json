@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Digital Marketing",
+    "image": "https://ibb.co/D1cq95L",
+    "instructorName": "Samantha Smith",
+    "availableSeats": 500,
+    "price": 20.0,
+    "category": "Marketing",
+    "popularity": "Popular",
+    "details": "This class is designed for beginners who want to learn the fundamentals of yoga poses and breathing techniques."
+  },
+  {
+    "name": "Web Design",
+    "image": "https://ibb.co/7W7BDZr",
+    "instructorName": "Mike Johnson",
+    "availableSeats": 500,
+    "price": 25.0,
+    "category": "Programming",
+    "popularity": "Popular",
+    "details": "Join us for a high-energy cardio workout combining martial arts techniques with fast-paced cardio."
+  },
+  {
+    "name": "UI/UX Design",
+    "image": "https://ibb.co/H468VnY",
+    "instructorName": "Emily Davis",
+    "availableSeats": 1000,
+    "price": "Free",
+    "category": "Design",
+    "popularity": "Medium",
+    "details": "Get ready to tone and strengthen your muscles with this dynamic Pilates class focusing on core stability."
+  },
+  {
+    "name": "Web Development",
+    "image": "https://ibb.co/pdtYHf0",
+    "instructorName": "Chris Thompson",
+    "availableSeats": 250,
+    "price": 15.0,
+    "category": "Programming",
+    "popularity": "Popular",
+    "details": "Hop on a stationary bike and pedal your way to better fitness with upbeat music and motivating instructors."
+  },
+  {
+    "name": "App Development",
+    "image": "https://ibb.co/fSGxjpX",
+    "instructorName": "Maria Rodriguez",
+    "availableSeats": 250,
+    "price": 18.0,
+    "category": "Programming",
+    "popularity": "Popular",
+    "details": "Dance your way to a healthier you with this fun and energetic Latin-inspired workout."
+  },
+  {
+    "name": "SEO",
+    "image": "https://ibb.co/BKN3ksR",
+    "instructorName": "Khalid Farhan",
+    "availableSeats": 1000,
+    "price": "Free",
+    "category": "Marketing",
+    "popularity": "Normal",
+    "details": "Build muscle and increase strength with a variety of resistance exercises targeting different muscle groups."
+  },
+  {
+    "name": "Video Editing",
+    "image": "https://ibb.co/hXHtxmT",
+    "instructorName": "Emma Lee",
+    "availableSeats": 500,
+    "price": 22.0,
+    "category": "Design",
+    "popularity": "Popular",
+    "details": "Burn calories and boost metabolism with this high-intensity interval training circuit."
+  }
+]
