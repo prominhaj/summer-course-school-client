@@ -1,12 +1,28 @@
 import React from "react";
 import Button from "../../Components/Button/Button";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 const Register = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const handleRegister = (data) => {
+    console.log(data);
+  };
+
   return (
     <div>
       <div className="py-10 bg-gray-100 dark:bg-gray-800">
-        <form className="container px-5 mx-auto">
+        <form
+          onSubmit={handleSubmit(handleRegister)}
+          className="container px-5 mx-auto"
+        >
           <div className="sm:p-10 p-5 rounded-lg shadow-2xl dark:shadow-[#1a1919]">
             <h2 className="mb-6 text-2xl font-semibold text-center dark:text-gray-100">
               Register
@@ -22,13 +38,17 @@ const Register = () => {
                 </label>
                 <div className="mt-2">
                   <input
+                    {...register("firstName", { required: true })}
                     type="text"
-                    name="first-name"
                     id="first-name"
-                    autoComplete="given-name"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     placeholder="First Name"
                   />
+                  {errors.firstName && (
+                    <p className="text-red-600 dark:text-red-400">
+                      <small>First Name is required</small>
+                    </p>
+                  )}
                 </div>
               </div>
               {/* Last Name */}
@@ -41,13 +61,17 @@ const Register = () => {
                 </label>
                 <div className="mt-2">
                   <input
+                    {...register("lastName", { required: true })}
                     type="text"
-                    name="last-name"
                     id="last-name"
-                    autoComplete="family-name"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     placeholder="Last Name"
                   />
+                  {errors.lastName && (
+                    <p className="text-red-600 dark:text-red-400">
+                      <small>Last Name is required</small>
+                    </p>
+                  )}
                 </div>
               </div>
               {/* Email */}
@@ -60,13 +84,18 @@ const Register = () => {
                 </label>
                 <div className="mt-2">
                   <input
+                    {...register("email", { required: true })}
                     id="email"
-                    name="email"
                     type="email"
                     autoComplete="email"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     placeholder="Enter email address"
                   />
+                  {errors.email && (
+                    <p className="text-red-600 dark:text-red-400">
+                      <small>Email is required</small>
+                    </p>
+                  )}
                 </div>
               </div>
               {/* Phone Number */}
@@ -79,13 +108,31 @@ const Register = () => {
                 </label>
                 <div className="mt-2">
                   <input
+                    {...register("phone", {
+                      required: true,
+                      minLength: 10,
+                      maxLength: 15,
+                    })}
                     id="phone"
-                    name="phone"
                     type="number"
-                    autoComplete="phone"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     placeholder="Enter phone number"
                   />
+                  {errors.phone?.type === "required" && (
+                    <p className="text-red-600 dark:text-red-400">
+                      <small>Phone Number is required</small>
+                    </p>
+                  )}
+                  {errors.phone?.type === "minLength" && (
+                    <p className="text-red-600 dark:text-red-400">
+                      <small>Phone Number is Min 10 Character</small>
+                    </p>
+                  )}
+                  {errors.phone?.type === "maxLength" && (
+                    <p className="text-red-600 dark:text-red-400">
+                      <small>Phone Number is Mix 15 Character</small>
+                    </p>
+                  )}
                 </div>
               </div>
               {/* Password */}
@@ -98,13 +145,42 @@ const Register = () => {
                 </label>
                 <div className="mt-2">
                   <input
+                    {...register("password", {
+                      required: true,
+                      minLength: 8,
+                      maxLength: 18,
+                      pattern:
+                        /(?=.*[A-Z].)(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8}/,
+                    })}
                     id="password"
-                    name="password"
                     type="password"
                     autoComplete="password"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     placeholder="Enter your Password"
                   />
+                  {errors.password?.type === "required" && (
+                    <p className="text-red-600 dark:text-red-400">
+                      <small>Password is required</small>
+                    </p>
+                  )}
+                  {errors.password?.type === "minLength" && (
+                    <p className="text-red-600 dark:text-red-400">
+                      <small>Password is Min 10 Character</small>
+                    </p>
+                  )}
+                  {errors.password?.type === "maxLength" && (
+                    <p className="text-red-600 dark:text-red-400">
+                      <small>Password is Mix 15 Character</small>
+                    </p>
+                  )}
+                  {errors.password?.type === "pattern" && (
+                    <p className="text-red-600 dark:text-red-400">
+                      <small>
+                        Password must have one uppercase one lower case, 
+                        one number and one special characters
+                      </small>
+                    </p>
+                  )}
                 </div>
               </div>
               {/* Confirm Password */}
@@ -118,7 +194,6 @@ const Register = () => {
                 <div className="mt-2">
                   <input
                     id="confirmPassword"
-                    name="confirmPassword"
                     type="password"
                     autoComplete="confirmPassword"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -137,7 +212,6 @@ const Register = () => {
                 <div className="mt-2">
                   <input
                     type="text"
-                    name="street-address"
                     id="street-address"
                     autoComplete="street-address"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -156,7 +230,6 @@ const Register = () => {
                 <div className="w-full mt-2">
                   <select
                     id="gender"
-                    name="gender"
                     autoComplete="gender-name"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   >
