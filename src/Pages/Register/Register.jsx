@@ -1,27 +1,80 @@
 import Button from "../../Components/Button/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import useAuth from "../../Hooks/useAuth/useAuth";
+import axios from "axios";
+import { CircularProgress } from "@mui/material";
 
 const Register = () => {
   const [passMatch, setPassMatch] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const { createAccount, updateNameAndPhoto, emailVerification } = useAuth();
+  const imageUploadToken = import.meta.env.VITE_IMAGE_HOSTING_TOKEN;
 
   const {
     register,
     handleSubmit,
-    watch,
     reset,
     formState: { errors },
   } = useForm();
 
   const handleRegister = (data) => {
+    setLoading(true);
     if (data.password !== data.confirmPassword) {
       toast.error("Password Don't Match");
       setPassMatch(true);
+      setLoading(false);
     } else {
       setPassMatch(false);
-      console.log(data);
+      const { firstName, lastName, email, phone, password, photo, gender } =
+        data;
+
+      const formData = new FormData();
+      formData.append("image", photo[0]);
+      fetch(`https://api.imgbb.com/1/upload?key=${imageUploadToken}`, {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((imgRes) => {
+          if (imgRes.success) {
+            const name = firstName + " " + lastName;
+            const photoUrl = imgRes.data.display_url;
+            createAccount(email, password)
+              .then((result) => {
+                updateNameAndPhoto(name, photoUrl)
+                  .then(() => {
+                    const user = {
+                      name,
+                      email,
+                      phone,
+                      photo: photoUrl,
+                      gender,
+                      fbUid: result.user.uid,
+                    };
+                    axios
+                      .post("http://localhost:3000/users", user)
+                      .then((res) => {
+                        if (res.data) {
+                          setLoading(false);
+                          reset();
+                          toast.success("Register SuccessFul");
+                          navigate("/");
+                        }
+                      });
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                  });
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          }
+        });
     }
   };
 
@@ -221,26 +274,26 @@ const Register = () => {
                   )}
                 </div>
               </div>
-              {/* Street Address */}
+              {/* Photo */}
               <div className="sm:col-span-4">
                 <label
-                  htmlFor="street-address"
+                  htmlFor="street-photo"
                   className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-100"
                 >
-                  Street Address
+                  Photo *
                 </label>
                 <div className="mt-2">
                   <input
-                    {...register("address", { required: true })}
-                    type="text"
-                    id="street-address"
-                    autoComplete="street-address"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    placeholder="Enter your address"
+                    {...register("photo", { required: true })}
+                    type="file"
+                    id="street-photo"
+                    autoComplete="street-photo"
+                    className="block w-full text-gray-900 bg-white border-0 rounded-md shadow-sm dark:bg-gray-800 ring-1 ring-inset ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+                    placeholder="Enter your photo"
                   />
-                  {errors.gender && (
+                  {errors.photo && (
                     <p className="text-red-600 dark:text-red-400">
-                      <small>Address is required</small>
+                      <small>Photo is required</small>
                     </p>
                   )}
                 </div>
@@ -272,13 +325,17 @@ const Register = () => {
               </div>
             </div>
             <div className="mt-2 text-center">
-              <Button
-                className={"md:w-1/2 w-full my-5"}
-                variant={"red"}
-                type="submit"
-              >
-                Register
-              </Button>
+              {loading ? (
+                <CircularProgress size={30} />
+              ) : (
+                <Button
+                  className={"md:w-1/2 w-full my-5"}
+                  variant={"red"}
+                  type="submit"
+                >
+                  Register
+                </Button>
+              )}
             </div>
             <p className="text-center text-gray-800 dark:text-gray-100">
               Already Have a Account?{" "}
