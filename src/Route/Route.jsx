@@ -7,6 +7,8 @@ import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import Error from "../Pages/Error/Error";
 import Profile from "../Pages/Profile/Profile";
+import AuthPrivate from "../PrivateRoute/AuthPrivate";
+import DashBoard from "../Layout/DashBoard/DashBoard";
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +40,14 @@ export const router = createBrowserRouter([
         element: <Profile />,
       },
     ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <AuthPrivate>
+        <DashBoard />
+      </AuthPrivate>
+    ),
   },
   {
     path: "/*",

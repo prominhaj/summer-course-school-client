@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button from "../../Components/Button/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth/useAuth";
@@ -14,6 +14,8 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const {
     register,
@@ -29,7 +31,7 @@ const Login = () => {
         setLoading(false);
         reset();
         toast.success("Login SuccessFul");
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setLoading(false);
@@ -54,13 +56,13 @@ const Login = () => {
             if (res.data) {
               setLoading(false);
               toast.success("Login SuccessFul");
-              navigate("/");
+              navigate(from, { replace: true });
             }
           })
           .catch(() => {
             setLoading(false);
             toast.success("Login SuccessFul");
-            navigate("/");
+            navigate(from, { replace: true });
           });
       })
       .catch((error) => {
