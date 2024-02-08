@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../../Components/Button/Button";
 import { Link } from "react-router-dom";
+import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 
 const Login = () => {
   return (
@@ -51,15 +52,27 @@ const Login = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-wrap items-center justify-between gap-3 py-5">
+          <div className="py-3">
             <button className="text-indigo-500 hover:underline" type="button">
               Forget Password
             </button>
-            <Button className={"md:w-80 w-full"} variant={"primary"} type="submit">
+            <Button
+              className={"w-full mt-3"}
+              variant={"primary"}
+              type="submit"
+            >
               Login
             </Button>
           </div>
-          <p className="text-gray-800 text-start dark:text-gray-100">Summer Course School New? <Link to="/register" className="text-red-500 hover:underline">Register</Link></p>
+          <p className="text-gray-800 text-start dark:text-gray-100">
+            Summer Course School New?{" "}
+            <Link to="/register" className="text-red-500 hover:underline">
+              Register
+            </Link>
+          </p>
+          <div>
+            <SocialLogin />
+          </div>
         </div>
       </form>
     </div>
