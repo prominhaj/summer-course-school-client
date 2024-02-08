@@ -189,7 +189,10 @@ const Header = () => {
                               </p>
                             </Menu.Item>
                             <Menu.Item>
-                              <Link className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 hover:dark:bg-black hover:dark:text-white hover:bg-gray-100 hover:text-black">
+                              <Link
+                                to="/profile"
+                                className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 hover:dark:bg-black hover:dark:text-white hover:bg-gray-100 hover:text-black"
+                              >
                                 Your Profile
                               </Link>
                             </Menu.Item>
