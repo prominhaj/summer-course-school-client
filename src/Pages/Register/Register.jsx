@@ -59,10 +59,12 @@ const Register = () => {
                       .post("http://localhost:3000/users", user)
                       .then((res) => {
                         if (res.data) {
-                          setLoading(false);
-                          reset();
-                          toast.success("Register SuccessFul");
-                          navigate("/");
+                          emailVerification().then(() => {
+                            setLoading(false);
+                            reset();
+                            toast.success("Register SuccessFul Sent Email");
+                            navigate("/");
+                          });
                         }
                       });
                   })
@@ -328,7 +330,9 @@ const Register = () => {
             </div>
             <div className="mt-2 text-center">
               {loading ? (
-                <div className="my-4"><CircularProgress size={30} /></div>
+                <div className="my-4">
+                  <CircularProgress size={30} />
+                </div>
               ) : (
                 <Button
                   className={"md:w-1/2 w-full my-5"}

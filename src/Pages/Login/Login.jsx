@@ -7,9 +7,10 @@ import useAuth from "../../Hooks/useAuth/useAuth";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { CircularProgress } from "@mui/material";
+import axios from "axios";
 
 const Login = () => {
-  const { login } = useAuth();
+  const { login, googleSingIn } = useAuth();
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
@@ -29,6 +30,38 @@ const Login = () => {
         reset();
         toast.success("Login SuccessFul");
         navigate("/");
+      })
+      .catch((error) => {
+        setLoading(false);
+        toast.error(error.message.substr(10));
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    setLoading(true);
+    googleSingIn()
+      .then((result) => {
+        const data = result.user;
+        const user = {
+          name: data.displayName,
+          email: data.email,
+          photo: data.photoURL,
+          fbUid: data.uid,
+        };
+        axios
+          .post("http://localhost:3000/users", user)
+          .then((res) => {
+            if (res.data) {
+              setLoading(false);
+              toast.success("Login SuccessFul");
+              navigate("/");
+            }
+          })
+          .catch(() => {
+            setLoading(false);
+            toast.success("Login SuccessFul");
+            navigate("/");
+          });
       })
       .catch((error) => {
         setLoading(false);
@@ -134,7 +167,7 @@ const Login = () => {
             </Link>
           </p>
           <div>
-            <SocialLogin />
+            <SocialLogin googleLogin={handleGoogleLogin} />
           </div>
         </div>
       </form>

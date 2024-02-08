@@ -7,6 +7,9 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  GoogleAuthProvider,
+  signInWithPopup,
+  GithubAuthProvider,
 } from "firebase/auth";
 import { app } from "../Firebase/Firebase.config";
 
@@ -37,6 +40,12 @@ const AuthContext = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  // Google Login
+  const googleProvider = new GoogleAuthProvider();
+  const googleSingIn = () => {
+    return signInWithPopup(auth, googleProvider);
+  };
+
   const logout = () => {
     return signOut(auth);
   };
@@ -56,6 +65,7 @@ const AuthContext = ({ children }) => {
     updateNameAndPhoto,
     emailVerification,
     login,
+    googleSingIn,
     logout,
   };
 
