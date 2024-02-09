@@ -7,7 +7,7 @@ import Button from "../../../Components/Button/Button";
 const BannerSection = ({ classes }) => {
   return (
     <section className="container px-5 py-5 mx-auto md:py-10">
-      <div className="grid items-center grid-cols-1 gap-8 p-8 bg-gradient-to-r from-gray-300 to-blue-400 rounded-3xl md:p-12 lg:p-16 dark:from-gray-700 dark:to-blue-900 md:grid-cols-2">
+      <div className="grid items-center grid-cols-1 gap-8 p-5 bg-gradient-to-r from-gray-300 to-blue-400 rounded-3xl md:p-12 lg:p-16 dark:from-gray-700 dark:to-blue-900 md:grid-cols-2">
         <div className="flex flex-col items-center gap-4 md:items-start">
           <h2 className="text-2xl font-bold leading-tight text-gray-800 sm:text-3xl md:text-4xl dark:text-gray-300">
             SCS
@@ -20,29 +20,6 @@ const BannerSection = ({ classes }) => {
           </Button>
         </div>
         <div>
-          {/* <Swiper
-            effect={"cards"}
-            slidesPerView={1}
-            loop={true}
-            centeredSlides={true}
-            autoplay={{
-              delay: 2000,
-              disableOnInteraction: false,
-            }}
-            grabCursor={true}
-            modules={[EffectCards, Autoplay]}
-            className="mySwiper"
-          >
-            <SwiperSlide>
-              <img className="w-full h-[200px]" src={img1} alt="" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img className="w-full h-[200px]" src={img2} alt="" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img className="w-full h-[200px]" src={img3} alt="" />
-            </SwiperSlide>
-          </Swiper> */}
           <Swiper
             spaceBetween={30}
             slidesPerView={"auto"}
@@ -81,10 +58,10 @@ const BannerSection = ({ classes }) => {
               },
             }}
           >
-            {classes.map((item) => (
+            {classes?.map((item) => (
               <SwiperSlide key={item._id}>
                 <div className="h-[200px] w-full">
-                  <img className="w-full h-full rounded-md" src={item.image} />
+                  <img className="w-full h-full rounded-md" src={item?.image} />
                 </div>
               </SwiperSlide>
             ))}
