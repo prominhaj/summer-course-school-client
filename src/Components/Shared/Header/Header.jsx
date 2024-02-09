@@ -59,8 +59,8 @@ const Header = () => {
   };
 
   return (
-    <div className="sticky top-0 z-50">
-      <Disclosure as="nav" className="bg-gray-100 dark:bg-gray-800">
+    <div className="sticky top-0 z-50 border-general bg-slate-50/60 backdrop-blur-2xl transition-colors duration-500 dark:bg-[#0B1120]/80">
+      <Disclosure as="nav">
         {({ open }) => (
           <>
             <div className="container px-5 mx-auto">

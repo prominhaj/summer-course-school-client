@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import img from "../../assets/Card/digital-marketing.jpg";
 import Button from "../Button/Button";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
@@ -19,7 +18,7 @@ const ClassesCard = ({ item }) => {
   } = item;
 
   return (
-    <div className="flex flex-col justify-between p-4 transition-all border shadow-xl sm:p-6 dark:shadow-gray-700 dark:border-gray-700 rounded-xl">
+    <div className="flex flex-col justify-between p-4 duration-300 border shadow-xl sm:p-6 dark:shadow-gray-700 dark:border-gray-700 hover:scale-[1.03] rounded-xl">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3 cursor-pointer">
           <Avatar alt="Ted talk" src={profilePhoto} />
