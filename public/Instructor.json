@@ -1,0 +1,44 @@
+[
+  {
+    "image": "https://i.ibb.co/vBq43ZT/profile-1.jpg",
+    "name": "Samantha Smith",
+    "email": "samanthasmith@gmail.com",
+    "category": "Marketing"
+  },
+  {
+    "image": "https://i.ibb.co/wWD8qPp/web-design.jpg",
+    "name": "Mike Johnson",
+    "email": "mikejohnson@gmail.com",
+    "category": "Programming"
+  },
+  {
+    "image": "https://i.ibb.co/C8gGzhv/ui-ux-design.jpg",
+    "name": "Emily Davis",
+    "email": "emilydavis@gmail.com",
+    "category": "Design"
+  },
+  {
+    "image": "https://i.ibb.co/7XLZ7Yb/profile-4.jpg",
+    "name": "Chris Thompson",
+    "email": "christhompson@gmail.com",
+    "category": "Programming"
+  },
+  {
+    "image": "https://i.ibb.co/L9zjf8V/profile-6.jpg",
+    "name": "Maria Rodriguez",
+    "email": "mariarodriguez@gmail.com",
+    "category": "Programming"
+  },
+  {
+    "image": "https://i.ibb.co/Nx892jX/khalid-farhan.jpg",
+    "name": "Khalid Farhan",
+    "email": "khalidfarhan@gmail.com",
+    "category": "Marketing"
+  },
+  {
+    "image": "https://i.ibb.co/rsL7mtv/profile-5.jpg",
+    "name": "Emma Lee",
+    "email": "emmalee@gmail.com",
+    "category": "Design"
+  }
+]

@@ -18,7 +18,7 @@ const ClassesCard = ({ item }) => {
   } = item;
 
   return (
-    <div className="flex flex-col justify-between p-4 duration-300 border shadow-xl sm:p-6 dark:shadow-gray-700 dark:border-gray-700 hover:scale-[1.03] rounded-xl">
+    <div className="flex flex-col justify-between cursor-pointer p-4 duration-300 border shadow-xl sm:p-6 dark:shadow-gray-700 dark:border-gray-700 hover:scale-[1.03] rounded-xl">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3 cursor-pointer">
           <Avatar alt="Ted talk" src={profilePhoto} />
@@ -55,13 +55,11 @@ const ClassesCard = ({ item }) => {
         </Menu>
       </div>
       <div className="flex-1 py-3">
-        <Link to={`/details/${_id}`}>
-          <img
-            className="object-cover w-full h-full max-h-[250px] rounded-lg"
-            src={image}
-            alt="Card Image"
-          />
-        </Link>
+        <img
+          className="object-cover w-full h-full max-h-[250px] rounded-lg"
+          src={image}
+          alt="Card Image"
+        />
       </div>
       <div className="flex flex-col justify-between">
         <div className="flex items-center justify-between ">
@@ -77,12 +75,9 @@ const ClassesCard = ({ item }) => {
             Available Seats: {availableSeats}
           </h6>
           <div className="mt-3">
-            <Link
-              to={`/details/${_id}`}
-              className="text-base font-normal leading-none tracking-tight sm:text-[15px] dark:text-gray-200"
-            >
+            <p className="text-base font-normal tracking-tight sm:text-[15px] dark:text-gray-200">
               {details.length > 80 ? <>{details.slice(0, 80)}...</> : details}
-            </Link>
+            </p>
           </div>
         </div>
         <div>
