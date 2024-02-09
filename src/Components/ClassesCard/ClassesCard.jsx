@@ -80,7 +80,6 @@ const ClassesCard = ({ item }) => {
               className={
                 "bg-gradient-to-r from-violet-500 to-fuchsia-500 w-full mt-3 py-2 sm:text-lg"
               }
-              variant={"primary"}
             >
               Enroll Now
             </Button>
@@ -90,7 +89,6 @@ const ClassesCard = ({ item }) => {
               className={
                 "bg-gradient-to-r from-cyan-500 to-blue-500 w-full mt-3 py-2 sm:text-lg"
               }
-              variant={"primary"}
             >
               Sold Out
             </Button>
