@@ -8,6 +8,7 @@ import { HiOutlineDotsVertical } from "react-icons/hi";
 const ClassesCard = ({ item }) => {
   const { name, instructorName, image, price, details, availableSeats, _id } =
     item;
+
   return (
     <div className="flex flex-col justify-between p-4 border shadow-xl sm:p-6 dark:shadow-gray-700 dark:border-gray-700 rounded-xl">
       <div className="flex items-center justify-between">
@@ -34,7 +35,7 @@ const ClassesCard = ({ item }) => {
                 </button>
               </Menu.Item>
               <Menu.Item>
-                <button className="block w-full px-4 py-2 text-sm text-gray-900 text-start dark:text-gray-100 hover:dark:bg-black hover:dark:text-white hover:bg-gray-100 hover:text-black">
+                <button className="block w-full px-4 py-2 text-sm text-gray-900 hover:font-medium text-start dark:text-gray-100 hover:dark:bg-black hover:dark:text-white hover:bg-gray-100 hover:text-black">
                   Details
                 </button>
               </Menu.Item>
@@ -42,16 +43,16 @@ const ClassesCard = ({ item }) => {
           </Transition>
         </Menu>
       </div>
-      <div className="py-3">
-        <Link>
+      <div className="flex-1 py-3">
+        <Link to={`/details/${_id}`}>
           <img
-            className="w-full rounded-lg min-h-full max-h-[250px] object-cover"
+            className="object-cover w-full h-full max-h-[250px] rounded-lg"
             src={image}
             alt="Card Image"
           />
         </Link>
       </div>
-      <div className="flex flex-col justify-between flex-grow">
+      <div className="flex flex-col justify-between">
         <div className="flex items-center justify-between ">
           <h2 className="text-[17px] font-semibold leading-none tracking-tight sm:text-xl dark:text-gray-200">
             {name}
@@ -64,18 +65,37 @@ const ClassesCard = ({ item }) => {
           <h6 className="text-base font-medium leading-none tracking-tight sm:text-[16px] dark:text-gray-200">
             Available Seats: {availableSeats}
           </h6>
-          <p className="mt-3 text-base font-normal leading-none tracking-tight sm:text-[15px] dark:text-gray-200">
-            {details.length > 80 ? <>{details.slice(0, 80)}...</> : details}
-          </p>
+          <div className="mt-3">
+            <Link
+              to={`/details/${_id}`}
+              className="text-base font-normal leading-none tracking-tight sm:text-[15px] dark:text-gray-200"
+            >
+              {details.length > 80 ? <>{details.slice(0, 80)}...</> : details}
+            </Link>
+          </div>
         </div>
-        <Button
-          className={
-            "bg-gradient-to-r from-violet-500 to-fuchsia-500 w-full mt-3 py-2 sm:text-lg"
-          }
-          variant={"primary"}
-        >
-          Enroll Now
-        </Button>
+        <div>
+          {availableSeats ? (
+            <Button
+              className={
+                "bg-gradient-to-r from-violet-500 to-fuchsia-500 w-full mt-3 py-2 sm:text-lg"
+              }
+              variant={"primary"}
+            >
+              Enroll Now
+            </Button>
+          ) : (
+            <Button
+              disabled={true}
+              className={
+                "bg-gradient-to-r from-cyan-500 to-blue-500 w-full mt-3 py-2 sm:text-lg"
+              }
+              variant={"primary"}
+            >
+              Sold Out
+            </Button>
+          )}
+        </div>
       </div>
     </div>
   );
