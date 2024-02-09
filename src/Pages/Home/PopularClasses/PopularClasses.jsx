@@ -22,7 +22,9 @@ const PopularClasses = () => {
       <SectionTitle hading="Popular Classes" />
       <div>
         {loading ? (
-          <CardLoading />
+          <div className="py-5 md:py-8">
+            <CardLoading />
+          </div>
         ) : (
           <div className="grid gap-5 py-5 md:py-8 md:grid-cols-2 lg:grid-cols-3">
             {classes.map((item) => (

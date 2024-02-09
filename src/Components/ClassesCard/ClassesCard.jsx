@@ -4,17 +4,30 @@ import Button from "../Button/Button";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { HiOutlineDotsVertical } from "react-icons/hi";
+import { Avatar } from "@mui/material";
 
 const ClassesCard = ({ item }) => {
-  const { name, instructorName, image, price, details, availableSeats, _id } =
-    item;
+  const {
+    name,
+    instructorName,
+    image,
+    price,
+    details,
+    availableSeats,
+    profilePhoto,
+    _id,
+  } = item;
 
+  console.log(item);
   return (
     <div className="flex flex-col justify-between p-4 transition-all border shadow-xl sm:p-6 dark:shadow-gray-700 dark:border-gray-700 rounded-xl">
       <div className="flex items-center justify-between">
-        <h3 className="text-base font-semibold leading-none tracking-tight sm:text-lg dark:text-gray-200">
-          {instructorName}
-        </h3>
+        <div className="flex items-center gap-3">
+          <Avatar alt="Ted talk" src={profilePhoto} />
+          <h3 className="text-base font-semibold leading-none tracking-tight sm:text-lg dark:text-gray-200">
+            {instructorName}
+          </h3>
+        </div>
         <Menu as="div" className="relative ml-3">
           <Menu.Button className="rounded-full focus:bg-gray-300">
             <HiOutlineDotsVertical className="text-2xl dark:text-gray-100 focus:dark:text-black" />
