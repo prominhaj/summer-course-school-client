@@ -59,7 +59,7 @@ const Header = () => {
   };
 
   return (
-    <div className="sticky top-0 z-50 border-general bg-slate-50/60 backdrop-blur-2xl transition-colors duration-500 dark:bg-[#0B1120]/80">
+    <div className="sticky top-0 z-50 bg-slate-50/60 backdrop-blur-2xl transition-colors duration-500 dark:bg-[#0C1322]">
       <Disclosure as="nav">
         {({ open }) => (
           <>
@@ -91,7 +91,7 @@ const Header = () => {
                             isPending
                               ? "pending"
                               : isActive
-                              ? "bg-gray-900 text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                              ? "bg-gray-700 text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                               : "rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 text-gray-800 hover:bg-gray-700 hover:text-white"
                           }
                         >

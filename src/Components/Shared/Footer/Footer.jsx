@@ -9,7 +9,7 @@ import moment from "moment";
 
 const Footer = () => {
   return (
-    <footer className="py-10 bg-gray-100 dark:bg-gray-800">
+    <footer className="py-10 bg-slate-50/60 dark:bg-[#0F1729]">
       <div className="container px-5 mx-auto">
         <div className="grid items-start gap-5 md:grid-cols-2 lg:grid-cols-4">
           <div className="flex items-center gap-2 ">
@@ -110,7 +110,9 @@ const Footer = () => {
             <img className="w-12" src={creditAndDebitCardLogo} alt="logo" />
           </div>
           <div>
-            <p className="hover:underline dark:text-gray-200">© {moment().format("YYYY")} Summer Course School</p>
+            <p className="hover:underline dark:text-gray-200">
+              © {moment().format("YYYY")} Summer Course School
+            </p>
           </div>
         </div>
       </div>
