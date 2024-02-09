@@ -3,23 +3,33 @@ import ClassesCard from "../../../Components/ClassesCard/ClassesCard";
 import axios from "axios";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import { Link } from "react-router-dom";
+import CardLoading from "../../../Components/CardLoading/CardLoading";
 
 const PopularClasses = () => {
   const [classes, setClasses] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     axios.get("http://localhost:3000/classes-popular").then((res) => {
       setClasses(res.data);
+      setLoading(false);
     });
   }, []);
 
   return (
     <section className="container px-5 py-3 mx-auto md:py-8">
       <SectionTitle hading="Popular Classes" />
-      <div className="grid gap-5 py-5 md:py-8 md:grid-cols-2 lg:grid-cols-3">
-        {classes.map((item) => (
-          <ClassesCard key={item._id} item={item} />
-        ))}
+      <div>
+        {loading ? (
+          <CardLoading />
+        ) : (
+          <div className="grid gap-5 py-5 md:py-8 md:grid-cols-2 lg:grid-cols-3">
+            {classes.map((item) => (
+              <ClassesCard key={item._id} item={item} />
+            ))}
+          </div>
+        )}
       </div>
       <div className="pt-4 text-center">
         <Link

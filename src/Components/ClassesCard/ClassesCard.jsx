@@ -10,7 +10,7 @@ const ClassesCard = ({ item }) => {
     item;
 
   return (
-    <div className="flex flex-col justify-between p-4 border shadow-xl sm:p-6 dark:shadow-gray-700 dark:border-gray-700 rounded-xl">
+    <div className="flex flex-col justify-between p-4 transition-all border shadow-xl sm:p-6 dark:shadow-gray-700 dark:border-gray-700 rounded-xl">
       <div className="flex items-center justify-between">
         <h3 className="text-base font-semibold leading-none tracking-tight sm:text-lg dark:text-gray-200">
           {instructorName}
