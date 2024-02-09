@@ -30,7 +30,6 @@ const Header = () => {
       });
   };
 
-  console.log(theme);
   return (
     <div className="sticky top-0 z-50 bg-slate-50/60 backdrop-blur-2xl transition-colors duration-500 dark:bg-[#0C1322]">
       <Disclosure as="nav">

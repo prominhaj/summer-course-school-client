@@ -10,6 +10,7 @@ import moment from "moment";
 import useTheme from "../../../Hooks/useTheme/useTheme";
 
 const Footer = () => {
+  // TODO: theme no Changing
   const [theme] = useTheme();
 
   return (

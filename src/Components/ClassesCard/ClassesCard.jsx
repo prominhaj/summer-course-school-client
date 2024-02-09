@@ -82,19 +82,14 @@ const ClassesCard = ({ item }) => {
         </div>
         <div>
           {availableSeats ? (
-            <Button
-              className={
-                "bg-gradient-to-r from-violet-500 to-fuchsia-500 w-full mt-3 py-2 sm:text-lg"
-              }
-            >
+            <Button className={"w-full mt-3"} variant={"secondary"}>
               Enroll Now
             </Button>
           ) : (
             <Button
               disabled={true}
-              className={
-                "bg-gradient-to-r from-cyan-500 to-blue-500 w-full mt-3 py-2 sm:text-lg"
-              }
+              className={"w-full mt-3"}
+              variant={"soldOut"}
             >
               Sold Out
             </Button>

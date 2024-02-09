@@ -1,74 +1,97 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/pagination";
-import { Pagination, Autoplay } from "swiper/modules";
+import "swiper/css/effect-coverflow";
+import { EffectCoverflow, Autoplay } from "swiper/modules";
+import Button from "../../../Components/Button/Button";
 
-// Banner Image
-import bannerImg1 from "../../../assets/Home-Banner/Banner-1.png";
-import bannerImg2 from "../../../assets/Home-Banner/Banner-2.png";
-import bannerImg3 from "../../../assets/Home-Banner/Banner-3.png";
-import bannerImg4 from "../../../assets/Home-Banner/Banner-4.png";
-import bannerImg5 from "../../../assets/Home-Banner/Banner-5.png";
-import bannerImg6 from "../../../assets/Home-Banner/Banner-6.png";
-
-// Banner Items
-const bannerItems = [
-  {
-    name: "Banner 1",
-    image: bannerImg1,
-  },
-  {
-    name: "Banner 2",
-    image: bannerImg2,
-  },
-  {
-    name: "Banner 3",
-    image: bannerImg3,
-  },
-  {
-    name: "Banner 4",
-    image: bannerImg4,
-  },
-  {
-    name: "Banner 5",
-    image: bannerImg5,
-  },
-  {
-    name: "Banner 6",
-    image: bannerImg6,
-  },
-];
-
-const BannerSection = () => {
+const BannerSection = ({ classes }) => {
   return (
-    <div className="container px-5 mx-auto">
-      <Swiper
-        slidesPerView={1}
-        spaceBetween={30}
-        loop={true}
-        centeredSlides={true}
-        autoplay={{
-          delay: 5000,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          dynamicBullets: true,
-        }}
-        modules={[Pagination, Autoplay]}
-      >
-        {bannerItems.map((item) => (
-          <SwiperSlide key={item.name}>
-            <div>
-              <img
-                className="w-full h-full xl:h-[650px] py-3 sm:py-5 rounded-xl"
-                src={item.image}
-                alt={item.name}
-              />
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
+    <section className="container px-5 py-5 mx-auto md:py-10">
+      <div className="grid items-center grid-cols-1 gap-8 p-8 bg-gradient-to-r from-gray-300 to-blue-400 rounded-3xl md:p-12 lg:p-16 dark:from-gray-700 dark:to-blue-900 md:grid-cols-2">
+        <div className="flex flex-col items-center gap-4 md:items-start">
+          <h2 className="text-2xl font-bold leading-tight text-gray-800 sm:text-3xl md:text-4xl dark:text-gray-300">
+            SCS
+          </h2>
+          <h4 className="text-xl font-semibold leading-tight text-transparent md:text-2xl lg:text-3xl bg-clip-text bg-gradient-to-r from-gray-800 to-orange-500 dark:bg-gradient-to-r dark:from-blue-600 dark:to-orange-500 dark:text-transparent">
+            Most Popular Course
+          </h4>
+          <Button className="w-[200px]" variant={"primary"}>
+            Get Started
+          </Button>
+        </div>
+        <div>
+          {/* <Swiper
+            effect={"cards"}
+            slidesPerView={1}
+            loop={true}
+            centeredSlides={true}
+            autoplay={{
+              delay: 2000,
+              disableOnInteraction: false,
+            }}
+            grabCursor={true}
+            modules={[EffectCards, Autoplay]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <img className="w-full h-[200px]" src={img1} alt="" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="w-full h-[200px]" src={img2} alt="" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="w-full h-[200px]" src={img3} alt="" />
+            </SwiperSlide>
+          </Swiper> */}
+          <Swiper
+            spaceBetween={30}
+            slidesPerView={"auto"}
+            effect={"coverflow"}
+            loop={true}
+            grabCursor={true}
+            autoplay={{
+              delay: 2000,
+              disableOnInteraction: false,
+            }}
+            centeredSlides={true}
+            coverflowEffect={{
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+            }}
+            modules={[EffectCoverflow, Autoplay]}
+            breakpoints={{
+              100: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+              },
+              540: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+              },
+            }}
+          >
+            {classes.map((item) => (
+              <SwiperSlide key={item._id}>
+                <div className="h-[200px] w-full">
+                  <img className="w-full h-full rounded-md" src={item.image} />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </div>
+    </section>
   );
 };
 
