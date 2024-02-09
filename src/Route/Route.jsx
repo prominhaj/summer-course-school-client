@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main/Main";
-import Home from "../Pages/Home/Home";
 import Instructors from "../Pages/Instructors/Instructors";
 import Classes from "../Pages/Classes/Classes";
 import Register from "../Pages/Register/Register";
@@ -9,6 +8,7 @@ import Error from "../Pages/Error/Error";
 import Profile from "../Pages/Profile/Profile";
 import AuthPrivate from "../PrivateRoute/AuthPrivate";
 import DashBoard from "../Layout/DashBoard/DashBoard";
+import Home from "../Pages/Home/Home/Home";
 
 export const router = createBrowserRouter([
   {

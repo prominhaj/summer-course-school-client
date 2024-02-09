@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import ClassesCard from "../ClassesCard/ClassesCard";
+import ClassesCard from "../../../Components/ClassesCard/ClassesCard";
 import axios from "axios";
+import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 
 const PopularClasses = () => {
   const [classes, setClasses] = useState([]);
@@ -12,8 +13,9 @@ const PopularClasses = () => {
   }, []);
 
   return (
-    <section className="container px-5 mx-auto">
-      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+    <section className="container px-5 py-3 mx-auto md:py-8">
+      <SectionTitle hading="Popular Classes" />
+      <div className="grid gap-5 py-5 md:py-8 md:grid-cols-2 lg:grid-cols-3">
         {classes.map((item) => (
           <ClassesCard key={item._id} item={item} />
         ))}
