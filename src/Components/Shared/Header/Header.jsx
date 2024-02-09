@@ -1,11 +1,13 @@
 import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import logo from "../../../assets/SCS-Logo-light.png";
+import lightLogo from "../../../assets/SCS-Logo-light.png";
+import darkLogo from "../../../assets/SCS-dark-logo.png";
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth/useAuth";
 import { toast } from "react-toastify";
 import { CiDark, CiLight } from "react-icons/ci";
+import useTheme from "../../../Hooks/useTheme/useTheme";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -16,37 +18,7 @@ const navigation = [
 
 const Header = () => {
   const { user, logout } = useAuth();
-  const [theme, setTheme] = useState("light");
-  const [checked, setChecked] = useState(true);
-
-  useEffect(() => {
-    if (localStorage.getItem("theme") === null) {
-      localStorage.setItem("theme", "dark");
-    }
-  }, []);
-
-  useEffect(() => {
-    const html = document.querySelector("html");
-    if (localStorage.getItem("theme") === "dark") {
-      html.classList.add("dark");
-      setTheme("dark");
-      setChecked(true);
-    } else {
-      html.classList.remove("dark");
-      setTheme("light");
-      setChecked(false);
-    }
-  }, [theme]);
-
-  const toggleButton = () => {
-    if (localStorage.getItem("theme") === "light") {
-      setTheme("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      setTheme("light");
-      localStorage.setItem("theme", "light");
-    }
-  };
+  const [theme, toggleButton] = useTheme();
 
   const handleLogout = () => {
     logout()
@@ -58,6 +30,7 @@ const Header = () => {
       });
   };
 
+  console.log(theme);
   return (
     <div className="sticky top-0 z-50 bg-slate-50/60 backdrop-blur-2xl transition-colors duration-500 dark:bg-[#0C1322]">
       <Disclosure as="nav">
@@ -79,7 +52,11 @@ const Header = () => {
                 </div>
                 <div className="flex items-center justify-center flex-1 sm:items-stretch sm:justify-start">
                   <div className="flex items-center flex-shrink-0">
-                    <img className="w-auto h-8" src={logo} alt="Your Company" />
+                    <img
+                      className="w-auto h-8"
+                      src={theme === "dark" ? darkLogo : lightLogo}
+                      alt="Your Company"
+                    />
                   </div>
                   <div className="hidden sm:ml-12 sm:block">
                     <div className="flex space-x-4">

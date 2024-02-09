@@ -1,19 +1,27 @@
 import { Link } from "react-router-dom";
-import logo from "../../../assets/SCS-Logo-Light.png";
+import lightLogo from "../../../assets/SCS-Logo-Light.png";
+import darkLogo from "../../../assets/SCS-dark-logo.png";
 import Button from "../../Button/Button";
 import stripeLogo from "../../../assets/Payment-Image/Stripe-Logo.png";
 import masterCardLogo from "../../../assets/Payment-Image/master-card-logo.png";
 import blueDebitCardLogo from "../../../assets/Payment-Image/blue-debit-card-logo.png";
 import creditAndDebitCardLogo from "../../../assets/Payment-Image/debit-card-credit-logo.png";
 import moment from "moment";
+import useTheme from "../../../Hooks/useTheme/useTheme";
 
 const Footer = () => {
+  const [theme] = useTheme();
+
   return (
     <footer className="py-10 bg-slate-50/60 dark:bg-[#0F1729]">
       <div className="container px-5 mx-auto">
         <div className="grid items-start gap-5 md:grid-cols-2 lg:grid-cols-4">
           <div className="flex items-center gap-2 ">
-            <img className="w-auto h-8" src={logo} alt="" />
+            <img
+              className="w-auto h-8"
+              src={theme === "dark" ? darkLogo : lightLogo}
+              alt="Your Company Logo"
+            />
             <h2 className="self-center text-2xl font-semibold text-gray-800 whitespace-nowrap dark:text-white">
               SCS
             </h2>
