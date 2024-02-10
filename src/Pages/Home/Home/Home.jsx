@@ -18,7 +18,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-800">
+    <div className="bg-gray-100 dark:bg-[#0E1528]">
       <BannerSection classes={classes} />
       <PopularClasses classes={classes} loading={loading} />
       <PopularInstructors />

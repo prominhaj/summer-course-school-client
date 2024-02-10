@@ -24,7 +24,7 @@ const PopularInstructors = () => {
           <CardLoading />
         </div>
       ) : (
-        <div className="grid grid-cols-1 gap-5 py-8 md:py-8 lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-5 py-8 md:gap-8 md:py-8 lg:grid-cols-2">
           {instructors.map((item) => (
             <InstructorsCard key={item._id} item={item} />
           ))}

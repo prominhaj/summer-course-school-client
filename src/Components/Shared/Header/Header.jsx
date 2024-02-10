@@ -142,8 +142,8 @@ const Header = () => {
                           isPending
                             ? "pending"
                             : isActive
-                            ? "bg-gray-900 text-white hover:bg-gray-700 dark:bg-indigo-400 hover:text-white rounded-md px-3 py-2 text-sm font-medium dark:text-gray-100"
-                            : "rounded-md px-3 py-2 text-sm font-medium dark:text-gray-700 hover:bg-gray-700 hover:text-white  bg-gray-900 dark:bg-gray-300 text-white"
+                            ? "bg-gray-900 text-white hover:bg-gray-700 dark:bg-[#0284C7] hover:text-white rounded-md px-3 py-2 text-sm font-medium dark:text-gray-100"
+                            : "rounded-md px-3 py-2 text-sm font-medium dark:text-gray-100 hover:bg-gray-700 hover:text-white  bg-gray-900 dark:bg-[#0284C7] text-white"
                         }
                       >
                         Login
@@ -165,7 +165,7 @@ const Header = () => {
                         ? "pending"
                         : isActive
                         ? "bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium hover:bg-gray-700 hover:text-white"
-                        : "block rounded-md px-3 py-2 text-base font-medium hover:bg-gray-700 hover:text-white text-gray-800 dark:text-gray-200"
+                        : "block rounded-md px-3 py-2 text-base font-medium hover:bg-gray-700 hover:text-white text-gray-800 dark:text-gray-100"
                     }
                   >
                     {item.name}
