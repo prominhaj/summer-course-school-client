@@ -17,17 +17,17 @@ const InstructorsCard = ({ item }) => {
           {category}
         </h3>
       </div>
-      <div className="flex md:flex-1 flex-col gap-2 md:justify-between px-5 py-5 dark:bg-[#3D70E4] bg-white rounded-xl rounded-tr-[40px] md:rounded-none md:rounded-tr-xl md:rounded-br-xl">
+      <div className="flex md:flex-1 flex-col gap-2 md:justify-between px-5 py-5 dark:bg-gradient-to-r dark:from-sky-500 dark:to-indigo-500 bg-white rounded-xl rounded-tr-[40px] md:rounded-none md:rounded-tr-xl md:rounded-br-xl">
         <h2 className="text-[17px] font-semibold leading-none tracking-tight sm:text-xl dark:text-gray-200">
           {name}
         </h2>
-        <h3 className="hidden text-base font-medium leading-none tracking-tight md:block sm:text-lg dark:text-gray-200">
+        <h3 className="hidden text-base font-medium leading-none tracking-tight dark:text-gray-200 md:block sm:text-lg">
           {category}
         </h3>
         <h4 className="text-[16px] font-semibold leading-none tracking-tight sm:text-lg dark:text-gray-300">
           {email}
         </h4>
-        <Link className="px-3 py-2 mt-4 text-base font-semibold text-center text-white rounded-md shadow bg-gradient-to-r from-sky-500 to-indigo-800 focus:outline-none dark:bg-gradient-to-r dark:from-cyan-500 dark:to-blue-500">
+        <Link className="px-3 py-2 mt-4 text-base font-semibold text-center text-white rounded-md shadow bg-gradient-to-r from-purple-500 to-pink-500 focus:outline-none">
           See All Details
         </Link>
       </div>
