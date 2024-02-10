@@ -17,7 +17,7 @@ const InstructorsCard = ({ item }) => {
           {category}
         </h3>
       </div>
-      <div className="flex md:flex-1 flex-col gap-2 md:justify-between px-5 py-5 dark:bg-gradient-to-r dark:from-sky-500 dark:to-indigo-500 bg-white rounded-xl rounded-tr-[40px] md:rounded-none md:rounded-tr-xl md:rounded-br-xl">
+      <div className="flex md:flex-1 flex-col gap-2 md:justify-between px-5 py-5 dark:bg-gray-900 bg-white rounded-xl rounded-tr-[40px] md:rounded-none md:rounded-tr-xl md:rounded-br-xl">
         <h2 className="text-[17px] font-semibold leading-none tracking-tight sm:text-xl dark:text-gray-200">
           {name}
         </h2>

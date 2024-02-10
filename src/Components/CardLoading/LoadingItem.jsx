@@ -3,12 +3,12 @@ import React from "react";
 
 const LoadingItem = () => {
   return (
-    <Card className="w-full !bg-gray-100 dark:bg-gray-600">
+    <Card className="w-full dark:bg-gray-700">
       <CardHeader
         avatar={
           <Skeleton
             animation="wave"
-            className="dark:bg-gray-400"
+            className="dark:bg-gray-600"
             variant="circular"
             width={40}
             height={40}
@@ -16,7 +16,7 @@ const LoadingItem = () => {
         }
         title={
           <Skeleton
-            className="dark:bg-gray-400"
+            className="dark:bg-gray-600"
             animation="wave"
             height={10}
             width="80%"
@@ -25,7 +25,7 @@ const LoadingItem = () => {
         }
         subheader={
           <Skeleton
-            className="dark:bg-gray-400"
+            className="dark:bg-gray-600"
             animation="wave"
             height={10}
             width="40%"
@@ -36,8 +36,18 @@ const LoadingItem = () => {
 
       <CardContent>
         <React.Fragment>
-          <Skeleton animation="wave" height={10} style={{ marginBottom: 6 }} />
-          <Skeleton animation="wave" height={10} width="80%" />
+          <Skeleton
+            className="dark:bg-gray-600"
+            animation="wave"
+            height={10}
+            style={{ marginBottom: 6 }}
+          />
+          <Skeleton
+            className="dark:bg-gray-600"
+            animation="wave"
+            height={10}
+            width="80%"
+          />
         </React.Fragment>
       </CardContent>
     </Card>

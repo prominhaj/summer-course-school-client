@@ -3,6 +3,7 @@ import BannerSection from "../BannerSection/BannerSection";
 import PopularClasses from "../PopularClasses/PopularClasses";
 import PopularInstructors from "../PopularInstructors/PopularInstructors";
 import axios from "axios";
+import StudentsFeedBack from "../StudentsFeedBack/StudentsFeedBack";
 
 const Home = () => {
   const [classes, setClasses] = useState([]);
@@ -21,6 +22,7 @@ const Home = () => {
       <BannerSection classes={classes} />
       <PopularClasses classes={classes} loading={loading} />
       <PopularInstructors />
+      <StudentsFeedBack />
     </div>
   );
 };
