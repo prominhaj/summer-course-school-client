@@ -10,7 +10,7 @@ const SocialLogin = ({ googleLogin }) => {
         <button
           onClick={googleLogin}
           type="button"
-          className="flex items-center gap-3 px-3 py-2 text-xl text-gray-100 bg-red-500 rounded-lg dark:text-gray-100 dark:bg-gray-500"
+          className="flex items-center gap-3 px-3 py-2 text-xl text-gray-100 bg-red-500 rounded-lg dark:text-gray-100"
         >
           <FaGoogle className="text-2xl" />
           Google Login

@@ -107,7 +107,7 @@ const Register = () => {
                     {...register("firstName", { required: true })}
                     type="text"
                     id="first-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 px-3 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     placeholder="First Name"
                   />
                   {errors.firstName && (
@@ -130,7 +130,7 @@ const Register = () => {
                     {...register("lastName", { required: true })}
                     type="text"
                     id="last-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 px-3 dark:bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     placeholder="Last Name"
                   />
                   {errors.lastName && (
@@ -154,7 +154,7 @@ const Register = () => {
                     id="email"
                     type="email"
                     autoComplete="email"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 dark:text-gray-100 px-3 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     placeholder="Enter email address"
                   />
                   {errors.email && (
@@ -181,7 +181,7 @@ const Register = () => {
                     })}
                     id="phone"
                     type="number"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset px-3 ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     placeholder="Enter phone number"
                   />
                   {errors.phone?.type === "required" && (
@@ -221,7 +221,7 @@ const Register = () => {
                     id="password"
                     type="password"
                     autoComplete="password"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block px-3 w-full rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     placeholder="Enter your Password"
                   />
                   {errors.password?.type === "required" && (
@@ -263,7 +263,7 @@ const Register = () => {
                     id="confirmPassword"
                     type="password"
                     autoComplete="confirmPassword"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full px-3 rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     placeholder="Enter your Confirm Password"
                   />
                   {errors.confirmPassword && (
@@ -292,7 +292,7 @@ const Register = () => {
                     type="file"
                     id="street-photo"
                     autoComplete="street-photo"
-                    className="block w-full text-gray-900 bg-white border-0 rounded-md shadow-sm dark:bg-gray-800 ring-1 ring-inset ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+                    className="block w-full text-gray-900 bg-white border-0 rounded-md shadow-sm dark:bg-gray-800 file:bg-indigo-400 file:border-none file:text-gray-100 file:py-1.5 file:px-4 ring-1 ring-inset ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
                     placeholder="Enter your photo"
                   />
                   {errors.photo && (
@@ -315,7 +315,7 @@ const Register = () => {
                     {...register("gender", { required: true })}
                     id="gender"
                     autoComplete="gender-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 px-3 dark:text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   >
                     <option>Male</option>
                     <option>Female</option>
@@ -335,8 +335,8 @@ const Register = () => {
                 </div>
               ) : (
                 <Button
-                  className={"md:w-1/2 w-full my-5"}
-                  variant={"red"}
+                  className={"md:w-1/2 w-full my-5 py-2.5"}
+                  variant={"primary"}
                   type="submit"
                 >
                   Register
