@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const AllInstructorsCard = ({ item }) => {
-  const { category, email, name, image, _id } = item;
+  const { category, email, name, image, totalCourse, _id } = item;
 
   return (
     <div className="flex flex-col cursor-pointer duration-300 border bg-[#3D70E4] md:rounded-lg dark:bg-black shadow-xl  dark:shadow-gray-700 dark:border-gray-700 hover:scale-[1.03] rounded-xl">
@@ -18,7 +18,7 @@ const AllInstructorsCard = ({ item }) => {
           {category}
         </h3>
         <h4 className="absolute p-4 font-semibold leading-3 text-gray-200 bg-gray-400 rounded-full sm:p-5 md:leading-3 md:text-xl dark:bg-gray-700 sm:top-5 sm:right-8 top-3 right-5">
-          2
+          {totalCourse}
         </h4>
       </div>
       <div className="flex flex-col gap-2 md:justify-between px-5 py-5 dark:bg-gray-800 bg-gray-100 rounded-tr-[40px]">

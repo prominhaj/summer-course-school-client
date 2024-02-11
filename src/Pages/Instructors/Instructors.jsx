@@ -7,9 +7,8 @@ import AllInstructorsCard from "../../Components/AllInstructorsCard/AllInstructo
 
 const Instructors = () => {
   const [data, dataLoading] = useLoadData("/all-instructors");
-  const { allCategory, allInstructors, totalClasses } = data;
+  const { allCategory, allInstructors } = data;
 
-  console.log(totalClasses);
   return (
     <main className="bg-white dark:bg-[#0E1528] py-5">
       <div className="container px-5 mx-auto">
@@ -50,8 +49,11 @@ const Instructors = () => {
           </div>
           <section className="flex-1 w-full">
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
-              {allInstructors?.map((item) => (
-                <AllInstructorsCard key={item._id} item={item} />
+              {allInstructors?.map((item, index) => (
+                <AllInstructorsCard
+                  key={item._id}
+                  item={item}
+                />
               ))}
             </div>
 
