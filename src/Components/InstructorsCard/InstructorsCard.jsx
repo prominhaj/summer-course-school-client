@@ -8,7 +8,7 @@ const InstructorsCard = ({ item }) => {
       <div className="flex flex-col items-center justify-center gap-2 p-5 rounded-br-none md:flex-row md:p-0">
         <div className="md:h-full">
           <img
-            className="object-cover sm:w-[160px] sm:h-[160px] md:max-h-[200px] md:max-w-[200px] border-4 rounded-full md:h-full md:rounded-none md:rounded-tl-xl md:rounded-bl-xl"
+            className="object-cover w-[130px] h-[130px] sm:w-[160px] sm:h-[160px] md:max-h-[200px] md:max-w-[200px] border-4 rounded-full md:h-full md:rounded-none md:rounded-tl-xl md:rounded-bl-xl"
             src={image}
             alt="Instructors Image"
           />
