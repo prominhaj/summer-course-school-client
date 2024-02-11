@@ -13,12 +13,12 @@ const Instructors = () => {
   return (
     <main className="bg-white dark:bg-[#0E1528] py-5">
       <div className="container px-5 mx-auto">
-        <section className="flex flex-wrap items-start gap-5">
-          <div className="w-[200px]">
-            <h2 className="font-sans text-xl font-semibold dark:text-gray-200">
+        <section className="flex flex-col items-start gap-5 lg:flex-row">
+          <div className="lg:w-[200px] w-full">
+            <h2 className="block font-sans text-xl font-semibold dark:text-gray-200">
               All Category
             </h2>
-            <div className="flex flex-col gap-1 mt-4">
+            <div className="flex flex-row flex-wrap gap-2 mt-4 lg:gap-1 lg:flex-col">
               <NavLink
                 to={"/instructors"}
                 className={({ isActive, isPending }) =>
@@ -48,9 +48,11 @@ const Instructors = () => {
               ))}
             </div>
           </div>
-          <section className="w-full">
-            <div className="grid gap-5 md:grid-cols-2">
-              <AllInstructorsCard />
+          <section className="flex-1 w-full">
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
+              {allInstructors?.map((item) => (
+                <AllInstructorsCard key={item._id} item={item} />
+              ))}
             </div>
 
             {/* <nav

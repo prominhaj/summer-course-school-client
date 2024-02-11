@@ -17,7 +17,7 @@ const PopularInstructors = () => {
   }, []);
 
   return (
-    <section className="py-8 mt-8 bg-gray-200 md:py-10">
+    <section className="py-8 mt-8 bg-gray-200 dark:bg-gray-800 md:py-10">
       <div className="container px-5 mx-auto">
         <SectionTitle hading="Popular Instructors" />
         {loading ? (

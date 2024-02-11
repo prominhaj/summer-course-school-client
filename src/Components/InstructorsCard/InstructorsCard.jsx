@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const InstructorsCard = ({ item }) => {
   const { image, name, category, email } = item;
   return (
-    <div className="flex flex-col md:flex-row cursor-pointer duration-300 border bg-[#3D70E4] md:bg-transparent md:rounded-lg shadow-xl  dark:shadow-gray-700 dark:border-gray-700 hover:scale-[1.03] rounded-xl">
+    <div className="flex flex-col md:flex-row cursor-pointer duration-300 border bg-[#3D70E4] md:bg-transparent md:rounded-lg shadow-xl dark:shadow-gray-600 dark:border-gray-700 hover:scale-[1.03] rounded-xl">
       <div className="flex flex-col items-center justify-center gap-2 p-5 rounded-br-none md:flex-row md:p-0">
         <div className="md:h-full">
           <img
@@ -17,7 +17,7 @@ const InstructorsCard = ({ item }) => {
           {category}
         </h3>
       </div>
-      <div className="flex flex-col gap-2 px-5 py-5 rounded-bl-lg md:flex-1 md:justify-between dark:bg-gray-800 bg-gray-50 rounded-br-xl md:rounded-none md:rounded-tr-xl md:rounded-br-xl rounded-tr-[40px]">
+      <div className="flex flex-col gap-2 px-5 py-5 rounded-bl-lg md:flex-1 md:justify-between dark:bg-gray-900 bg-gray-50 rounded-br-xl md:rounded-none md:rounded-tr-xl md:rounded-br-xl rounded-tr-[40px]">
         <h2 className="text-[17px] font-semibold leading-none tracking-tight sm:text-xl dark:text-gray-200">
           {name}
         </h2>
