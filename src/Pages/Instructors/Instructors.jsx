@@ -1,38 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import AllInstructorsCard from "../../Components/AllInstructorsCard/AllInstructorsCard";
-import axios from "axios";
+import React, { useEffect } from "react";
+import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import useLoadData from "../../Hooks/useLoadData/useLoadData";
-import { Pagination } from "@mui/material";
-import CardLoading from "../../Components/CardLoading/CardLoading";
-
 const Instructors = () => {
-  const [instructors, setInstructors] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  // Pagination
-  const [data] = useLoadData("/total-instructors-count");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [instructorsPerPage] = useState(6);
-  const totalPages = Math.ceil(data?.totalDataCount / instructorsPerPage);
-
-  const handleChange = (event, value) => {
-    setCurrentPage(value);
-  };
+  const [data] = useLoadData("/all-instructors");
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    setLoading(true);
-    const fetchPosts = async () => {
-      const res = await axios.get(
-        `http://localhost:3000/all-instructors?page=${currentPage}&limit=${instructorsPerPage}`
-      );
-      setInstructors(res?.data);
-      setLoading(false);
-    };
-    fetchPosts();
-  }, [currentPage, instructorsPerPage]);
+    if (location.pathname === "/instructors") {
+      navigate("/instructors/all-instructors");
+    }
+  }, [location.pathname, navigate]);
 
-  const { allCategory, allInstructors } = instructors;
+  const { allCategory } = data;
 
   return (
     <main className="bg-white dark:bg-[#0E1528] py-5">
@@ -44,7 +24,7 @@ const Instructors = () => {
             </h2>
             <div className="flex flex-row flex-wrap gap-2 mt-4 lg:gap-1 lg:flex-col">
               <NavLink
-                to={"/instructors"}
+                to={"/instructors/all-instructors"}
                 className={({ isActive, isPending }) =>
                   isPending
                     ? "pending"
@@ -58,7 +38,7 @@ const Instructors = () => {
               {allCategory?.map((item) => (
                 <NavLink
                   key={item.category}
-                  to={`/instructors/${item?.category?.toLowerCase()}`}
+                  to={`/all-instructors/${item?.category?.toLowerCase()}`}
                   className={({ isActive, isPending }) =>
                     isPending
                       ? "pending"
@@ -72,29 +52,7 @@ const Instructors = () => {
               ))}
             </div>
           </div>
-          <section className="flex-1 w-full">
-            {loading ? (
-              <CardLoading />
-            ) : (
-              <>
-                <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
-                  {allInstructors?.map((item) => (
-                    <AllInstructorsCard key={item._id} item={item} />
-                  ))}
-                </div>
-                <div className="pt-8">
-                  <Pagination
-                    onChange={handleChange}
-                    className="flex justify-center py-2 bg-gray-300 rounded-md"
-                    size="large"
-                    page={currentPage}
-                    count={totalPages || 1}
-                    color="primary"
-                  />
-                </div>
-              </>
-            )}
-          </section>
+          <Outlet />
         </section>
       </div>
     </main>

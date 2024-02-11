@@ -9,6 +9,8 @@ import Profile from "../Pages/Profile/Profile";
 import AuthPrivate from "../PrivateRoute/AuthPrivate";
 import DashBoard from "../Layout/DashBoard/DashBoard";
 import Home from "../Pages/Home/Home/Home";
+import CategoryInstructors from "../Pages/Instructors/CategoryInstructors/CategoryInstructors";
+import AllInstructors from "../Pages/Instructors/AllInstructors/AllInstructors";
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +24,16 @@ export const router = createBrowserRouter([
       {
         path: "instructors",
         element: <Instructors />,
+        children: [
+          {
+            path: "/instructors/all-instructors",
+            element: <AllInstructors />,
+          },
+          {
+            path: "/instructors/:category",
+            element: <CategoryInstructors />,
+          },
+        ],
       },
       {
         path: "classes",
