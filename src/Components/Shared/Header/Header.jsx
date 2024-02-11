@@ -11,8 +11,8 @@ import useTheme from "../../../Hooks/useTheme/useTheme";
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "Instructors", href: "/instructors" },
   { name: "Classes", href: "/classes" },
+  { name: "Instructors", href: "/instructors" },
   { name: "DashBoard", href: "/dashboard" },
 ];
 

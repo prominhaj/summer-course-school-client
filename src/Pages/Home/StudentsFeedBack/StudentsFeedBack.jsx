@@ -17,21 +17,15 @@ const StudentsFeedBack = () => {
       return res.data;
     },
   });
-  console.log(feedbacks);
+
   return (
     <section className="py-8 md:py-10 dark:bg-[#303c5b3b] bg-[#FDF8FE]">
       <div className="container px-5 mx-auto">
         <SectionTitle hading="Students FeedBack" />
         <div className="grid gap-5 pt-5 md:pt-8 md:grid-cols-2 lg:grid-cols-3">
-          <FeedBack />
-          <FeedBack />
-          <FeedBack />
-          <FeedBack />
-          <FeedBack />
-          <FeedBack />
-          <FeedBack />
-          <FeedBack />
-          <FeedBack />
+          {feedbacks?.map((item) => (
+            <FeedBack key={item._id} item={item} />
+          ))}
         </div>
         <form className="py-8 mx-auto lg:w-1/2">
           <textarea

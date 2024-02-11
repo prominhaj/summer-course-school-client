@@ -42,7 +42,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/all-course"
+                  to="/classes"
                   className="text-gray-600 hover:underline hover:text-black dark:text-gray-200"
                 >
                   All Course
@@ -112,7 +112,7 @@ const Footer = () => {
         </div>
         <hr className="my-5 border-gray-300 md:my-7 dark:border-gray-300" />
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-end gap-3">
             <img className="w-12" src={stripeLogo} alt="logo" />
             <img className="w-12" src={masterCardLogo} alt="logo" />
             <img className="w-12" src={blueDebitCardLogo} alt="logo" />
