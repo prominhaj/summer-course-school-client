@@ -1,9 +1,14 @@
 import ClassesCard from "../../../Components/ClassesCard/ClassesCard";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
-import { Link } from "react-router-dom";
 import CardLoading from "../../../Components/CardLoading/CardLoading";
+import Button from "../../../Components/Button/Button";
 
-const PopularClasses = ({ classes, loading }) => {
+const PopularClasses = ({
+  classes,
+  loading,
+  totalPopularClasses,
+  onAllCourse,
+}) => {
   return (
     <section className="container px-5 py-3 mx-auto md:py-8">
       <SectionTitle hading="Popular Classes" />
@@ -14,20 +19,23 @@ const PopularClasses = ({ classes, loading }) => {
           </div>
         ) : (
           <div className="grid gap-5 py-5 md:py-8 md:grid-cols-2 lg:grid-cols-3">
-            {classes.map((item) => (
+            {classes?.map((item) => (
               <ClassesCard key={item._id} item={item} />
             ))}
           </div>
         )}
       </div>
-      <div className="pt-4 text-center">
-        <Link
-          to="/classes"
-          className="px-10 py-3 text-base font-semibold text-white rounded-md shadow bg-gradient-to-r from-sky-500 to-indigo-800 focus:outline-none"
-        >
-          See All Course
-        </Link>
-      </div>
+      {totalPopularClasses > 6 && (
+        <div className={`pt-4 text-center ${classes.length > 6 && "hidden"}`}>
+          <Button
+            onClick={onAllCourse}
+            variant={"primary"}
+            className="px-8 py-3 text-base sm:px-20 md:text-xl"
+          >
+            See All Course
+          </Button>
+        </div>
+      )}
     </section>
   );
 };
