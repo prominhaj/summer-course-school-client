@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main/Main";
-import Instructors from "../Pages/Instructors/Instructors";
-import Classes from "../Pages/Classes/Classes";
+import Instructors from "../Pages/Instructors/layout/Instructors";
+import Classes from "../Pages/Classes/layout/Classes";
 import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import Error from "../Pages/Error/Error";
@@ -11,6 +11,7 @@ import DashBoard from "../Layout/DashBoard/DashBoard";
 import Home from "../Pages/Home/Home/Home";
 import CategoryInstructors from "../Pages/Instructors/CategoryInstructors/CategoryInstructors";
 import AllInstructors from "../Pages/Instructors/AllInstructors/AllInstructors";
+import AllClasses from "../Pages/Classes/AllClasses/AllClasses";
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +43,12 @@ export const router = createBrowserRouter([
       {
         path: "classes",
         element: <Classes />,
+        children: [
+          {
+            path: "/classes/all-classes",
+            element: <AllClasses />,
+          },
+        ],
       },
       {
         path: "register",

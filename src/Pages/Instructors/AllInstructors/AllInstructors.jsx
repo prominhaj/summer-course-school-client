@@ -5,6 +5,7 @@ import { Pagination } from "@mui/material";
 import useLoadData from "../../../Hooks/useLoadData/useLoadData";
 import CardLoading from "../../../Components/CardLoading/CardLoading";
 import AllInstructorsCard from "../../../Components/AllInstructorsCard/AllInstructorsCard";
+import CompPagination from "../../../Components/Pagination/CompPagination";
 
 const AllInstructors = () => {
   const [instructors, setInstructors] = useState([]);
@@ -49,16 +50,11 @@ const AllInstructors = () => {
             ))}
           </div>
           {data?.totalDataCount > 6 && (
-            <div className="pt-8">
-              <Pagination
-                onChange={handleChange}
-                className="flex justify-center py-2 bg-gray-300 rounded-md"
-                size="large"
-                page={currentPage}
-                count={totalPages || 1}
-                color="primary"
-              />
-            </div>
+            <CompPagination
+              handleChange={handleChange}
+              currentPage={currentPage}
+              totalPages={totalPages}
+            />
           )}
         </>
       )}
