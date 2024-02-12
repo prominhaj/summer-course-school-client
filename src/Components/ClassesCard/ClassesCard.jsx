@@ -46,20 +46,25 @@ const ClassesCard = ({ item }) => {
                 </button>
               </Menu.Item>
               <Menu.Item>
-                <button className="block w-full px-4 py-2 text-sm text-gray-900 hover:font-medium text-start dark:text-gray-100 hover:dark:bg-black hover:dark:text-white hover:bg-gray-100 hover:text-black">
+                <Link
+                  to={`/classes/details/${_id}`}
+                  className="block w-full px-4 py-2 text-sm text-gray-900 hover:font-medium text-start dark:text-gray-100 hover:dark:bg-black hover:dark:text-white hover:bg-gray-100 hover:text-black"
+                >
                   Details
-                </button>
+                </Link>
               </Menu.Item>
             </Menu.Items>
           </Transition>
         </Menu>
       </div>
       <div className="flex-1 py-3">
-        <img
-          className="object-cover w-full h-full max-h-[250px] rounded-lg"
-          src={image}
-          alt="Card Image"
-        />
+        <Link to={`/classes/details/${_id}`}>
+          <img
+            className="object-cover w-full h-full max-h-[250px] rounded-lg"
+            src={image}
+            alt="Card Image"
+          />
+        </Link>
       </div>
       <div className="flex flex-col justify-between">
         <div className="flex items-center justify-between ">

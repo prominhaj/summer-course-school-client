@@ -44,7 +44,7 @@ const ClassesDetails = () => {
             </div>
             <div className="flex flex-col justify-between px-5 py-8 border rounded-lg shadow-xl dark:border-gray-600 dark:shadow-gray-600">
               <h4 className="md:text-2xl text-lg font-['Inter'] mb-4 xl:mb-0 dark:text-gray-300 font-semibold">
-                Price: ${price}
+                Price: {price === "Free" ? price : <>${price}</>}
               </h4>
               <div className="space-y-3 md:space-y-5">
                 <h2 className="md:text-xl text-lg font-['Inter'] dark:text-gray-300 font-medium">
