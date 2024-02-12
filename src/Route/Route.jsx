@@ -13,6 +13,8 @@ import CategoryInstructors from "../Pages/Instructors/CategoryInstructors/Catego
 import AllInstructors from "../Pages/Instructors/AllInstructors/AllInstructors";
 import AllClasses from "../Pages/Classes/AllClasses/AllClasses";
 import CategoryClasses from "../Pages/Classes/CategoryClasses/CategoryClasses";
+import InstructorsDetails from "../Pages/InstructorsDetails/InstructorsDetails";
+import ClassesDetails from "../Pages/ClassesDetails/ClassesDetails";
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +44,10 @@ export const router = createBrowserRouter([
         ],
       },
       {
+        path: "instructors/details/:id",
+        element: <InstructorsDetails />,
+      },
+      {
         path: "classes",
         element: <Classes />,
         children: [
@@ -58,6 +64,10 @@ export const router = createBrowserRouter([
               ),
           },
         ],
+      },
+      {
+        path: "/classes/details/:id",
+        element: <ClassesDetails />,
       },
       {
         path: "register",

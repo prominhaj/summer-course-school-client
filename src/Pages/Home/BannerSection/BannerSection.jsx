@@ -3,6 +3,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import { EffectCoverflow, Autoplay } from "swiper/modules";
 import Button from "../../../Components/Button/Button";
+import { Link } from "react-router-dom";
 
 const BannerSection = ({ classes }) => {
   return (
@@ -61,7 +62,12 @@ const BannerSection = ({ classes }) => {
             {classes?.map((item) => (
               <SwiperSlide key={item._id}>
                 <div className="h-[200px] w-full">
-                  <img className="w-full h-full rounded-md" src={item?.image} />
+                  <Link to={`/classes/details/${item._id}`}>
+                    <img
+                      className="w-full h-full rounded-md"
+                      src={item?.image}
+                    />
+                  </Link>
                 </div>
               </SwiperSlide>
             ))}
