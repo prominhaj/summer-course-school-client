@@ -1,5 +1,4 @@
 import { Skeleton } from "@mui/material";
-import { Box } from "lucide-react";
 import React from "react";
 
 const CategoryLoading = () => {

@@ -44,8 +44,10 @@ export const router = createBrowserRouter([
         ],
       },
       {
-        path: "instructors/details/:id",
+        path: "/instructors/details/:id",
         element: <InstructorsDetails />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/instructor-details/${params.id}`),
       },
       {
         path: "classes",

@@ -28,7 +28,10 @@ const AllInstructorsCard = ({ item }) => {
         <h4 className="text-[16px] font-semibold leading-none tracking-tight sm:text-lg dark:text-gray-300">
           {email}
         </h4>
-        <Link className="px-3 py-2 mt-4 text-sm font-semibold text-center text-white rounded-md shadow sm:text-base bg-gradient-to-r from-purple-500 to-pink-500 focus:outline-none">
+        <Link
+          to={`/instructors/details/${_id}`}
+          className="px-3 py-2 mt-4 text-sm font-semibold text-center text-white rounded-md shadow sm:text-base bg-gradient-to-r from-purple-500 to-pink-500 focus:outline-none"
+        >
           See All Details
         </Link>
       </div>

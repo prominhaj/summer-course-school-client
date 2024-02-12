@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const InstructorsCard = ({ item }) => {
-  const { image, name, category, email } = item;
+  const { image, name, category, email, _id } = item;
   return (
     <div className="flex flex-col md:flex-row cursor-pointer duration-300 border bg-[#3D70E4] md:bg-transparent md:rounded-lg shadow-xl dark:shadow-gray-600 dark:border-gray-700 hover:scale-[1.03] rounded-xl">
       <div className="flex flex-col items-center justify-center gap-2 p-5 rounded-br-none md:flex-row md:p-0">
@@ -27,7 +27,10 @@ const InstructorsCard = ({ item }) => {
         <h4 className="text-[16px] font-semibold leading-none tracking-tight sm:text-lg dark:text-gray-300">
           {email}
         </h4>
-        <Link className="px-3 py-2 mt-4 text-base font-semibold text-center text-white rounded-md shadow bg-gradient-to-r from-purple-500 to-pink-500 focus:outline-none">
+        <Link
+          to={`/instructors/details/${_id}`}
+          className="px-3 py-2 mt-4 text-base font-semibold text-center text-white rounded-md shadow bg-gradient-to-r from-purple-500 to-pink-500 focus:outline-none"
+        >
           See All Details
         </Link>
       </div>
