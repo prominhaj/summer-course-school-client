@@ -12,6 +12,7 @@ import Home from "../Pages/Home/Home/Home";
 import CategoryInstructors from "../Pages/Instructors/CategoryInstructors/CategoryInstructors";
 import AllInstructors from "../Pages/Instructors/AllInstructors/AllInstructors";
 import AllClasses from "../Pages/Classes/AllClasses/AllClasses";
+import CategoryClasses from "../Pages/Classes/CategoryClasses/CategoryClasses";
 
 export const router = createBrowserRouter([
   {
@@ -47,6 +48,14 @@ export const router = createBrowserRouter([
           {
             path: "/classes/all-classes",
             element: <AllClasses />,
+          },
+          {
+            path: "/classes/:category",
+            element: <CategoryClasses />,
+            loader: ({ params }) =>
+              fetch(
+                `http://localhost:3000/all-classes?category=${params.category}`
+              ),
           },
         ],
       },

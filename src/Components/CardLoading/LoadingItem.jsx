@@ -32,7 +32,7 @@ const LoadingItem = ({ feedBack }) => {
           />
         }
       />
-      {feedBack || (
+      {!feedBack && (
         <Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
       )}
       <CardContent>
