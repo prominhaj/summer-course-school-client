@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, Skeleton } from "@mui/material";
 import React from "react";
 
-const LoadingItem = () => {
+const LoadingItem = ({ feedBack }) => {
   return (
     <Card className="w-full dark:bg-gray-700">
       <CardHeader
@@ -32,8 +32,9 @@ const LoadingItem = () => {
           />
         }
       />
-      <Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
-
+      {feedBack || (
+        <Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
+      )}
       <CardContent>
         <React.Fragment>
           <Skeleton
