@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import FeedBack from "../../../Components/FeedBack/FeedBack";
 import Button from "../../../Components/Button/Button";
 import { useQuery } from "react-query";
+import "./StudentsFeedBack.css";
 import axios from "axios";
 
 const StudentsFeedBack = () => {
+  const [isHidden, setIsHidden] = useState(true);
+
   const {
     data: feedbacks,
     refetch,
@@ -18,14 +21,35 @@ const StudentsFeedBack = () => {
     },
   });
 
+  console.log(isHidden);
+
   return (
     <section className="py-8 md:py-10 dark:bg-[#303c5b3b] bg-[#FDF8FE]">
       <div className="container px-5 mx-auto">
         <SectionTitle hading="Students FeedBack" />
-        <div className="grid gap-5 pt-5 md:pt-8 md:grid-cols-2 lg:grid-cols-3">
-          {feedbacks?.map((item) => (
-            <FeedBack key={item._id} item={item} />
-          ))}
+        <div className="relative">
+          <div
+            className={`pt-5 md:pt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5 ${
+              isHidden && "h-[500px] overflow-y-hidden"
+            }`}
+          >
+            {feedbacks?.map((item) => (
+              <FeedBack key={item._id} item={item} />
+            ))}
+          </div>
+          <div
+            className={`absolute inset-x-0 bottom-0 flex justify-center pt-32 pb-8 bg-gradient-to-t from-gray-100 dark:from-slate-900 ${
+              isHidden || "hidden"
+            }`}
+          >
+            <Button
+              onClick={() => setIsHidden(false)}
+              variant={"primary"}
+              className="py-3"
+            >
+              See All FeedBack
+            </Button>
+          </div>
         </div>
         <form className="py-8 mx-auto lg:w-1/2">
           <textarea

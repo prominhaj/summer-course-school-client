@@ -6,7 +6,7 @@ const Button = ({ variant, type, className, children, disabled, onClick }) => {
       onClick={onClick && onClick}
       disabled={disabled && disabled}
       type={type && type}
-      className={`px-3 py-2 text-sm font-semibold text-white rounded-md shadow focus:outline-none ${
+      className={`px-3 py-2 text-base font-semibold text-white rounded-md shadow focus:outline-none ${
         variant === "primary" &&
         "text-base font-semibold text-white rounded-md shadow bg-gradient-to-r from-sky-500 to-indigo-800 focus:outline-none"
       } ${

@@ -18,7 +18,7 @@ const FeedBack = ({ item }) => {
       </div>
       <div>
         <div className="mt-2">
-          <p className="text-inherit dark:text-gray-200">
+          <p className="text-center text-inherit dark:text-gray-200 sm:text-start">
             <small>{Details}</small>
           </p>
         </div>
