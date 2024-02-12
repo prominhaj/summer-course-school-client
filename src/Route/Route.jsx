@@ -68,6 +68,8 @@ export const router = createBrowserRouter([
       {
         path: "/classes/details/:id",
         element: <ClassesDetails />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/classes-details/${params.id}`),
       },
       {
         path: "register",
