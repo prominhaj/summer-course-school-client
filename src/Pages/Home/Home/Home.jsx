@@ -10,8 +10,10 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
 
   const handleSeeAllCourse = () => {
+    setLoading(true);
     axios.get("http://localhost:3000/classes-popular").then((res) => {
       setData(res.data);
+      setLoading(false);
     });
   };
 
