@@ -38,7 +38,7 @@ const Instructors = () => {
               {allCategory?.map((item) => (
                 <NavLink
                   key={item.category}
-                  to={`/all-instructors/${item?.category?.toLowerCase()}`}
+                  to={`/instructors/${item?.category}`}
                   className={({ isActive, isPending }) =>
                     isPending
                       ? "pending"

@@ -32,6 +32,10 @@ export const router = createBrowserRouter([
           {
             path: "/instructors/:category",
             element: <CategoryInstructors />,
+            loader: ({ params }) =>
+              fetch(
+                `http://localhost:3000/all-instructors?category=${params.category}`
+              ),
           },
         ],
       },

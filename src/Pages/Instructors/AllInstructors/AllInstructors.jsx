@@ -36,6 +36,9 @@ const AllInstructors = () => {
 
   return (
     <section className="flex-1 w-full">
+      <h2 className="mb-4 text-xl font-semibold sm:text-2xl dark:text-gray-200">
+        Total Instructors: {data?.totalDataCount}
+      </h2>
       {loading ? (
         <CardLoading />
       ) : (
