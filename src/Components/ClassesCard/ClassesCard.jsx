@@ -87,7 +87,11 @@ const ClassesCard = ({ item }) => {
         </div>
         <div>
           {availableSeats ? (
-            <Button className={"w-full mt-3"} variant={"secondary"}>
+            <Button
+              className={"block text-center mt-3"}
+              link={`/course-enroll/${_id}`}
+              variant={"secondary"}
+            >
               Enroll Now
             </Button>
           ) : (
