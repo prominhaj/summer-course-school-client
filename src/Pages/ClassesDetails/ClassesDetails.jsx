@@ -63,6 +63,11 @@ const ClassesDetails = () => {
                   </small>
                 </p>
               </div>
+              {/* Card Area */}
+              <div>
+                <h4>Card Area</h4>
+              </div>
+              {/* Card Area End */}
               <div className="pt-3">
                 {availableSeats ? (
                   <Button className={"w-full mt-3"} variant={"secondary"}>

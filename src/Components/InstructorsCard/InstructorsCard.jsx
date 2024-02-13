@@ -7,11 +7,13 @@ const InstructorsCard = ({ item }) => {
     <div className="flex flex-col md:flex-row cursor-pointer duration-300 border bg-[#3D70E4] md:bg-transparent md:rounded-lg shadow-xl dark:shadow-gray-600 dark:border-gray-700 hover:scale-[1.03] rounded-xl">
       <div className="flex flex-col items-center justify-center gap-2 p-5 rounded-br-none md:flex-row md:p-0">
         <div className="md:h-full">
-          <img
-            className="object-cover w-[130px] h-[130px] sm:w-[160px] sm:h-[160px] md:max-h-[200px] md:max-w-[200px] border-4 rounded-full md:h-full md:rounded-none md:rounded-tl-xl md:rounded-bl-xl"
-            src={image}
-            alt="Instructors Image"
-          />
+          <Link to={`/instructors/details/${_id}`}>
+            <img
+              className="object-cover w-[130px] h-[130px] sm:w-[160px] sm:h-[160px] md:max-h-[200px] md:max-w-[200px] border-4 rounded-full md:h-full md:rounded-none md:rounded-tl-xl md:rounded-bl-xl"
+              src={image}
+              alt="Instructors Image"
+            />
+          </Link>
         </div>
         <h3 className="block text-base font-semibold leading-none tracking-tight text-gray-200 md:hidden sm:text-lg">
           {category}

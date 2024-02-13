@@ -89,7 +89,7 @@ const ClassesCard = ({ item }) => {
           {availableSeats ? (
             <Button
               className={"block text-center mt-3"}
-              link={`/course-enroll/${_id}`}
+              link={`/classes/details/${_id}`}
               variant={"secondary"}
             >
               Enroll Now

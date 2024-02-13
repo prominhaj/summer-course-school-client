@@ -15,7 +15,6 @@ import AllClasses from "../Pages/Classes/AllClasses/AllClasses";
 import CategoryClasses from "../Pages/Classes/CategoryClasses/CategoryClasses";
 import InstructorsDetails from "../Pages/InstructorsDetails/InstructorsDetails";
 import ClassesDetails from "../Pages/ClassesDetails/ClassesDetails";
-import CourseEnroll from "../Pages/CourseEnroll/CourseEnroll";
 
 export const router = createBrowserRouter([
   {
@@ -70,17 +69,13 @@ export const router = createBrowserRouter([
       },
       {
         path: "/classes/details/:id",
-        element: <ClassesDetails />,
-        loader: ({ params }) =>
-          fetch(`http://localhost:3000/classes-details/${params.id}`),
-      },
-      {
-        path: "/course-enroll/:id",
         element: (
           <AuthPrivate>
-            <CourseEnroll />
+            <ClassesDetails />
           </AuthPrivate>
         ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/classes-details/${params.id}`),
       },
       {
         path: "register",

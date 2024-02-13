@@ -8,11 +8,13 @@ const AllInstructorsCard = ({ item }) => {
     <div className="flex flex-col duration-500 cursor-pointer border bg-[#F8FAFC] md:rounded-lg dark:bg-black shadow-xl  dark:shadow-gray-700 dark:border-gray-700 hover:scale-[1.03] rounded-xl">
       <div className="relative flex flex-col items-center justify-center gap-2 p-5 rounded-br-none">
         <div>
-          <img
-            className="object-cover h-[100px] sm:h-[120px] border-4 w-[100px] sm:w-[120px] rounded-full"
-            src={image}
-            alt="Instructors Image"
-          />
+          <Link to={`/instructors/details/${_id}`}>
+            <img
+              className="object-cover h-[100px] sm:h-[120px] border-4 w-[100px] sm:w-[120px] rounded-full"
+              src={image}
+              alt="Instructors Image"
+            />
+          </Link>
         </div>
         <h3 className="block text-base font-semibold leading-none tracking-tight text-gray-800 dark:text-gray-300 sm:text-lg">
           {category}

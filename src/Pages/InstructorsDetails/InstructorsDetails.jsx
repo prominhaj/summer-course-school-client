@@ -47,7 +47,7 @@ const InstructorsDetails = () => {
             {data.map((item) => (
               <Link
                 to={`/classes/details/${item._id}`}
-                className="flex items-start gap-3 p-2 border rounded-md dark:border-gray-600"
+                className="flex items-start gap-3 p-2 bg-white border border-gray-300 rounded-md shadow-xl dark:bg-transparent dark:border-gray-600"
                 key={item._id}
               >
                 <div>
@@ -59,7 +59,9 @@ const InstructorsDetails = () => {
                 </div>
                 <div>
                   <h4>{item.name}</h4>
-                  <h4 className="font-semibold">${item.price}</h4>
+                  <h4 className="font-semibold">
+                    {item.price === "Free" ? item.price : <>${item.price}</>}
+                  </h4>
                   <p>
                     <small>Available Seats: {item.availableSeats}</small>
                   </p>
