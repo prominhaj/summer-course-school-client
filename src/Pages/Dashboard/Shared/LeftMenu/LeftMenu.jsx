@@ -59,13 +59,13 @@ const LeftMenu = () => {
   return (
     <nav
       className={`${
-        isActive ? "w-[260px]" : "w-[95px]"
+        isActive ? "w-[260px]" : "md:w-[95px] w-[70px] sm:w-[85px]"
       } sticky top-0 bottom-0 duration-300 left-0 h-screen p-3 sm:p-5`}
     >
       <div className="relative">
         <button
           onClick={() => setIsAction(!isActive)}
-          className="absolute p-1 text-black bg-gray-300 rounded-full -right-8"
+          className="absolute hidden p-1 text-black bg-gray-300 rounded-full md:block -right-8"
         >
           {isActive ? (
             <HiMiniChevronDoubleLeft className="text-2xl" />
@@ -95,8 +95,8 @@ const LeftMenu = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? `text-blue-500 text-base text-center gap-3 flex px-3 rounded-lg shadow-xl shadow-gray-600 duration-300 bg-gray-100 py-2 items-center font-semibold font-['Open Sans'] leading-normal tracking-wide`
-                    : `text-neutral-500 flex items-center px-3 rounded-lg gap-3 duration-300 hover:bg-gray-100 font-semibold py-2 text-base font-['Open Sans'] leading-normal tracking-wide`
+                    ? `text-blue-500 block text-base text-center gap-3 md:flex px-2 md:px-3 rounded-lg shadow-xl shadow-gray-600 duration-300 bg-gray-100 py-2 items-center font-semibold font-['Open Sans'] leading-normal tracking-wide`
+                    : `text-neutral-500 md:flex items-center px-3 rounded-lg gap-3 duration-300 hover:bg-gray-100 font-semibold py-2 text-base font-['Open Sans'] block leading-normal tracking-wide`
                 }
               >
                 <span className={`${isActive ? "text-2xl" : "text-3xl"}`}>

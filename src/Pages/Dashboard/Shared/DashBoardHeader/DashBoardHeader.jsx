@@ -1,34 +1,97 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import Button from "../../../../Components/Button/Button";
 import useAuth from "../../../../Hooks/useAuth/useAuth";
 import { Avatar } from "@mui/material";
 import { Menu, Transition } from "@headlessui/react";
-import { HiOutlineBellAlert } from "react-icons/hi2";
+import { HiMagnifyingGlass, HiOutlineBellAlert } from "react-icons/hi2";
 
 const DashBoardHeader = () => {
   const { user } = useAuth();
+  const [isHidden, setIsHidden] = useState(false);
+
+  useEffect(() => {
+    console.log(window);
+  }, []);
 
   return (
     <header className="py-3 pr-5 sm:pr-8 sm:py-5">
-      <nav className="flex items-center justify-between">
-        <form className="flex gap-3">
-          <div className="flex gap-3 p-2 text-gray-800 bg-white rounded-lg">
-            <span className="flex items-center px-2 my-1 border-r-2 border-gray-400">
-              <CiSearch className="text-2xl" />
-            </span>
-            <input
-              className="text-lg border-none outline-none"
-              type="text"
-              required
-              placeholder="Find your course"
-            />
-          </div>
-          <Button className={"py-3 px-5"} type={"submit"} variant={"primary"}>
-            Search
-          </Button>
-        </form>
-        <div className="flex items-center gap-3 md:gap-5">
+      <nav className="flex flex-wrap items-center justify-between gap-3">
+        {/* Search Mobail  */}
+
+        {/* <div>
+          {isOpen && (
+            <div
+              className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50"
+              onClick={closeModal}
+            ></div>
+          )}
+
+          {isOpen && (
+            <div className="fixed p-8 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg top-1/2 left-1/2">
+              <h1 className="mb-4 text-2xl font-semibold">Modal Title</h1>
+              <p className="mb-4 text-gray-700">Modal content goes here...</p>
+              <button
+                className="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600"
+                onClick={closeModal}
+              >
+                Close Modal
+              </button>
+            </div>
+          )}
+
+          <button
+            className="fixed px-4 py-2 text-white bg-blue-500 rounded bottom-4 right-4 hover:bg-blue-600"
+            onClick={openModal}
+          >
+            Open Modal
+          </button>
+        </div> */}
+
+        <div className="block md:hidden">
+          <button
+            onClick={() => setIsHidden(!isHidden)}
+            className="flex items-center p-2 text-gray-800 bg-gray-100 rounded-full"
+          >
+            <HiMagnifyingGlass className="text-2xl" />
+          </button>
+        </div>
+
+        {isHidden && (
+          <div
+            className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50"
+            onClick={() => setIsHidden(false)}
+          ></div>
+        )}
+        <div
+          className={`${
+            isHidden
+              ? "block fixed p-5 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg top-1/2 left-1/2"
+              : "hidden"
+          } md:block`}
+        >
+          <form className="flex flex-wrap gap-3">
+            <div className="flex gap-3 p-1 text-gray-800 bg-white rounded-lg md:p-2">
+              <span className="flex items-center my-1 border-gray-400 md:border-r-2 md:px-2">
+                <CiSearch className="text-2xl" />
+              </span>
+              <input
+                className="w-full text-base border-none outline-none md:text-lg"
+                type="text"
+                required
+                placeholder="Find your course"
+              />
+            </div>
+            <Button
+              className={"sm:py-3 py-2 px-3 sm:px-4 md:px-5"}
+              type={"submit"}
+              variant={"primary"}
+            >
+              Search
+            </Button>
+          </form>
+        </div>
+        <div className="flex flex-wrap items-center gap-3 md:gap-5">
           <div className="relative">
             <Menu>
               <Menu.Button
