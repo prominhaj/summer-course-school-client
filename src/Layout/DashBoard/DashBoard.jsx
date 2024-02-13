@@ -15,8 +15,8 @@ const DashBoard = () => {
 
   return (
     <main className="bg-[#0E111E] text-gray-200">
-      <div className="flex items-start gap-5">
-        <div className="w-[254px]">
+      <div className="flex items-start gap-8">
+        <div className="">
           <LeftMenu />
         </div>
         <div className="flex flex-col flex-1">

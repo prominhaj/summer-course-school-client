@@ -1,10 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../../../assets/SCS-dark-logo.png";
-import { HiMiniSquares2X2 } from "react-icons/hi2";
+import { HiMiniChevronDoubleLeft, HiMiniSquares2X2 } from "react-icons/hi2";
 import { SiCoursera } from "react-icons/si";
 import { MdFavoriteBorder, MdHome } from "react-icons/md";
 import { FaHistory } from "react-icons/fa";
 import { HiMiniChevronDoubleRight } from "react-icons/hi2";
+import { useEffect, useState } from "react";
 
 // DashBoard Left Menu Items
 const userLeftMenuItems = [
@@ -35,17 +36,54 @@ const userLeftMenuItems = [
 ];
 
 const LeftMenu = () => {
+  const [isActive, setIsAction] = useState(true);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    if (windowWidth < 1100) {
+      setIsAction(false);
+    } else {
+      setIsAction(true);
+    }
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [windowWidth]);
+
   return (
-    <nav className="sticky top-0 bottom-0 left-0 h-screen p-3 sm:p-5">
+    <nav
+      className={`${
+        isActive ? "w-[260px]" : "w-[95px]"
+      } sticky top-0 bottom-0 duration-300 left-0 h-screen p-3 sm:p-5`}
+    >
       <div className="relative">
-        <button className="absolute right-0">
-          <HiMiniChevronDoubleRight className="text-2xl" />
+        <button
+          onClick={() => setIsAction(!isActive)}
+          className="absolute p-1 text-black bg-gray-300 rounded-full -right-8"
+        >
+          {isActive ? (
+            <HiMiniChevronDoubleLeft className="text-2xl" />
+          ) : (
+            <HiMiniChevronDoubleRight className="text-2xl" />
+          )}
         </button>
         <div className="flex flex-col items-center gap-1">
           <div>
             <img className="w-auto h-8 sm:h-10" src={logo} alt="Company Logo" />
           </div>
-          <h2 className="italic font-medium text-gray-200">SCS Academy</h2>
+          <h2
+            className={`italic font-medium text-gray-200 transition-all duration-300 ${
+              !isActive && "hidden"
+            }`}
+          >
+            SCS Academy
+          </h2>
         </div>
         <div className="pt-10">
           <div className="flex flex-col gap-3">
@@ -57,12 +95,20 @@ const LeftMenu = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "text-blue-500 text-base flex px-3 rounded-lg shadow-xl shadow-gray-600 duration-300 bg-gray-100 py-2 items-center gap-3 font-semibold font-['Open Sans'] leading-normal tracking-wide"
-                    : "text-neutral-500 flex items-center gap-3 px-3 rounded-lg duration-300 hover:bg-gray-100 font-semibold py-2 text-base font-['Open Sans'] leading-normal tracking-wide"
+                    ? `text-blue-500 text-base text-center gap-3 flex px-3 rounded-lg shadow-xl shadow-gray-600 duration-300 bg-gray-100 py-2 items-center font-semibold font-['Open Sans'] leading-normal tracking-wide`
+                    : `text-neutral-500 flex items-center px-3 rounded-lg gap-3 duration-300 hover:bg-gray-100 font-semibold py-2 text-base font-['Open Sans'] leading-normal tracking-wide`
                 }
               >
-                <span className="text-2xl">{item.icon}</span>
-                {item.name}
+                <span className={`${isActive ? "text-2xl" : "text-3xl"}`}>
+                  {item.icon}
+                </span>
+                <span
+                  className={`transition-all duration-300 ${
+                    !isActive && "hidden"
+                  }`}
+                >
+                  {item.name}
+                </span>
               </NavLink>
             ))}
           </div>
@@ -78,7 +124,11 @@ const LeftMenu = () => {
             <span className="text-3xl">
               <MdHome />
             </span>
-            Home
+            <span
+              className={`${!isActive && "hidden"} transition-all duration-300`}
+            >
+              Home
+            </span>
           </Link>
         </div>
       </div>
