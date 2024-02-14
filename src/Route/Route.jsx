@@ -20,6 +20,7 @@ import EnrollCourses from "../Pages/Dashboard/UserDashBoard/EnrollCourses/Enroll
 import UserWishList from "../Pages/Dashboard/UserDashBoard/UserWishList/UserWishList";
 import PaymentHistory from "../Pages/Dashboard/UserDashBoard/PaymentHistory/PaymentHistory";
 import ApplyInstructor from "../Pages/Dashboard/UserDashBoard/ApplyInstructor/ApplyInstructor";
+import CourseDashBoard from "../Pages/CourseDashBoard/CourseDashBoard/CourseDashBoard";
 
 export const router = createBrowserRouter([
   {
@@ -92,7 +93,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "profile",
-        element: <Profile />,
+        element: (
+          <AuthPrivate>
+            <Profile />
+          </AuthPrivate>
+        ),
+      },
+      {
+        path: "/course-dashboard/:id",
+        element: (
+          <AuthPrivate>
+            <CourseDashBoard />,
+          </AuthPrivate>
+        ),
       },
     ],
   },
