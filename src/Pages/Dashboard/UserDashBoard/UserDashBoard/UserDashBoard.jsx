@@ -26,8 +26,13 @@ const UserDashBoard = () => {
         </div>
         <section className="py-8 md:py-10">
           <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-            <h2 className="text-xl font-bold md:text-2xl">My Courses</h2>
-            <Link to="" className="text-lg font-medium md:text-xl">
+            <h2 className="text-xl font-bold text-gray-100 dark:text-gray-800 md:text-2xl">
+              My Courses
+            </h2>
+            <Link
+              to="/dashboard/user-enroll-courses"
+              className="text-lg font-medium text-gray-100 dark:text-gray-800 md:text-xl"
+            >
               See All
             </Link>
           </div>

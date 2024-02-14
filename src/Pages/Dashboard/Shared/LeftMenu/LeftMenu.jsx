@@ -19,7 +19,7 @@ const userLeftMenuItems = [
   {
     id: 2,
     name: "Courses",
-    to: "/dashboard/user-courses",
+    to: "/dashboard/user-enroll-courses",
     icon: <SiCoursera />,
   },
   {

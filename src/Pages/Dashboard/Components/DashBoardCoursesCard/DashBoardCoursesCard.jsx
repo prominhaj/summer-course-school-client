@@ -6,7 +6,7 @@ import Button from "../../../../Components/Button/Button";
 const DashBoardCoursesCard = () => {
   return (
     <div
-      className="relative z-10 bg-no-repeat shadow-lg shadow-gray-600 bg-cover rounded-lg h-full max-h-[400px]"
+      className="relative z-10 border transition-all duration-500 hover:scale-[1.03] cursor-pointer border-gray-600 bg-no-repeat shadow-lg dark:border-gray-800 shadow-gray-600 bg-cover rounded-lg h-full max-h-[400px]"
       style={{
         backgroundImage: `url(https://i.ibb.co/C8gGzhv/ui-ux-design.jpg)`,
       }}

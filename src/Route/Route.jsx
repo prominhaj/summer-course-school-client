@@ -16,6 +16,7 @@ import CategoryClasses from "../Pages/Classes/CategoryClasses/CategoryClasses";
 import InstructorsDetails from "../Pages/InstructorsDetails/InstructorsDetails";
 import ClassesDetails from "../Pages/ClassesDetails/ClassesDetails";
 import UserDashBoard from "../Pages/Dashboard/UserDashBoard/UserDashBoard/UserDashBoard";
+import EnrollCourses from "../Pages/Dashboard/UserDashBoard/EnrollCourses/EnrollCourses";
 
 export const router = createBrowserRouter([
   {
@@ -100,9 +101,14 @@ export const router = createBrowserRouter([
       </AuthPrivate>
     ),
     children: [
+      // User DashBoard Route
       {
         path: "/dashboard/user-DashBoard",
         element: <UserDashBoard />,
+      },
+      {
+        path: "/dashboard/user-enroll-courses",
+        element: <EnrollCourses />,
       },
     ],
   },
