@@ -36,6 +36,9 @@ const useAxiosSecure = () => {
         if (error.response && error.response.status === 401) {
           logout();
           navigate("/login");
+        } else {
+          // Handle other errors, e.g., display error message
+          console.error("Request failed:", error.message);
         }
         return Promise.reject(error);
       }
@@ -46,7 +49,7 @@ const useAxiosSecure = () => {
       axiosSecure.interceptors.request.eject(requestInterceptor);
       axiosSecure.interceptors.response.eject(responseInterceptor);
     };
-  }, [navigate, logout, axiosSecure]);
+  }, [navigate, logout]);
 
   return [axiosSecure];
 };

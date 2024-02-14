@@ -2,6 +2,7 @@ import { Avatar } from "@mui/material";
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import Button from "../../Components/Button/Button";
+import Payment from "../../Components/Payments/Payments/Payment";
 
 const ClassesDetails = () => {
   const data = useLoaderData();
@@ -16,6 +17,7 @@ const ClassesDetails = () => {
     popularity,
     price,
     profilePhoto,
+    _id,
   } = data;
 
   return (
@@ -63,16 +65,14 @@ const ClassesDetails = () => {
                   </small>
                 </p>
               </div>
-              {/* Card Area */}
-              <div>
-                <h4>Card Area</h4>
-              </div>
-              {/* Card Area End */}
+
               <div className="pt-3">
                 {availableSeats ? (
-                  <Button className={"w-full mt-3"} variant={"secondary"}>
-                    Enroll Now
-                  </Button>
+                  price !== "Free" && (
+                    <div>
+                      <Payment price={price} id={_id} />
+                    </div>
+                  )
                 ) : (
                   <Button
                     disabled={true}
