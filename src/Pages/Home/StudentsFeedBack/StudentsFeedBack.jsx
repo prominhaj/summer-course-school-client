@@ -9,6 +9,7 @@ import CardLoading from "../../../Components/CardLoading/CardLoading";
 import useAuth from "../../../Hooks/useAuth/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure/useAxiosSecure";
 import moment from "moment";
+import { toast } from "react-toastify";
 
 const StudentsFeedBack = () => {
   const [isHidden, setIsHidden] = useState(true);
@@ -41,7 +42,11 @@ const StudentsFeedBack = () => {
       axiosSecure
         .post("/students-feedback", { feedBack: feedBackData })
         .then((res) => {
-          console.log(res.data);
+          if (res.data.insertedId) {
+            e.target.feedBack.value = "";
+            refetch();
+            toast.success("SuccessFul Your FeedBack");
+          }
         });
     }
   };
