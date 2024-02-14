@@ -86,7 +86,7 @@ const DashBoardHeader = () => {
               >
                 <Menu.Items
                   className={
-                    "absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg dark:bg-gray-700 ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    "absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg dark:bg-gray-200 ring-1 ring-black ring-opacity-5 focus:outline-none"
                   }
                 >
                   <Menu.Item>

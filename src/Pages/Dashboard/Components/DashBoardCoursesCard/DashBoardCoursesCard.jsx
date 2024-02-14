@@ -12,11 +12,14 @@ const DashBoardCoursesCard = () => {
       }}
     >
       <div className="before:bg-gray-800 before:opacity-70 before:w-full before:h-full before:absolute before:-z-10">
-        <div className="p-5 space-y-4 font-bold text-gray-200">
-          <Avatar />
-          <h2 className="text-2xl">Digital Marketing</h2>
+        <div className="p-5 space-y-3 font-bold text-gray-200 lg:space-y-4">
+          <div className="flex flex-wrap items-center gap-2">
+            <Avatar />
+            <h4>Falid Farhan</h4>
+          </div>
+          <h2 className="text-xl lg:text-2xl">Digital Marketing</h2>
           <ProgressBar value={40}></ProgressBar>
-          <h4 className="text-xl">Enroll Data: 1.2.2024</h4>
+          <h4 className="text-lg lg:text-xl">Enroll Data: 1.2.2024</h4>
           <Button
             className={"block text-center"}
             variant={"secondary"}
