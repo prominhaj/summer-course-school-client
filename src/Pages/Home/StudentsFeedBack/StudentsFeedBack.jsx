@@ -6,9 +6,11 @@ import { useQuery } from "react-query";
 import "./StudentsFeedBack.css";
 import axios from "axios";
 import CardLoading from "../../../Components/CardLoading/CardLoading";
+import useAuth from "../../../Hooks/useAuth/useAuth";
 
 const StudentsFeedBack = () => {
   const [isHidden, setIsHidden] = useState(true);
+  const { user } = useAuth();
 
   const {
     data: feedbacks,
@@ -58,19 +60,26 @@ const StudentsFeedBack = () => {
             </Button>
           </div>
         </div>
-        <form className="py-8 mx-auto lg:w-1/2">
-          <textarea
-            className="block px-3 w-full resize-none rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset dark:ring-gray-600 ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 sm:text-sm sm:leading-6"
-            name=""
-            rows="3"
-            placeholder="Please Your FeedBack"
-          ></textarea>
-          <div className="text-end">
-            <Button className={"mt-4 !px-10 "} variant={"primary"}>
-              Send
-            </Button>
-          </div>
-        </form>
+        {user && (
+          <form className="py-8 mx-auto lg:w-1/2">
+            <textarea
+              disabled={user ? false : true}
+              className="block px-3 w-full resize-none rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset dark:ring-gray-600 ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+              name=""
+              rows="3"
+              placeholder="Please Your FeedBack"
+            ></textarea>
+            <div className="text-end">
+              <Button
+                disabled={user ? false : true}
+                className={"mt-4 !px-10 "}
+                variant={"primary"}
+              >
+                Send
+              </Button>
+            </div>
+          </form>
+        )}
       </div>
     </section>
   );
