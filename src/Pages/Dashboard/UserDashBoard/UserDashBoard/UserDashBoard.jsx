@@ -4,7 +4,7 @@ import DashBoardLeaderCard from "../../Components/DashBoardLeaderCard/DashBoardL
 
 const UserDashBoard = () => {
   return (
-    <div className="px-5 py-5 text-gray-900 bg-white md:px-8 md:py-8 rounded-tl-xl">
+    <div className="px-5 py-5 text-gray-900 bg-gray-700 dark:bg-white md:px-8 md:py-8 rounded-tl-xl">
       <div>
         <div className="grid gap-5 md:grid-cols-3">
           <DashBoardLeaderCard

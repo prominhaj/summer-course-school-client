@@ -78,7 +78,7 @@ const LeftMenu = () => {
             <img className="w-auto h-8 sm:h-10" src={logo} alt="Company Logo" />
           </div>
           <h2
-            className={`italic font-medium text-gray-200 transition-all duration-300 ${
+            className={`italic font-medium dark:text-gray-200 text-gray-800 transition-all duration-300 ${
               !isActive && "hidden"
             }`}
           >
@@ -95,8 +95,8 @@ const LeftMenu = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? `text-blue-500 block text-base text-center gap-3 md:flex px-2 md:px-3 rounded-lg shadow-xl shadow-gray-600 duration-300 bg-gray-100 py-2 items-center font-semibold font-['Open Sans'] leading-normal tracking-wide`
-                    : `text-neutral-500 md:flex items-center px-3 rounded-lg gap-3 duration-300 hover:bg-gray-100 font-semibold py-2 text-base font-['Open Sans'] block leading-normal tracking-wide`
+                    ? `dark:text-blue-500 text-gray-200 block text-base text-center gap-3 md:flex px-2 md:px-3 rounded-lg border dark:border-none shadow-xl dark:shadow-gray-600 duration-300 dark:bg-gray-100 bg-gray-600 py-2 items-center font-semibold font-['Open Sans'] leading-normal tracking-wide`
+                    : `text-neutral-500 md:flex items-center px-3 rounded-lg gap-3 duration-300 hover:bg-gray-500 dark:hover:bg-gray-100 font-semibold py-2 text-base font-['Open Sans'] block leading-normal dark:hover:text-gray-700 hover:text-gray-200 tracking-wide`
                 }
               >
                 <span className={`${isActive ? "text-2xl" : "text-3xl"}`}>
@@ -119,7 +119,7 @@ const LeftMenu = () => {
         <div className="">
           <Link
             to="/"
-            className="text-neutral-500 flex items-center gap-3 px-3 rounded-lg duration-300 hover:bg-gray-100 font-semibold py-2 text-base font-['Open Sans'] leading-normal tracking-wide"
+            className="text-neutral-500 md:flex items-center px-3 rounded-lg gap-3 duration-300 hover:bg-gray-500 dark:hover:bg-gray-100 font-semibold py-2 text-base font-['Open Sans'] block dark:hover:text-gray-700 leading-normal hover:text-gray-200 tracking-wide"
           >
             <span className="text-3xl">
               <MdHome />

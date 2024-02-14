@@ -3,7 +3,7 @@ import React from "react";
 const DashBoardLeaderCard = ({ bgColor, label, value }) => {
   return (
     <div
-      className={`flex flex-col items-center w-full border border-gray-200 gap-2 px-3 py-5 rounded-lg ${
+      className={`flex flex-col shadow-xl shadow-gray-500 dark:shadow-gray-300 items-center w-full border border-gray-200 gap-2 px-3 py-5 rounded-lg ${
         bgColor && bgColor
       }`}
     >
