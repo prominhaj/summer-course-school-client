@@ -12,6 +12,7 @@ import {
   GithubAuthProvider,
 } from "firebase/auth";
 import { app } from "../Firebase/Firebase.config";
+import axios from "axios";
 
 export const UserContext = createContext(null);
 
@@ -53,7 +54,21 @@ const AuthContext = ({ children }) => {
   useEffect(() => {
     const disConnect = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false);
+      if (currentUser) {
+        axios
+          .post("http://localhost:3000/jwt", {
+            email: currentUser?.email,
+          })
+          .then((data) => {
+            if (data.data.token) {
+              localStorage.setItem("access-token", data.data.token);
+              setLoading(false);
+            }
+          });
+      } else {
+        localStorage.removeItem("access-token");
+        setLoading(false);
+      }
     });
     return () => disConnect();
   }, []);
