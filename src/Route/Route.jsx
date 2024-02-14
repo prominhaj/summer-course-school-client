@@ -17,6 +17,9 @@ import InstructorsDetails from "../Pages/InstructorsDetails/InstructorsDetails";
 import ClassesDetails from "../Pages/ClassesDetails/ClassesDetails";
 import UserDashBoard from "../Pages/Dashboard/UserDashBoard/UserDashBoard/UserDashBoard";
 import EnrollCourses from "../Pages/Dashboard/UserDashBoard/EnrollCourses/EnrollCourses";
+import UserWishList from "../Pages/Dashboard/UserDashBoard/UserWishList/UserWishList";
+import PaymentHistory from "../Pages/Dashboard/UserDashBoard/PaymentHistory/PaymentHistory";
+import ApplyInstructor from "../Pages/Dashboard/UserDashBoard/ApplyInstructor/ApplyInstructor";
 
 export const router = createBrowserRouter([
   {
@@ -109,6 +112,18 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/user-enroll-courses",
         element: <EnrollCourses />,
+      },
+      {
+        path: "/dashboard/user-wishlist",
+        element: <UserWishList />,
+      },
+      {
+        path: "/dashboard/user-payment-history",
+        element: <PaymentHistory />,
+      },
+      {
+        path: "/dashboard/user-apply-instructor",
+        element: <ApplyInstructor />,
       },
     ],
   },
