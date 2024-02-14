@@ -18,15 +18,23 @@ const AllClasses = () => {
   };
 
   useEffect(() => {
-    setLoading(true);
+    let isMounted = true;
+
     axios
       .get(
         `http://localhost:3000/all-classes?page=${currentPage}&limit=${classesPerPage}`
       )
       .then((res) => {
-        setAllClasses(res.data);
-        setLoading(false);
+        if (isMounted) {
+          setAllClasses(res.data);
+          setLoading(false);
+        }
       });
+
+    // Clean Up
+    return () => {
+      isMounted = false;
+    };
   }, [currentPage, classesPerPage]);
 
   return (

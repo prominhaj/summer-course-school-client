@@ -22,15 +22,23 @@ const AllInstructors = () => {
   };
 
   useEffect(() => {
-    setLoading(true);
+    let isMounted = true;
+
     const fetchPosts = async () => {
       const res = await axios.get(
         `http://localhost:3000/all-instructors?page=${currentPage}&limit=${instructorsPerPage}`
       );
-      setInstructors(res?.data);
-      setLoading(false);
+      if (isMounted) {
+        setInstructors(res?.data);
+        setLoading(false);
+      }
     };
     fetchPosts();
+
+    // Clean Up
+    return () => {
+      isMounted = false;
+    };
   }, [currentPage, instructorsPerPage]);
 
   const { allInstructors } = instructors;
