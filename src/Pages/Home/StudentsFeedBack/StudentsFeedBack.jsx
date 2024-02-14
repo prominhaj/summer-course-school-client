@@ -7,10 +7,13 @@ import "./StudentsFeedBack.css";
 import axios from "axios";
 import CardLoading from "../../../Components/CardLoading/CardLoading";
 import useAuth from "../../../Hooks/useAuth/useAuth";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure/useAxiosSecure";
+import moment from "moment";
 
 const StudentsFeedBack = () => {
   const [isHidden, setIsHidden] = useState(true);
   const { user } = useAuth();
+  const [axiosSecure] = useAxiosSecure();
 
   const {
     data: feedbacks,
@@ -23,6 +26,25 @@ const StudentsFeedBack = () => {
       return res.data;
     },
   });
+
+  const handleFeedBack = (e) => {
+    e.preventDefault();
+    const feedBack = e.target.feedBack.value;
+    const feedBackData = {
+      Name: user?.displayName,
+      Date: moment().format("YYYY MM D"),
+      Details: feedBack,
+      Photo: user?.photoURL,
+      Email: user?.email,
+    };
+    if (feedBack) {
+      axiosSecure
+        .post("/students-feedback", { feedBack: feedBackData })
+        .then((res) => {
+          console.log(res.data);
+        });
+    }
+  };
 
   return (
     <section className="py-8 md:py-10 dark:bg-[#303c5b3b] bg-[#FDF8FE]">
@@ -61,16 +83,18 @@ const StudentsFeedBack = () => {
           </div>
         </div>
         {user && (
-          <form className="py-8 mx-auto lg:w-1/2">
+          <form onSubmit={handleFeedBack} className="py-8 mx-auto lg:w-1/2">
             <textarea
+              required
               disabled={user ? false : true}
               className="block px-3 w-full resize-none rounded-md border-0 py-1.5 text-gray-900 dark:bg-gray-800 shadow-sm ring-1 ring-inset dark:ring-gray-600 ring-gray-300 dark:text-gray-100 placeholder:text-gray-400 sm:text-sm sm:leading-6"
-              name=""
+              name="feedBack"
               rows="3"
               placeholder="Please Your FeedBack"
             ></textarea>
             <div className="text-end">
               <Button
+                type={"submit"}
                 disabled={user ? false : true}
                 className={"mt-4 !px-10 "}
                 variant={"primary"}
