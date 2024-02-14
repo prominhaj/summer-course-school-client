@@ -18,11 +18,19 @@ const Home = () => {
   };
 
   useEffect(() => {
+    let isMounted = true;
+
     setLoading(true);
     axios.get("http://localhost:3000/classes-popular?limit=6").then((res) => {
-      setData(res.data);
-      setLoading(false);
+      if (isMounted) {
+        setData(res.data);
+        setLoading(false);
+      }
     });
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const { popularClasses, totalPopularClasses } = data;

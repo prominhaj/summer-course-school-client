@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../useAuth/useAuth";
 
@@ -15,6 +15,7 @@ const useAxiosSecure = () => {
       "Content-Type": "application/json",
     },
   });
+
   useEffect(() => {
     const requestInterceptor = axiosSecure.interceptors.request.use(
       (config) => {
