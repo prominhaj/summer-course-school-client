@@ -6,6 +6,7 @@ import { MdFavoriteBorder, MdHome } from "react-icons/md";
 import { FaHistory } from "react-icons/fa";
 import { HiMiniChevronDoubleRight } from "react-icons/hi2";
 import { useEffect, useState } from "react";
+import { GiTeacher } from "react-icons/gi";
 
 // DashBoard Left Menu Items
 const userLeftMenuItems = [
@@ -32,6 +33,12 @@ const userLeftMenuItems = [
     name: "Payment History",
     to: "/dashboard/user-payment-history",
     icon: <FaHistory />,
+  },
+  {
+    id: 5,
+    name: "Apply Instructor",
+    to: "/dashboard/user-apply-instructor",
+    icon: <GiTeacher />,
   },
 ];
 

@@ -4,7 +4,7 @@ import DashBoardLeaderCard from "../../Components/DashBoardLeaderCard/DashBoardL
 
 const UserDashBoard = () => {
   return (
-    <div className="px-5 py-5 text-gray-900 bg-gray-700 dark:bg-white md:px-8 md:py-8 rounded-tl-xl">
+    <div className="h-[90vh] px-5 py-5 text-gray-900 bg-gray-800 dark:bg-white md:px-8 md:py-8 rounded-tl-xl">
       <div>
         <div className="grid gap-5 md:grid-cols-3">
           <DashBoardLeaderCard
@@ -14,16 +14,20 @@ const UserDashBoard = () => {
           />
           <DashBoardLeaderCard
             bgColor={"bg-green-200"}
-            label={"Course Complete"}
+            label={"Orders"}
             value={"2"}
           />
           <DashBoardLeaderCard
             bgColor={"bg-orange-200"}
-            label={"Course Process"}
-            value={"2"}
+            label={"Payments"}
+            value={"$24"}
           />
         </div>
-        <DashBoardCoursesCard />
+        <div className="grid gap-5 py-10 md:grid-cols-3">
+          <DashBoardCoursesCard />
+          <DashBoardCoursesCard />
+          <DashBoardCoursesCard />
+        </div>
       </div>
     </div>
   );
