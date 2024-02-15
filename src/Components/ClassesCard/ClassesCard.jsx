@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 import { Menu, Transition } from "@headlessui/react";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { Avatar } from "@mui/material";
+import useAuth from "../../Hooks/useAuth/useAuth";
 
 const ClassesCard = ({ item }) => {
+  const { user } = useAuth();
+  const [isEnroll, setIsEnroll] = useState(false);
   const {
     name,
     instructorName,
@@ -14,8 +17,17 @@ const ClassesCard = ({ item }) => {
     details,
     availableSeats,
     profilePhoto,
+    enrollEmail,
     _id,
   } = item;
+
+  useEffect(() => {
+    enrollEmail.map((item) => {
+      if (item === user?.email) {
+        setIsEnroll(true);
+      }
+    });
+  }, [enrollEmail, user]);
 
   return (
     <div className="flex flex-col justify-between cursor-pointer p-4 duration-300 border shadow-xl sm:p-6 dark:shadow-gray-700 dark:border-gray-700 hover:scale-[1.03] rounded-xl">
@@ -87,13 +99,19 @@ const ClassesCard = ({ item }) => {
         </div>
         <div>
           {availableSeats ? (
-            <Button
-              className={"block text-center mt-3"}
-              link={`/classes/details/${_id}`}
-              variant={"secondary"}
-            >
-              Enroll Now
-            </Button>
+            isEnroll ? (
+              <Button className={"w-full"} disabled={true} variant={"exit"}>
+                Already Enroll
+              </Button>
+            ) : (
+              <Button
+                className={"block text-center mt-3"}
+                link={`/classes/details/${_id}`}
+                variant={"secondary"}
+              >
+                Enroll Now
+              </Button>
+            )
           ) : (
             <Button
               disabled={true}

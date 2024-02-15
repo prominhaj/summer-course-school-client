@@ -4,9 +4,11 @@ import PopularClasses from "../PopularClasses/PopularClasses";
 import PopularInstructors from "../PopularInstructors/PopularInstructors";
 import axios from "axios";
 import StudentsFeedBack from "../StudentsFeedBack/StudentsFeedBack";
+import useAuth from "../../../Hooks/useAuth/useAuth";
 
 const Home = () => {
   const [data, setData] = useState([]);
+  const { user } = useAuth();
   const [loading, setLoading] = useState(false);
 
   const handleSeeAllCourse = () => {
@@ -21,7 +23,7 @@ const Home = () => {
     let isMounted = true;
 
     setLoading(true);
-    axios.get("http://localhost:3000/classes-popular?limit=6").then((res) => {
+    axios.get(`http://localhost:3000/classes-popular?`).then((res) => {
       if (isMounted) {
         setData(res.data);
         setLoading(false);
@@ -31,7 +33,7 @@ const Home = () => {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [user]);
 
   const { popularClasses, totalPopularClasses } = data;
 

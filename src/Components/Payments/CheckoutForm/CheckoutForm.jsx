@@ -73,7 +73,7 @@ const CheckoutForm = ({ price, id }) => {
         price,
         date: moment().format("YYYY MM D"),
       };
-      axiosSecure.post("/payments", payment).then((res) => {
+      axiosSecure.post(`/payments`, payment).then((res) => {
         if (res.data.insertedId) {
           toast.success("Payment SuccessFull");
         }

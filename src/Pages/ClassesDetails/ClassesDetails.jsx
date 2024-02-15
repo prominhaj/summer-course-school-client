@@ -68,10 +68,14 @@ const ClassesDetails = () => {
 
               <div className="pt-3">
                 {availableSeats ? (
-                  price !== "Free" && (
+                  price !== "Free" ? (
                     <div>
                       <Payment price={price} id={_id} />
                     </div>
+                  ) : (
+                    <Button className={"w-full"} variant={"secondary"}>
+                      Free Enroll
+                    </Button>
                   )
                 ) : (
                   <Button

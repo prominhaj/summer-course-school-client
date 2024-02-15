@@ -25,11 +25,10 @@ const BannerSection = ({ classes }) => {
             spaceBetween={30}
             slidesPerView={"auto"}
             effect={"coverflow"}
-            loop={true}
             grabCursor={true}
+            loop={true}
             autoplay={{
-              delay: 2000,
-              disableOnInteraction: false,
+              delay: 3000,
             }}
             centeredSlides={true}
             coverflowEffect={{

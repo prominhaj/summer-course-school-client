@@ -9,7 +9,8 @@
     "price": 20.0,
     "category": "Marketing",
     "popularity": "Popular",
-    "details": "This class is designed for beginners who want to learn the fundamentals of yoga poses and breathing techniques."
+    "details": "This class is designed for beginners who want to learn the fundamentals of yoga poses and breathing techniques.",
+    "enrollEmail": []
   },
   {
     "name": "Web Design",
@@ -21,7 +22,8 @@
     "price": 25.0,
     "category": "Programming",
     "popularity": "Popular",
-    "details": "Join us for a high-energy cardio workout combining martial arts techniques with fast-paced cardio."
+    "details": "Join us for a high-energy cardio workout combining martial arts techniques with fast-paced cardio.",
+    "enrollEmail": []
   },
   {
     "name": "UI/UX Design",
@@ -33,7 +35,8 @@
     "price": "Free",
     "category": "Design",
     "popularity": "Medium",
-    "details": "Get ready to tone and strengthen your muscles with this dynamic Pilates class focusing on core stability."
+    "details": "Get ready to tone and strengthen your muscles with this dynamic Pilates class focusing on core stability.",
+    "enrollEmail": []
   },
   {
     "name": "Web Development",
@@ -45,7 +48,8 @@
     "price": 15.0,
     "category": "Programming",
     "popularity": "Popular",
-    "details": "Hop on a stationary bike and pedal your way to better fitness with upbeat music and motivating instructors."
+    "details": "Hop on a stationary bike and pedal your way to better fitness with upbeat music and motivating instructors.",
+    "enrollEmail": []
   },
   {
     "name": "App Development",
@@ -57,7 +61,8 @@
     "price": 18.0,
     "category": "Programming",
     "popularity": "Popular",
-    "details": "Dance your way to a healthier you with this fun and energetic Latin-inspired workout."
+    "details": "Dance your way to a healthier you with this fun and energetic Latin-inspired workout.",
+    "enrollEmail": []
   },
   {
     "name": "SEO",
@@ -69,7 +74,8 @@
     "price": "Free",
     "category": "Marketing",
     "popularity": "Normal",
-    "details": "Build muscle and increase strength with a variety of resistance exercises targeting different muscle groups."
+    "details": "Build muscle and increase strength with a variety of resistance exercises targeting different muscle groups.",
+    "enrollEmail": []
   },
   {
     "name": "Video Editing",
@@ -81,7 +87,8 @@
     "price": 22.0,
     "category": "Design",
     "popularity": "Popular",
-    "details": "Burn calories and boost metabolism with this high-intensity interval training circuit."
+    "details": "Burn calories and boost metabolism with this high-intensity interval training circuit.",
+    "enrollEmail": []
   },
   {
     "name": "Graphic Design",
@@ -92,6 +99,7 @@
     "availableSeats": 500,
     "price": 15.0,
     "category": "Design",
-    "details": "This course is aimed at individuals with little to no prior experience in data analytics. Learn the basics of data visualization, statistical analysis, and data interpretation."
+    "details": "This course is aimed at individuals with little to no prior experience in data analytics. Learn the basics of data visualization, statistical analysis, and data interpretation.",
+    "enrollEmail": []
   }
 ]
