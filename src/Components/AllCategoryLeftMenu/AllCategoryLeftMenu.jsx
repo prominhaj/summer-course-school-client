@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const AllCategoryLeftMenu = ({ data, allRoute, route, firstText }) => {
   return (
-    <div className="lg:w-[200px] w-full">
+    <div>
       <h2 className="block font-sans text-xl font-semibold dark:text-gray-200">
         All Category
       </h2>

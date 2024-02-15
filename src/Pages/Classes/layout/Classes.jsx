@@ -21,16 +21,18 @@ const Classes = () => {
     <main className="bg-white dark:bg-[#0E1528] py-5">
       <div className="container px-5 mx-auto">
         <section className="flex flex-col items-start gap-5 lg:flex-row">
-          {dataLoading ? (
-            <CategoryLoading />
-          ) : (
-            <AllCategoryLeftMenu
-              data={allCategory}
-              allRoute={"/classes/all-classes"}
-              firstText={"All Classes"}
-              route={"classes"}
-            />
-          )}
+          <div className="lg:w-[200px] w-full">
+            {dataLoading ? (
+              <CategoryLoading />
+            ) : (
+              <AllCategoryLeftMenu
+                data={allCategory}
+                allRoute={"/classes/all-classes"}
+                firstText={"All Classes"}
+                route={"classes"}
+              />
+            )}
+          </div>
           <Outlet />
         </section>
       </div>

@@ -1,11 +1,15 @@
 import { Avatar } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Button from "../../Components/Button/Button";
 import Payment from "../../Components/Payments/Payments/Payment";
+import useAuth from "../../Hooks/useAuth/useAuth";
 
 const ClassesDetails = () => {
   const data = useLoaderData();
+  const { user } = useAuth();
+  const [isEnroll, setIsEnroll] = useState(false);
+
   const {
     name,
     category,
@@ -17,8 +21,17 @@ const ClassesDetails = () => {
     popularity,
     price,
     profilePhoto,
+    enrollEmail,
     _id,
   } = data;
+
+  useEffect(() => {
+    enrollEmail.map((item) => {
+      if (item === user?.email) {
+        setIsEnroll(true);
+      }
+    });
+  }, [enrollEmail, user]);
 
   return (
     <div className="bg-gray-100 dark:bg-[#0E1528] dark:text-gray-200">
@@ -70,7 +83,11 @@ const ClassesDetails = () => {
                 {availableSeats ? (
                   price !== "Free" ? (
                     <div>
-                      <Payment price={price} id={_id} />
+                      {isEnroll ? (
+                        <Button className={"w-full"} variant={"exit"}>Already Enroll</Button>
+                      ) : (
+                        <Payment price={price} id={_id} />
+                      )}
                     </div>
                   ) : (
                     <Button className={"w-full"} variant={"secondary"}>
