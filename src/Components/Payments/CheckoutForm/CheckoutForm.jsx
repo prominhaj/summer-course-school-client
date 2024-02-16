@@ -2,30 +2,28 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { toast } from "react-toastify";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth/useAuth";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "../../Button/Button";
 import { CircularProgress } from "@mui/material";
 import moment from "moment";
+import { useNavigate } from "react-router-dom";
+import { useQuery } from "react-query";
 
 const CheckoutForm = ({ price, id }) => {
   const [axiosSecure] = useAxiosSecure();
   const { user } = useAuth();
   const stripe = useStripe();
   const elements = useElements();
-  const [clientSecret, setClientSecret] = useState("");
   const [processing, setProcessing] = useState(false);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    let isMounted = true;
-    axiosSecure.post("/create-payment-intent", { price }).then((res) => {
-      if (isMounted) {
-        setClientSecret(res.data.clientSecret);
-      }
-    });
-    return () => {
-      isMounted = false;
-    };
-  }, [price]);
+  const { data: clientSecret } = useQuery({
+    queryKey: ["payment-intent"],
+    queryFn: async () => {
+      const res = await axiosSecure.post("/create-payment-intent", { price });
+      return res.data.clientSecret;
+    },
+  });
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -76,6 +74,7 @@ const CheckoutForm = ({ price, id }) => {
       axiosSecure.post(`/payments`, payment).then((res) => {
         if (res.data.insertedId) {
           toast.success("Payment SuccessFull");
+          navigate(`/course-dashboard/${id}`);
         }
       });
     }
@@ -85,7 +84,7 @@ const CheckoutForm = ({ price, id }) => {
     <div className="pt-10">
       {processing && (
         <>
-          <div className="mb-4">
+          <div className="my-4 text-center">
             <CircularProgress />
           </div>
         </>

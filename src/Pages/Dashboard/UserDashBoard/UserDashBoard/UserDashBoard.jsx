@@ -13,12 +13,14 @@ const UserDashBoard = () => {
   const { data: orderStatus = [], isLoading } = useQuery({
     queryKey: ["order-status"],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/order-status?${user && user?.email}`);
+      const res = await axiosSecure.get(
+        `/order-status?email=${user && user?.email}`
+      );
       return res.data;
     },
   });
 
-  console.log(orderStatus);
+  const { allStatus, enrollClasses, totalEnrollCount } = orderStatus;
 
   return (
     <div className="lg:h-[90vh] h-full px-5 py-5 text-gray-900 bg-gray-800 dark:bg-white md:px-8 md:py-8 rounded-tl-xl">
@@ -27,17 +29,17 @@ const UserDashBoard = () => {
           <DashBoardLeaderCard
             bgColor={"bg-gray-200"}
             label={"Course Enroll"}
-            value={"4"}
+            value={totalEnrollCount?.totalScore}
           />
           <DashBoardLeaderCard
             bgColor={"bg-green-200"}
             label={"Orders"}
-            value={"2"}
+            value={allStatus?.totalOrders}
           />
           <DashBoardLeaderCard
             bgColor={"bg-orange-200"}
             label={"Payments"}
-            value={"$24"}
+            value={`$${allStatus?.totalPayments}`}
           />
         </div>
         <section className="py-8 md:py-10">
@@ -53,9 +55,9 @@ const UserDashBoard = () => {
             </Link>
           </div>
           <div className="grid gap-5 lg:grid-cols-3">
-            <DashBoardCoursesCard />
-            <DashBoardCoursesCard />
-            <DashBoardCoursesCard />
+            {enrollClasses?.map((item) => (
+              <DashBoardCoursesCard key={item._id} item={item} />
+            ))}
           </div>
         </section>
       </div>

@@ -84,7 +84,13 @@ const ClassesDetails = () => {
                   price !== "Free" ? (
                     <div>
                       {isEnroll ? (
-                        <Button className={"w-full"} variant={"exit"}>Already Enroll</Button>
+                        <Button
+                          link={`/course-dashboard/${_id}`}
+                          className={"w-full block text-center"}
+                          variant={"exit"}
+                        >
+                          Already Enroll
+                        </Button>
                       ) : (
                         <Payment price={price} id={_id} />
                       )}
