@@ -6,6 +6,7 @@ import DashBoardTable from "../../Components/MyTable/DashBoardTable";
 import { TableCell, TableRow } from "@mui/material";
 import Button from "../../../../Components/Button/Button";
 import swal from "sweetalert";
+import TableLoading from "../../Components/MyTable/TableLoading/TableLoading";
 
 const UserWishList = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -27,9 +28,9 @@ const UserWishList = () => {
 
   const handleDelete = async (id) => {
     await axiosSecure.delete(`/my-carts/${id}`).then((res) => {
-      if(res.data.deletedCount){
+      if (res.data.deletedCount) {
         refetch();
-        swal("Good job!", "You clicked the button!", "success")
+        swal("Good job!", "You clicked the button!", "success");
       }
     });
   };
@@ -37,8 +38,11 @@ const UserWishList = () => {
   return (
     <div className="lg:h-[90vh] h-full px-5 py-5 text-gray-900 bg-gray-800 dark:bg-white md:px-8 md:py-8 rounded-tl-xl">
       <div>
+        <h2 className="mb-4 text-xl font-medium text-gray-200 md:text-2xl dark:text-gray-800">
+          Total Carts: {myCarts?.length}
+        </h2>
         {isLoading ? (
-          ""
+          <TableLoading />
         ) : (
           <DashBoardTable
             data={myCarts}
