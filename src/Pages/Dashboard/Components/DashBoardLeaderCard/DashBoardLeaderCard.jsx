@@ -11,7 +11,7 @@ const DashBoardLeaderCard = ({ bgColor, label, value }) => {
         {label}
       </h2>
       <h4 className="text-xl md:text-2xl tracking-widest font-extrabold font-['Open Sans'] leading-normal text-gray-700">
-        {value}
+        {value ? value : "0"}
       </h4>
     </div>
   );

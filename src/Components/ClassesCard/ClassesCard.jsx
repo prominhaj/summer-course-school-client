@@ -5,8 +5,10 @@ import { Fragment, useEffect, useState } from "react";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { Avatar } from "@mui/material";
 import useAuth from "../../Hooks/useAuth/useAuth";
+import useAxiosSecure from "../../Hooks/useAxiosSecure/useAxiosSecure";
 
 const ClassesCard = ({ item }) => {
+  const [axiosSecure] = useAxiosSecure();
   const { user } = useAuth();
   const [isEnroll, setIsEnroll] = useState(false);
   const {
@@ -28,6 +30,19 @@ const ClassesCard = ({ item }) => {
       }
     });
   }, [enrollEmail, user]);
+
+  const handleAddToCart = async (item) => {
+    if (!user.email) {
+      return;
+    }
+    const newItem = {
+      classesId: item._id,
+      email: user?.email,
+    };
+    await axiosSecure.post("/add-to-carts", newItem).then((res) => {
+      console.log(res.data);
+    });
+  };
 
   return (
     <div className="flex flex-col justify-between cursor-pointer p-4 duration-300 border shadow-xl sm:p-6 dark:shadow-gray-700 dark:border-gray-700 hover:scale-[1.03] rounded-xl">
@@ -53,7 +68,10 @@ const ClassesCard = ({ item }) => {
           >
             <Menu.Items className="absolute right-0 z-10 w-48 mt-2 origin-top-right bg-white rounded-md shadow-lg dark:bg-gray-700 ring-1 ring-black ring-opacity-5 focus:outline-none">
               <Menu.Item>
-                <button className="block w-full px-4 py-2 text-sm text-gray-900 hover:font-medium text-start dark:text-gray-100 hover:dark:bg-black hover:dark:text-white hover:bg-gray-100 hover:text-black">
+                <button
+                  onClick={() => handleAddToCart(item)}
+                  className="block w-full px-4 py-2 text-sm text-gray-900 hover:font-medium text-start dark:text-gray-100 hover:dark:bg-black hover:dark:text-white hover:bg-gray-100 hover:text-black"
+                >
                   Add Wishlist
                 </button>
               </Menu.Item>
@@ -100,7 +118,11 @@ const ClassesCard = ({ item }) => {
         <div>
           {availableSeats ? (
             isEnroll ? (
-              <Button className={"w-full"} disabled={true} variant={"exit"}>
+              <Button
+                link={`/course-dashboard/${_id}`}
+                className={"w-full block text-center"}
+                variant={"exit"}
+              >
                 Already Enroll
               </Button>
             ) : (

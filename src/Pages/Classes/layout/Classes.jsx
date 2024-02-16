@@ -23,7 +23,9 @@ const Classes = () => {
         <section className="flex flex-col items-start gap-5 lg:flex-row">
           <div className="lg:w-[200px] w-full">
             {dataLoading ? (
-              <CategoryLoading />
+              <div className="mt-6">
+                <CategoryLoading />
+              </div>
             ) : (
               <AllCategoryLeftMenu
                 data={allCategory}
