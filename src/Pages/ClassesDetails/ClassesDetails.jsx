@@ -92,7 +92,7 @@ const ClassesDetails = () => {
                           Already Enroll
                         </Button>
                       ) : (
-                        <Payment price={price} id={_id} />
+                        <Payment courseName={name} price={price} id={_id} />
                       )}
                     </div>
                   ) : (

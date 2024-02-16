@@ -6,10 +6,10 @@ const paymentGatewayToken = import.meta.env.VITE_PAYMENT_GATWAY_TOKEN;
 
 const stripePromise = loadStripe(paymentGatewayToken);
 
-const Payment = ({ price, id }) => {
+const Payment = ({ price, id, courseName }) => {
   return (
     <Elements stripe={stripePromise}>
-      <CheckoutForm price={price} id={id} />
+      <CheckoutForm price={price} id={id} courseName={courseName} />
     </Elements>
   );
 };

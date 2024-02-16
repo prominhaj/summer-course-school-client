@@ -19,7 +19,7 @@ const DashBoardTable = ({
   return (
     <div>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table sx={{ minWidth: 800 }} aria-label="simple table">
           <TableHead>
             <TableRow>
               {number && <TableCell>#</TableCell>}
@@ -27,7 +27,7 @@ const DashBoardTable = ({
               <TableCell align="left">{header2}</TableCell>
               <TableCell align="center">{header3}</TableCell>
               <TableCell align="center">{header4}</TableCell>
-              <TableCell align="center">{header5}</TableCell>
+              {header5 && <TableCell align="center">{header5}</TableCell>}
             </TableRow>
           </TableHead>
           <TableBody>{children}</TableBody>

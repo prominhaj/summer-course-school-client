@@ -9,7 +9,7 @@ import moment from "moment";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
 
-const CheckoutForm = ({ price, id }) => {
+const CheckoutForm = ({ price, id, courseName }) => {
   const [axiosSecure] = useAxiosSecure();
   const { user } = useAuth();
   const stripe = useStripe();
@@ -65,6 +65,7 @@ const CheckoutForm = ({ price, id }) => {
     if (paymentIntent.status === "succeeded") {
       const payment = {
         name: user?.displayName,
+        courseName,
         email: user?.email,
         transactionId: paymentIntent.id,
         courseId: id,
