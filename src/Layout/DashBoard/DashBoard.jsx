@@ -19,7 +19,7 @@ const DashBoard = () => {
         <div className="">
           <LeftMenu />
         </div>
-        <div className="flex flex-col flex-1">
+        <div className="flex flex-col flex-1 overflow-hidden">
           <DashBoardHeader />
           <Outlet />
         </div>
