@@ -2,8 +2,24 @@ import React from "react";
 import DashBoardCoursesCard from "../../Components/DashBoardCoursesCard/DashBoardCoursesCard";
 import DashBoardLeaderCard from "../../Components/DashBoardLeaderCard/DashBoardLeaderCard";
 import { Link } from "react-router-dom";
+import { useQuery } from "react-query";
+import useAxiosSecure from "../../../../Hooks/useAxiosSecure/useAxiosSecure";
+import useAuth from "../../../../Hooks/useAuth/useAuth";
 
 const UserDashBoard = () => {
+  const [axiosSecure] = useAxiosSecure();
+  const { user } = useAuth();
+
+  const { data: orderStatus = [], isLoading } = useQuery({
+    queryKey: ["order-status"],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/order-status?${user && user?.email}`);
+      return res.data;
+    },
+  });
+
+  console.log(orderStatus);
+
   return (
     <div className="lg:h-[90vh] h-full px-5 py-5 text-gray-900 bg-gray-800 dark:bg-white md:px-8 md:py-8 rounded-tl-xl">
       <div>
