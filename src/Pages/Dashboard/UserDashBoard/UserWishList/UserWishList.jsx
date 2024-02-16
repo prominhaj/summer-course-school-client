@@ -4,6 +4,8 @@ import { useQuery } from "react-query";
 import useAuth from "../../../../Hooks/useAuth/useAuth";
 import DashBoardTable from "../../Components/MyTable/DashBoardTable";
 import { TableCell, TableRow } from "@mui/material";
+import Button from "../../../../Components/Button/Button";
+import swal from "sweetalert";
 
 const UserWishList = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -22,6 +24,15 @@ const UserWishList = () => {
       return res.data;
     },
   });
+
+  const handleDelete = async (id) => {
+    await axiosSecure.delete(`/my-carts/${id}`).then((res) => {
+      if(res.data.deletedCount){
+        refetch();
+        swal("Good job!", "You clicked the button!", "success")
+      }
+    });
+  };
 
   return (
     <div className="lg:h-[90vh] h-full px-5 py-5 text-gray-900 bg-gray-800 dark:bg-white md:px-8 md:py-8 rounded-tl-xl">
@@ -54,7 +65,12 @@ const UserWishList = () => {
                 <TableCell align="center">{item.price}</TableCell>
                 <TableCell align="center">{item.enrollEmail.length}</TableCell>
                 <TableCell align="center">
-                  <button>Delete</button>
+                  <Button
+                    onClick={() => handleDelete(item._id)}
+                    variant={"delete"}
+                  >
+                    Delete
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}

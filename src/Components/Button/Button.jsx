@@ -51,7 +51,7 @@ const Button = ({
           } ${
             variant === "exit" &&
             "bg-gradient-to-r from-indigo-500 from-40% via-sky-500 via-70% to-green-500 to-100%"
-          } ${className && className}`}
+          } ${variant === "delete" && "bg-red-600"} ${className && className}`}
         >
           {children}
         </button>
