@@ -3,6 +3,7 @@ import DashBoardCoursesCard from "../../Components/DashBoardCoursesCard/DashBoar
 import { useQuery } from "react-query";
 import useAuth from "../../../../Hooks/useAuth/useAuth";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure/useAxiosSecure";
+import Loading from "./Loading/Loading";
 
 const EnrollCourses = () => {
   const { user } = useAuth();
@@ -23,10 +24,16 @@ const EnrollCourses = () => {
       <h2 className="mb-4 text-xl font-bold text-gray-100 dark:text-gray-800 md:text-2xl">
         My Courses
       </h2>
-      <div className="grid gap-5 lg:grid-cols-3">
-        {enrollClasses?.map((item) => (
-          <DashBoardCoursesCard key={item._id} item={item} />
-        ))}
+      <div>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <div className="grid gap-5 lg:grid-cols-3">
+            {enrollClasses?.map((item) => (
+              <DashBoardCoursesCard key={item._id} item={item} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
