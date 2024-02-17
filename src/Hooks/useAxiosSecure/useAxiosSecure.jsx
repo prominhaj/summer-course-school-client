@@ -33,8 +33,6 @@ const useAxiosSecure = () => {
       if (error.response && error.response.status === 401) {
         logout();
         navigate("/login");
-      } else {
-        console.error("Request failed:", error.message);
       }
       return Promise.reject(error);
     }

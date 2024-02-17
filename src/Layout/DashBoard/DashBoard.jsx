@@ -15,7 +15,9 @@ const DashBoard = () => {
         </div>
         <div className="flex flex-col flex-1 overflow-hidden">
           <DashBoardHeader />
-          <Outlet />
+          <div className="lg:h-[90vh] h-full px-5 py-5 text-gray-200 dark:text-gray-800 bg-gray-800 dark:bg-white md:px-8 md:py-8 rounded-tl-xl">
+            <Outlet />
+          </div>
         </div>
       </div>
     </main>

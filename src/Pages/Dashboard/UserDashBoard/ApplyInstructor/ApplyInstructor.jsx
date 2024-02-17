@@ -51,7 +51,7 @@ const ApplyInstructor = () => {
   };
 
   return (
-    <div className="lg:h-[90vh] h-full px-5 py-5 text-gray-900 bg-gray-800 dark:bg-white md:px-8 md:py-8 rounded-tl-xl">
+    <div>
       <form
         onSubmit={handleApplyInstructor}
         className="p-5 mx-auto bg-white rounded-lg shadow-2xl lg:w-1/2 shadow-gray-800 dark:shadow-gray-500"

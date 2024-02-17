@@ -1,14 +1,19 @@
 import { Avatar } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Button from "../../Components/Button/Button";
 import Payment from "../../Components/Payments/Payments/Payment";
 import useAuth from "../../Hooks/useAuth/useAuth";
+import moment from "moment";
+import useAxiosSecure from "../../Hooks/useAxiosSecure/useAxiosSecure";
+import { toast } from "react-toastify";
 
 const ClassesDetails = () => {
   const data = useLoaderData();
+  const [axiosSecure] = useAxiosSecure();
   const { user } = useAuth();
   const [isEnroll, setIsEnroll] = useState(false);
+  const navigate = useNavigate();
 
   const {
     name,
@@ -32,6 +37,23 @@ const ClassesDetails = () => {
       }
     });
   }, [enrollEmail, user]);
+
+  const handleFreeEnroll = () => {
+    const payment = {
+      name: user?.displayName,
+      courseName: name,
+      email: user?.email,
+      courseId: _id,
+      price: "Free",
+      date: moment().format("YYYY MM D"),
+    };
+    axiosSecure.post(`/payments`, payment).then((res) => {
+      if (res.data.insertedId) {
+        toast.success("Enroll SuccessFull");
+        navigate(`/course-dashboard/${_id}`);
+      }
+    });
+  };
 
   return (
     <div className="bg-gray-100 dark:bg-[#0E1528] dark:text-gray-200">
@@ -96,7 +118,11 @@ const ClassesDetails = () => {
                       )}
                     </div>
                   ) : (
-                    <Button className={"w-full"} variant={"secondary"}>
+                    <Button
+                      onClick={handleFreeEnroll}
+                      className={"w-full"}
+                      variant={"secondary"}
+                    >
                       Free Enroll
                     </Button>
                   )

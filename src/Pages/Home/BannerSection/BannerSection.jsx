@@ -26,7 +26,6 @@ const BannerSection = ({ classes }) => {
             slidesPerView={"auto"}
             effect={"coverflow"}
             grabCursor={true}
-            loop={true}
             autoplay={{
               delay: 3000,
             }}
