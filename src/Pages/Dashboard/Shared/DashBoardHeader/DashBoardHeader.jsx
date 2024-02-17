@@ -44,7 +44,7 @@ const DashBoardHeader = () => {
               </span>
               <input
                 className="w-full text-base border-none outline-none md:text-lg"
-                type="text"
+                type="search"
                 required
                 placeholder="Find your course"
               />

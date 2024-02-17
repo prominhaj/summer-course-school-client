@@ -7,6 +7,10 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import Button from "../../../../Components/Button/Button";
+import useAxiosSecure from "../../../../Hooks/useAxiosSecure/useAxiosSecure";
+import useAuth from "../../../../Hooks/useAuth/useAuth";
+import swal from "sweetalert";
+import { toast } from "react-toastify";
 
 // Category Items
 const categoryItems = [
@@ -23,12 +27,42 @@ const categoryItems = [
 
 const ApplyInstructor = () => {
   const [category, setCategory] = useState("");
+  const { user } = useAuth();
+  const [axiosSecure] = useAxiosSecure();
+
+  const handleApplyInstructor = async (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const newInstructor = {
+      name,
+      email: user?.email,
+      image: user?.photoURL,
+      category,
+    };
+    await axiosSecure.post("/apply-instructor", newInstructor).then((res) => {
+      if (res.data.insertedId) {
+        e.target.name.value = "";
+        setCategory("");
+        swal("Apply SuccessFul", "", "success");
+      } else {
+        toast.error(res.data.message);
+      }
+    });
+  };
 
   return (
     <div className="lg:h-[90vh] h-full px-5 py-5 text-gray-900 bg-gray-800 dark:bg-white md:px-8 md:py-8 rounded-tl-xl">
-      <form className="p-5 mx-auto bg-white rounded-lg shadow-2xl lg:w-1/2 shadow-gray-800 dark:shadow-gray-500">
+      <form
+        onSubmit={handleApplyInstructor}
+        className="p-5 mx-auto bg-white rounded-lg shadow-2xl lg:w-1/2 shadow-gray-800 dark:shadow-gray-500"
+      >
         <div className="flex flex-col gap-5">
-          <TextField id="outlined-basic" label="Name" variant="outlined" />
+          <TextField
+            name="name"
+            id="outlined-basic"
+            label="Name"
+            variant="outlined"
+          />
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Category</InputLabel>
             <Select

@@ -30,7 +30,7 @@ const UserWishList = () => {
     await axiosSecure.delete(`/my-carts/${id}`).then((res) => {
       if (res.data.deletedCount) {
         refetch();
-        swal("Good job!", "You clicked the button!", "success");
+        swal("Delete SuccessFul", "", "success");
       }
     });
   };
