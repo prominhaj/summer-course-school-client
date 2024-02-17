@@ -8,9 +8,7 @@ const DashBoard = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // TODO: admin
-  const isAdmin = useIsAdmin();
-  console.log(isAdmin);
+  const [isAdmin] = useIsAdmin();
 
   useEffect(() => {
     if (location.pathname === "/dashboard") {
