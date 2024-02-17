@@ -1,0 +1,5 @@
+.recharts-wrapper .recharts-legend-wrapper{
+    left: 0 !important;
+    width: 100% !important;
+    bottom: 2px !important;
+}
