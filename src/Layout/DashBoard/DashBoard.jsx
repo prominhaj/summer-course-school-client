@@ -1,20 +1,11 @@
 import React, { useEffect } from "react";
 import DashBoardHeader from "../../Pages/Dashboard/Shared/DashBoardHeader/DashBoardHeader";
 import LeftMenu from "../../Pages/Dashboard/Shared/LeftMenu/LeftMenu";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import useIsAdmin from "../../Hooks/useIsAdmin/useIsAdmin";
 
 const DashBoard = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-
   const [isAdmin] = useIsAdmin();
-
-  useEffect(() => {
-    if (location.pathname === "/dashboard") {
-      navigate("/dashboard/user-DashBoard");
-    }
-  }, [location, navigate]);
 
   return (
     <main className="dark:bg-[#0E111E] bg-gray-100 text-gray-800 dark:text-gray-200">

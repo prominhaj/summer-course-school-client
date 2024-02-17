@@ -21,6 +21,12 @@ import UserWishList from "../Pages/Dashboard/UserDashBoard/UserWishList/UserWish
 import PaymentHistory from "../Pages/Dashboard/UserDashBoard/PaymentHistory/PaymentHistory";
 import ApplyInstructor from "../Pages/Dashboard/UserDashBoard/ApplyInstructor/ApplyInstructor";
 import CourseDashBoard from "../Pages/CourseDashBoard/CourseDashBoard/CourseDashBoard";
+import AdminPrivate from "../PrivateRoute/AdminPrivate";
+import AdminDashBoard from "../Pages/Dashboard/AdminDashBoard/AdminDashBoard/AdminDashBoard";
+import ManageCourses from "../Pages/Dashboard/AdminDashBoard/ManageCourses/ManageCourses";
+import ManageInstructors from "../Pages/Dashboard/AdminDashBoard/ManageInstructors/ManageInstructors";
+import ManageUsers from "../Pages/Dashboard/AdminDashBoard/ManageUsers/ManageUsers";
+import AllPayments from "../Pages/Dashboard/AdminDashBoard/AllPayments/AllPayments";
 
 export const router = createBrowserRouter([
   {
@@ -139,6 +145,47 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/user-apply-instructor",
         element: <ApplyInstructor />,
+      },
+      // Admin Route
+      {
+        path: "/dashboard/admin-DashBoard",
+        element: (
+          <AdminPrivate>
+            <AdminDashBoard />
+          </AdminPrivate>
+        ),
+      },
+      {
+        path: "/dashboard/admin-manage-courses",
+        element: (
+          <AdminPrivate>
+            <ManageCourses />
+          </AdminPrivate>
+        ),
+      },
+      {
+        path: "/dashboard/admin-manage-instructors",
+        element: (
+          <AdminPrivate>
+            <ManageInstructors />
+          </AdminPrivate>
+        ),
+      },
+      {
+        path: "/dashboard/admin-manage-users",
+        element: (
+          <AdminPrivate>
+            <ManageUsers />
+          </AdminPrivate>
+        ),
+      },
+      {
+        path: "/dashboard/admin-all-payments",
+        element: (
+          <AdminPrivate>
+            <AllPayments />
+          </AdminPrivate>
+        ),
       },
     ],
   },

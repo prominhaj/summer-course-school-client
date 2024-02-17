@@ -8,15 +8,24 @@ import useAuth from "../../../Hooks/useAuth/useAuth";
 import { toast } from "react-toastify";
 import { CiDark, CiLight } from "react-icons/ci";
 import useTheme from "../../../Hooks/useTheme/useTheme";
-
-const navigation = [
-  { name: "Home", href: "/" },
-  { name: "Classes", href: "/classes" },
-  { name: "Instructors", href: "/instructors" },
-  { name: "DashBoard", href: "/dashboard" },
-];
+import useIsAdmin from "../../../Hooks/useIsAdmin/useIsAdmin";
 
 const Header = () => {
+  const [isAdmin] = useIsAdmin();
+
+  // Navigation Items
+  const navigation = [
+    { name: "Home", href: "/" },
+    { name: "Classes", href: "/classes" },
+    { name: "Instructors", href: "/instructors" },
+    {
+      name: "DashBoard",
+      href: isAdmin
+        ? "/dashboard/admin-DashBoard"
+        : "/dashboard/user-DashBoard",
+    },
+  ];
+
   const { user, logout } = useAuth();
   const [theme, toggleButton] = useTheme();
 
