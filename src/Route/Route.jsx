@@ -106,6 +106,8 @@ export const router = createBrowserRouter([
             <CourseDashBoard />,
           </AuthPrivate>
         ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/classes-details/${params.id}`),
       },
     ],
   },

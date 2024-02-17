@@ -4,60 +4,21 @@ import Button from "../../../../Components/Button/Button";
 import useAuth from "../../../../Hooks/useAuth/useAuth";
 import { Avatar } from "@mui/material";
 import { Menu, Transition } from "@headlessui/react";
-import { HiMagnifyingGlass, HiOutlineBellAlert } from "react-icons/hi2";
+import { HiMagnifyingGlass } from "react-icons/hi2";
 import useTheme from "../../../../Hooks/useTheme/useTheme";
 
 const DashBoardHeader = () => {
   const [theme, toggleButton] = useTheme();
   const { user } = useAuth();
-  const [isHidden, setIsHidden] = useState(false);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <header className="py-3 pr-5 sm:pr-8 sm:py-5">
       <nav className="flex flex-wrap items-center justify-between gap-3">
-        <div className="block md:hidden">
-          <button
-            onClick={() => setIsHidden(!isHidden)}
-            className="flex items-center p-2 text-gray-800 bg-gray-100 rounded-full"
-          >
-            <HiMagnifyingGlass className="text-2xl" />
-          </button>
-        </div>
-
-        {isHidden && (
-          <div
-            className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50"
-            onClick={() => setIsHidden(false)}
-          ></div>
-        )}
-        <div
-          className={`${
-            isHidden
-              ? "block fixed p-5 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg top-1/2 left-1/2"
-              : "hidden"
-          } md:block`}
-        >
-          <form className="flex flex-wrap gap-3">
-            <div className="flex gap-3 p-1 text-gray-800 bg-white rounded-lg shadow-lg dark:shadow-gray-600 md:p-2">
-              <span className="flex items-center my-1 border-gray-400 md:border-r-2 md:px-2">
-                <CiSearch className="text-2xl" />
-              </span>
-              <input
-                className="w-full text-base border-none outline-none md:text-lg"
-                type="search"
-                required
-                placeholder="Find your course"
-              />
-            </div>
-            <Button
-              className={"sm:py-3 py-2 px-3 sm:px-4 md:px-5"}
-              type={"submit"}
-              variant={"primary"}
-            >
-              Search
-            </Button>
-          </form>
-        </div>
+        <div></div>
         <div className="flex flex-wrap items-center gap-3 md:gap-5">
           <button onClick={toggleButton}>
             {theme === "dark" ? (

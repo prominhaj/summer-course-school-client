@@ -37,50 +37,60 @@ const UserWishList = () => {
 
   return (
     <div className="lg:h-[90vh] h-full px-5 py-5 text-gray-900 bg-gray-800 dark:bg-white md:px-8 md:py-8 rounded-tl-xl">
-      <div>
-        <h2 className="mb-4 text-xl font-medium text-gray-200 md:text-2xl dark:text-gray-800">
-          Total Carts: {myCarts?.length}
-        </h2>
-        {isLoading ? (
-          <TableLoading />
-        ) : (
-          <DashBoardTable
-            data={myCarts}
-            number={"0"}
-            header1="Name"
-            header2="Image"
-            header3="Price"
-            header4="Total Enroll"
-            header5="Action"
-          >
-            {myCarts?.map((item, index) => (
-              <TableRow key={item._id}>
-                <TableCell>{index + 1}</TableCell>
-                <TableCell component="th" scope="row">
-                  {item.name}
-                </TableCell>
-                <TableCell align="right">
-                  <img
-                    className="object-cover w-20 h-16 rounded-lg"
-                    src={item.image}
-                    alt=""
-                  />
-                </TableCell>
-                <TableCell align="center">{item.price}</TableCell>
-                <TableCell align="center">{item.enrollEmail.length}</TableCell>
-                <TableCell align="center">
-                  <Button
-                    onClick={() => handleDelete(item._id)}
-                    variant={"delete"}
-                  >
-                    Delete
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </DashBoardTable>
-        )}
-      </div>
+      {myCarts?.length === 0 ? (
+        <div className="py-10">
+          <h2 className="text-xl font-medium text-center md:text-3xl">
+            No Wishlist
+          </h2>
+        </div>
+      ) : (
+        <div>
+          <h2 className="mb-4 text-xl font-medium text-gray-200 md:text-2xl dark:text-gray-800">
+            Total Carts: {myCarts?.length}
+          </h2>
+          {isLoading ? (
+            <TableLoading />
+          ) : (
+            <DashBoardTable
+              data={myCarts}
+              number={"0"}
+              header1="Name"
+              header2="Image"
+              header3="Price"
+              header4="Total Enroll"
+              header5="Action"
+            >
+              {myCarts?.map((item, index) => (
+                <TableRow key={item._id}>
+                  <TableCell>{index + 1}</TableCell>
+                  <TableCell component="th" scope="row">
+                    {item.name}
+                  </TableCell>
+                  <TableCell align="right">
+                    <img
+                      className="object-cover w-20 h-16 rounded-lg"
+                      src={item.image}
+                      alt=""
+                    />
+                  </TableCell>
+                  <TableCell align="center">{item.price}</TableCell>
+                  <TableCell align="center">
+                    {item.enrollEmail.length}
+                  </TableCell>
+                  <TableCell align="center">
+                    <Button
+                      onClick={() => handleDelete(item._id)}
+                      variant={"delete"}
+                    >
+                      Delete
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </DashBoardTable>
+          )}
+        </div>
+      )}
     </div>
   );
 };

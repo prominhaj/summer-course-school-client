@@ -61,6 +61,12 @@ const UserDashBoard = () => {
           </div>
           {isLoading ? (
             <Loading />
+          ) : enrollClasses?.length === 0 ? (
+            <div className="py-5">
+              <h2 className="text-xl font-medium text-center md:text-3xl">
+                No Classes Enroll
+              </h2>
+            </div>
           ) : (
             <div className="grid gap-5 lg:grid-cols-3">
               {enrollClasses?.map((item) => (
