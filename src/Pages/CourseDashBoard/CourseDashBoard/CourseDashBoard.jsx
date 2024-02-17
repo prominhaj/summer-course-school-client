@@ -26,7 +26,7 @@ const CourseDashBoard = () => {
               </p>
               <div className="flex">
                 <AvatarGroup max={4}>
-                  {enrollEmail.map((item) => (
+                  {enrollEmail?.map((item) => (
                     <Avatar
                       key={item}
                       alt={item?.substr(0, 1)}
