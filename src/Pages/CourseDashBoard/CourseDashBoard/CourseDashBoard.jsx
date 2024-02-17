@@ -7,7 +7,7 @@ const CourseDashBoard = () => {
   const { image, name, category, details, enrollEmail } = data;
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-900 dark:text-gray-200">
+    <div className="bg-gray-100 dark:bg-gray-900 dark:text-gray-200 ">
       <div className="container px-5 py-5 mx-auto md:py-10">
         <div className="grid gap-5 lg:grid-cols-2">
           <div>

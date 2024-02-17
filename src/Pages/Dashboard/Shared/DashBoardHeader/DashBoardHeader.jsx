@@ -16,7 +16,7 @@ const DashBoardHeader = () => {
   };
 
   return (
-    <header className="py-3 pr-5 sm:pr-8 sm:py-5">
+    <header className="py-3 pr-5 sm:pr-8 sm:py-5 ">
       <nav className="flex flex-wrap items-center justify-between gap-3">
         <div></div>
         <div className="flex flex-wrap items-center gap-3 md:gap-5">

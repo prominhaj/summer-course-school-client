@@ -104,7 +104,7 @@ const LeftMenu = ({ isAdmin }) => {
     <nav
       className={`${
         isActive ? "w-[260px]" : "md:w-[95px] w-[70px] sm:w-[85px]"
-      } sticky top-0 bottom-0 duration-300 left-0 h-screen p-3 sm:p-5`}
+      } sticky top-0 bottom-0 duration-300 left-0 h-screen p-3 sm:p-5 dark:bg-[#0E111E] bg-gray-100 text-gray-800 dark:text-gray-200`}
     >
       <div className="relative">
         <button

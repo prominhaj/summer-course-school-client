@@ -8,14 +8,16 @@ const DashBoard = () => {
   const [isAdmin] = useIsAdmin();
 
   return (
-    <main className="dark:bg-[#0E111E] bg-gray-100 text-gray-800 dark:text-gray-200">
-      <div className="flex items-start sm:gap-5 lg:gap-8">
+    <main className="">
+      <div className="flex items-start">
         <div className="">
           <LeftMenu isAdmin={isAdmin} />
         </div>
         <div className="flex flex-col flex-1 overflow-hidden">
-          <DashBoardHeader />
-          <div className="lg:h-[90vh] h-full px-5 py-5 text-gray-200 dark:text-gray-800 bg-gray-800 dark:bg-white md:px-8 md:py-8 rounded-tl-xl">
+          <div className="dark:bg-[#0E111E] bg-gray-100 text-gray-800 dark:text-gray-200">
+            <DashBoardHeader />
+          </div>
+          <div className="px-5 py-5 text-gray-200 dark:text-gray-800 dark:bg-white md:px-8 md:py-8 rounded-tl-xl">
             <Outlet />
           </div>
         </div>

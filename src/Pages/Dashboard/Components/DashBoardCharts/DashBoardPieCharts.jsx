@@ -43,7 +43,7 @@ const DashBoardPieCharts = ({ data }) => {
           fill="#8884d8"
           dataKey="TotalPrice"
         >
-          {data.map((entry, index) => (
+          {data?.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
