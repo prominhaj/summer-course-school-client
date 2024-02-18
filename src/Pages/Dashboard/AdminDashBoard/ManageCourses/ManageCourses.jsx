@@ -5,7 +5,6 @@ import DashBoardTable from "../../Components/MyTable/DashBoardTable";
 import { TableCell, TableRow } from "@mui/material";
 import Button from "../../../../Components/Button/Button";
 import { ScaleLoader } from "react-spinners";
-import swal from "sweetalert";
 import Swal from "sweetalert2";
 
 const ManageCourses = () => {
@@ -80,7 +79,9 @@ const ManageCourses = () => {
                     alt=""
                   />
                 </TableCell>
-                <TableCell align="center">{item.price}</TableCell>
+                <TableCell align="center">
+                  {item.price === "Free" ? "Free" : `$${item.price}`}
+                </TableCell>
                 <TableCell align="center">{item.enrollEmail?.length}</TableCell>
                 <TableCell align="center">
                   <Button

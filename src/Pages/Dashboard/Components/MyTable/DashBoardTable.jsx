@@ -22,12 +22,24 @@ const DashBoardTable = ({
         <Table sx={{ minWidth: 800 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              {number && <TableCell>#</TableCell>}
-              <TableCell>{header1}</TableCell>
-              <TableCell align="left">{header2}</TableCell>
-              <TableCell align="center">{header3}</TableCell>
-              <TableCell align="center">{header4}</TableCell>
-              {header5 && <TableCell align="center">{header5}</TableCell>}
+              {number && (
+                <TableCell className="!text-lg !font-medium">#</TableCell>
+              )}
+              <TableCell className="!text-lg !font-medium">{header1}</TableCell>
+              <TableCell className="!text-lg !font-medium" align="left">
+                {header2}
+              </TableCell>
+              <TableCell className="!text-lg !font-medium" align="center">
+                {header3}
+              </TableCell>
+              <TableCell className="!text-lg !font-medium" align="center">
+                {header4}
+              </TableCell>
+              {header5 && (
+                <TableCell className="!text-lg !font-medium" align="center">
+                  {header5}
+                </TableCell>
+              )}
             </TableRow>
           </TableHead>
           <TableBody>{children}</TableBody>
