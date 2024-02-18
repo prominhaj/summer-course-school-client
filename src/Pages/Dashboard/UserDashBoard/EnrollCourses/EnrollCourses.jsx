@@ -27,7 +27,7 @@ const EnrollCourses = () => {
       <div>
         {isLoading ? (
           <Loading />
-        ) : enrollClasses ? (
+        ) : enrollClasses.length > 0 ? (
           <div className="grid gap-5 lg:grid-cols-3">
             {enrollClasses?.map((item) => (
               <DashBoardCoursesCard key={item._id} item={item} />

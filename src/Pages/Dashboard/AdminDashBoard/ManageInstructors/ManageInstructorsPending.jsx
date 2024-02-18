@@ -46,79 +46,87 @@ const ManageInstructorsPending = ({ data, refetch }) => {
 
   return (
     <div>
-      <DashBoardTable
-        number={"0"}
-        header1="Name"
-        header2="Image"
-        header3="Email"
-        header4="Category"
-        header5="Action"
-      >
-        {data?.map((item, index) => (
-          <TableRow key={item._id}>
-            <TableCell>{index + 1}</TableCell>
-            <TableCell component="th" scope="row">
-              {item.name}
-            </TableCell>
-            <TableCell align="right">
-              <img
-                className="object-cover w-20 h-16 rounded-lg"
-                src={item.image}
-                alt=""
-              />
-            </TableCell>
-            <TableCell align="center">{item.email}</TableCell>
-            <TableCell align="center">{item.category}</TableCell>
-            <TableCell align="center">
-              <div>
-                <Button variant={"delete"} onClick={() => setOpen(true)}>
-                  Pending
-                </Button>
-                <Modal
-                  open={open}
-                  onClose={() => setOpen(false)}
-                  aria-labelledby="modal-modal-title"
-                  aria-describedby="modal-modal-description"
-                >
-                  <Box sx={style}>
-                    <div className="text-start">
-                      <FormControl>
-                        <FormLabel id="demo-radio-buttons-group-label">
-                          Status
-                        </FormLabel>
-                        <div className="py-5">
-                          <RadioGroup
-                            onChange={(e) => setStatus(e.target.value)}
-                            aria-labelledby="demo-radio-buttons-group-label"
-                            name="radio-buttons-group"
+      {data.length > 0 ? (
+        <DashBoardTable
+          number={"0"}
+          header1="Name"
+          header2="Image"
+          header3="Email"
+          header4="Category"
+          header5="Action"
+        >
+          {data?.map((item, index) => (
+            <TableRow key={item._id}>
+              <TableCell>{index + 1}</TableCell>
+              <TableCell component="th" scope="row">
+                {item.name}
+              </TableCell>
+              <TableCell align="right">
+                <img
+                  className="object-cover w-20 h-16 rounded-lg"
+                  src={item.image}
+                  alt=""
+                />
+              </TableCell>
+              <TableCell align="center">{item.email}</TableCell>
+              <TableCell align="center">{item.category}</TableCell>
+              <TableCell align="center">
+                <div>
+                  <Button variant={"delete"} onClick={() => setOpen(true)}>
+                    Pending
+                  </Button>
+                  <Modal
+                    open={open}
+                    onClose={() => setOpen(false)}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                  >
+                    <Box sx={style}>
+                      <div className="text-start">
+                        <FormControl>
+                          <FormLabel id="demo-radio-buttons-group-label">
+                            Status
+                          </FormLabel>
+                          <div className="py-5">
+                            <RadioGroup
+                              onChange={(e) => setStatus(e.target.value)}
+                              aria-labelledby="demo-radio-buttons-group-label"
+                              name="radio-buttons-group"
+                            >
+                              <FormControlLabel
+                                value="accepted"
+                                control={<Radio />}
+                                label="Accepted"
+                              />
+                              <FormControlLabel
+                                value="reject"
+                                control={<Radio />}
+                                label="Reject"
+                              />
+                            </RadioGroup>
+                          </div>
+                          <Button
+                            onClick={() => handleAction(item._id)}
+                            variant={"primary"}
                           >
-                            <FormControlLabel
-                              value="accepted"
-                              control={<Radio />}
-                              label="Accepted"
-                            />
-                            <FormControlLabel
-                              value="reject"
-                              control={<Radio />}
-                              label="Reject"
-                            />
-                          </RadioGroup>
-                        </div>
-                        <Button
-                          onClick={() => handleAction(item._id)}
-                          variant={"primary"}
-                        >
-                          Send
-                        </Button>
-                      </FormControl>
-                    </div>
-                  </Box>
-                </Modal>
-              </div>
-            </TableCell>
-          </TableRow>
-        ))}
-      </DashBoardTable>
+                            Send
+                          </Button>
+                        </FormControl>
+                      </div>
+                    </Box>
+                  </Modal>
+                </div>
+              </TableCell>
+            </TableRow>
+          ))}
+        </DashBoardTable>
+      ) : (
+        <div className="text-center">
+          <h2 className="text-xl font-medium md:text-2xl">
+            No Pending Instructors
+          </h2>
+        </div>
+      )}
     </div>
   );
 };
