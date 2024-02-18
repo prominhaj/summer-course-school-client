@@ -2,14 +2,20 @@ import React from "react";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure/useAxiosSecure";
 import { useQuery } from "react-query";
 import DashBoardTable from "../../Components/MyTable/DashBoardTable";
-import TableLoading from "../../Components/MyTable/TableLoading/TableLoading";
 import { TableCell, TableRow } from "@mui/material";
 import Button from "../../../../Components/Button/Button";
+import { ScaleLoader } from "react-spinners";
+import swal from "sweetalert";
+import Swal from "sweetalert2";
 
 const ManageCourses = () => {
   const [axiosSecure] = useAxiosSecure();
 
-  const { data: allClasses, isLoading } = useQuery({
+  const {
+    data: allClasses,
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["all-classes"],
     queryFn: async () => {
       const res = await axiosSecure.get("/manage-all-classes");
@@ -17,7 +23,30 @@ const ManageCourses = () => {
     },
   });
 
-  console.log(allClasses);
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/classes-delete/${id}`).then((res) => {
+          if (res.data.deletedCount) {
+            refetch();
+            Swal.fire({
+              title: "Deleted!",
+              text: "Deleted This Course",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
+  };
 
   return (
     <div>
@@ -26,7 +55,9 @@ const ManageCourses = () => {
       </h2>
       <div>
         {isLoading ? (
-          <TableLoading />
+          <div className="text-center">
+            <ScaleLoader color="#36d7b7" />
+          </div>
         ) : (
           <DashBoardTable
             number={"0"}
@@ -52,7 +83,12 @@ const ManageCourses = () => {
                 <TableCell align="center">{item.price}</TableCell>
                 <TableCell align="center">{item.enrollEmail?.length}</TableCell>
                 <TableCell align="center">
-                  <Button variant={"delete"}>Delete</Button>
+                  <Button
+                    onClick={() => handleDelete(item._id)}
+                    variant={"delete"}
+                  >
+                    Delete
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}

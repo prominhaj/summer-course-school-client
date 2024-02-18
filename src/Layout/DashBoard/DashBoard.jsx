@@ -8,7 +8,7 @@ const DashBoard = () => {
   const [isAdmin] = useIsAdmin();
 
   return (
-    <main className="">
+    <main>
       <div className="flex items-start">
         <div className="">
           <LeftMenu isAdmin={isAdmin} />

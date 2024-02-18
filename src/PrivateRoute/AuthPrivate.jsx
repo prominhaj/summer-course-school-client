@@ -1,6 +1,7 @@
 import { CircularProgress } from "@mui/material";
 import useAuth from "../Hooks/useAuth/useAuth";
 import { Navigate, useLocation } from "react-router-dom";
+import { ScaleLoader } from "react-spinners";
 
 const AuthPrivate = ({ children }) => {
   const { user, loading } = useAuth();
@@ -9,7 +10,7 @@ const AuthPrivate = ({ children }) => {
   if (loading) {
     return (
       <div className="my-8 text-center">
-        <CircularProgress size={30} />
+        <ScaleLoader color="#36d7b7" />
       </div>
     );
   }
