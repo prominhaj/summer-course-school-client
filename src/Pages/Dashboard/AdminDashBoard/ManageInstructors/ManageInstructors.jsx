@@ -6,6 +6,7 @@ import DashBoardTable from "../../Components/MyTable/DashBoardTable";
 import { TableCell, TableRow } from "@mui/material";
 import Button from "../../../../Components/Button/Button";
 import Swal from "sweetalert2";
+import ManageInstructorsPending from "./ManageInstructorsPending";
 
 const ManageInstructors = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -62,7 +63,7 @@ const ManageInstructors = () => {
               header4="Category"
               header5="Action"
             >
-              {allInstructors?.map((item, index) => (
+              {allInstructors?.allInstructors?.map((item, index) => (
                 <TableRow key={item._id}>
                   <TableCell>{index + 1}</TableCell>
                   <TableCell component="th" scope="row">
@@ -91,7 +92,12 @@ const ManageInstructors = () => {
           </div>
         </TabPanel>
         <TabPanel header="Pending">
-          <div></div>
+          <div>
+            <ManageInstructorsPending
+              data={allInstructors?.pendingInstructors}
+              refetch={refetch}
+            />
+          </div>
         </TabPanel>
       </TabView>
     </div>

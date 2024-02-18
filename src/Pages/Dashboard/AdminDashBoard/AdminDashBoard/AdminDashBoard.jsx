@@ -16,8 +16,6 @@ const AdminDashBoard = () => {
     },
   });
 
-  console.log(adminStatus);
-
   return (
     <div>
       <div className="grid gap-5 md:grid-cols-3">
