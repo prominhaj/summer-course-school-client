@@ -36,6 +36,7 @@ const ManageUsers = () => {
   const { user } = useAuth();
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState("");
+  const [instructorOpen, setInstructorOpen] = useState(false);
 
   const {
     data: allUsers,
@@ -57,12 +58,25 @@ const ManageUsers = () => {
         .patch(`/role-update/${item._id}?role=${status}`)
         .then((res) => {
           if (res.data.acknowledged) {
+            setOpen(false);
             refetch();
             swal("SuccessFul Role Change", "", "success");
           }
         });
     }
   };
+
+  // Cancel Instructor
+  const handleCancelInstructor = async (id) => {
+    await axiosSecure.patch(`/cancel-instructor/${id}`).then((res) => {
+      if (res.data.acknowledged) {
+        setInstructorOpen(false);
+        refetch();
+        swal("SuccessFul Role Change", "", "success");
+      }
+    });
+  };
+
   return (
     <div>
       <DashBoardTable
@@ -95,16 +109,26 @@ const ManageUsers = () => {
                   >
                     {item.role === "admin" ? "Admin" : "Role"}
                   </Button>
-                ) : (
+                ) : item.role === "instructor" ? (
                   <Button
                     variant={`${
                       item.role === "instructor" ? "exit" : "delete"
                     }`}
-                    onClick={() => setOpen(true)}
+                    onClick={() => setInstructorOpen(true)}
                   >
                     {item.role === "instructor" ? "Instructor" : "Role"}
                   </Button>
+                ) : (
+                  <Button
+                    className={"disabled:cursor-not-allowed"}
+                    disabled={user.email === item.email}
+                    variant={`delete`}
+                    onClick={() => setOpen(true)}
+                  >
+                    {"Role"}
+                  </Button>
                 )}
+
                 <Modal
                   open={open}
                   onClose={() => setOpen(false)}
@@ -140,6 +164,31 @@ const ManageUsers = () => {
                           variant={"primary"}
                         >
                           Send
+                        </Button>
+                      </FormControl>
+                    </div>
+                  </Box>
+                </Modal>
+
+                {/* Instructor Role */}
+                <Modal
+                  open={instructorOpen}
+                  onClose={() => setInstructorOpen(false)}
+                  aria-labelledby="modal-modal-title"
+                  aria-describedby="modal-modal-description"
+                >
+                  <Box sx={style}>
+                    <div className="text-start">
+                      <FormControl>
+                        <FormLabel id="demo-radio-buttons-group-label">
+                          Are You Cancel Instructor
+                        </FormLabel>
+                        <div className="py-5"></div>
+                        <Button
+                          onClick={() => handleCancelInstructor(item._id)}
+                          variant={"primary"}
+                        >
+                          You
                         </Button>
                       </FormControl>
                     </div>
