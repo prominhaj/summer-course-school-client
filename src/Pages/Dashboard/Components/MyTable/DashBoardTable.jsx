@@ -14,6 +14,7 @@ const DashBoardTable = ({
   header3,
   header4,
   header5,
+  header6,
   children,
 }) => {
   return (
@@ -38,6 +39,11 @@ const DashBoardTable = ({
               {header5 && (
                 <TableCell className="!text-lg !font-medium" align="center">
                   {header5}
+                </TableCell>
+              )}
+              {header6 && (
+                <TableCell className="!text-lg !font-medium" align="center">
+                  {header6}
                 </TableCell>
               )}
             </TableRow>
