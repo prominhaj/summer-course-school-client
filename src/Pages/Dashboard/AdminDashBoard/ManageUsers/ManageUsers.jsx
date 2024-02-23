@@ -18,6 +18,7 @@ import Button from "../../../../Components/Button/Button";
 import useAuth from "../../../../Hooks/useAuth/useAuth";
 import { toast } from "react-toastify";
 import swal from "sweetalert";
+import Swal from "sweetalert2";
 
 const style = {
   position: "absolute",
@@ -73,6 +74,31 @@ const ManageUsers = () => {
         setInstructorOpen(false);
         refetch();
         swal("SuccessFul Role Change", "", "success");
+      }
+    });
+  };
+
+  const handleUserDelete = (item) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: `Delete User ${item.name}`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/user-delete/${item._id}`).then((res) => {
+          if (res.data.acknowledged) {
+            refetch();
+            Swal.fire({
+              title: "Deleted SuccessFul",
+              text: "",
+              icon: "success",
+            });
+          }
+        });
       }
     });
   };
@@ -197,7 +223,9 @@ const ManageUsers = () => {
               </div>
             </TableCell>
             <TableCell align="center">
-              <Button variant={"delete"}>Delete</Button>
+              <Button onClick={() => handleUserDelete(item)} variant={"delete"}>
+                Delete
+              </Button>
             </TableCell>
           </TableRow>
         ))}

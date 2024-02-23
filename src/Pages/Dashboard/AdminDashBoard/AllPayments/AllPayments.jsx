@@ -16,8 +16,6 @@ const AllPayments = () => {
     },
   });
 
-  console.log(AllPayments);
-
   return (
     <div>
       <h2 className="mb-4 text-xl font-bold text-gray-100 dark:text-gray-800 md:text-2xl">

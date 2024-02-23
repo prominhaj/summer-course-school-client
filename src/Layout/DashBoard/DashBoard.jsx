@@ -3,9 +3,11 @@ import DashBoardHeader from "../../Pages/Dashboard/Shared/DashBoardHeader/DashBo
 import LeftMenu from "../../Pages/Dashboard/Shared/LeftMenu/LeftMenu";
 import { Outlet } from "react-router-dom";
 import useIsAdmin from "../../Hooks/useIsAdmin/useIsAdmin";
+import useInstructor from "../../Hooks/useInstructor/useInstructor";
 
 const DashBoard = () => {
   const [isAdmin] = useIsAdmin();
+  const [isInstructor] = useInstructor();
 
   return (
     <main>
