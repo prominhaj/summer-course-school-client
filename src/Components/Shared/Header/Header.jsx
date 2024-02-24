@@ -9,9 +9,11 @@ import { toast } from "react-toastify";
 import { CiDark, CiLight } from "react-icons/ci";
 import useTheme from "../../../Hooks/useTheme/useTheme";
 import useIsAdmin from "../../../Hooks/useIsAdmin/useIsAdmin";
+import useInstructor from "../../../Hooks/useInstructor/useInstructor";
 
 const Header = () => {
   const [isAdmin] = useIsAdmin();
+  const [isInstructor] = useInstructor();
 
   // Navigation Items
   const navigation = [
@@ -22,6 +24,8 @@ const Header = () => {
       name: "DashBoard",
       href: isAdmin
         ? "/dashboard/admin-DashBoard"
+        : isInstructor
+        ? "/dashboard/instructor-DashBoard"
         : "/dashboard/user-DashBoard",
     },
   ];

@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 import { GiTeacher } from "react-icons/gi";
 import { FaUsers } from "react-icons/fa";
 import useAuth from "../../../../Hooks/useAuth/useAuth";
+import useInstructor from "../../../../Hooks/useInstructor/useInstructor";
+import { IoIosAddCircle } from "react-icons/io";
 
 // DashBoard Left Menu Items
 const userLeftMenuItems = [
@@ -78,8 +80,32 @@ const adminLeftMenuItems = [
   },
 ];
 
+// Instructor Left Menu Items
+const instructorLeftMenuItems = [
+  {
+    id: 1,
+    name: "DashBoard",
+    to: "/dashboard/instructor-DashBoard",
+    icon: <HiMiniSquares2X2 />,
+  },
+  {
+    id: 2,
+    name: "Add New Classes",
+    to: "/dashboard/add-new-classes",
+    icon: <IoIosAddCircle />,
+  },
+  {
+    id: 3,
+    name: "Manage All Classes",
+    to: "/dashboard/instructor-manage-all-classes",
+    icon: <SiCoursera />,
+  },
+];
+
 const LeftMenu = ({ isAdmin }) => {
   const [isActive, setIsAction] = useState(true);
+  const [isInstructor] = useInstructor();
+
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const { user } = useAuth();
 
@@ -133,6 +159,31 @@ const LeftMenu = ({ isAdmin }) => {
           <div className="flex flex-col gap-3">
             {isAdmin
               ? adminLeftMenuItems.map((item) => (
+                  <NavLink
+                    key={item.id}
+                    to={item.to}
+                    className={({ isActive, isPending }) =>
+                      isPending
+                        ? "pending"
+                        : isActive
+                        ? `dark:text-blue-500 text-gray-200 block text-base text-center gap-3 md:flex px-2 md:px-3 rounded-lg border dark:border-none shadow-xl dark:shadow-gray-600 duration-300 dark:bg-gray-100 bg-gray-600 py-2 items-center font-semibold font-['Open Sans'] leading-normal tracking-wide`
+                        : `text-neutral-500 md:flex items-center px-3 rounded-lg gap-3 duration-300 hover:bg-gray-500 dark:hover:bg-gray-100 font-semibold py-2 text-base font-['Open Sans'] block leading-normal dark:hover:text-gray-700 hover:text-gray-200 tracking-wide`
+                    }
+                  >
+                    <span className={`${isActive ? "text-2xl" : "text-3xl"}`}>
+                      {item.icon}
+                    </span>
+                    <span
+                      className={`transition-all duration-300 ${
+                        !isActive && "hidden"
+                      }`}
+                    >
+                      {item.name}
+                    </span>
+                  </NavLink>
+                ))
+              : isInstructor
+              ? instructorLeftMenuItems.map((item) => (
                   <NavLink
                     key={item.id}
                     to={item.to}

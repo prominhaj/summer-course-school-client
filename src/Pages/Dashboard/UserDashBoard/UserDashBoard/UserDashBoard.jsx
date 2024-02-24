@@ -43,7 +43,7 @@ const UserDashBoard = () => {
             <DashBoardLeaderCard
               bgColor={"bg-orange-200"}
               label={"Payments"}
-              value={`$${allStatus?.totalPayments}`}
+              value={`$${allStatus?.totalPayments || "0"}`}
             />
           </div>
         )}

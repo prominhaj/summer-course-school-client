@@ -27,6 +27,10 @@ import ManageCourses from "../Pages/Dashboard/AdminDashBoard/ManageCourses/Manag
 import ManageInstructors from "../Pages/Dashboard/AdminDashBoard/ManageInstructors/ManageInstructors";
 import ManageUsers from "../Pages/Dashboard/AdminDashBoard/ManageUsers/ManageUsers";
 import AllPayments from "../Pages/Dashboard/AdminDashBoard/AllPayments/AllPayments";
+import InstructorPrivate from "../PrivateRoute/InstructorPrivate";
+import InstructorDashBoard from "../Pages/Dashboard/InstructorDashBoard/InstructorDashboard/InstructorDashBoard";
+import AddNewClasses from "../Pages/Dashboard/InstructorDashBoard/AddNewClasses/AddNewClasses";
+import ManageAllClasses from "../Pages/Dashboard/InstructorDashBoard/ManageAllClasses/ManageAllClasses";
 
 export const router = createBrowserRouter([
   {
@@ -185,6 +189,32 @@ export const router = createBrowserRouter([
           <AdminPrivate>
             <AllPayments />
           </AdminPrivate>
+        ),
+      },
+
+      // All Instructor Route
+      {
+        path: "/dashboard/instructor-DashBoard",
+        element: (
+          <InstructorPrivate>
+            <InstructorDashBoard />
+          </InstructorPrivate>
+        ),
+      },
+      {
+        path: "/dashboard/add-new-classes",
+        element: (
+          <InstructorPrivate>
+            <AddNewClasses />
+          </InstructorPrivate>
+        ),
+      },
+      {
+        path: "/dashboard/instructor-manage-all-classes",
+        element: (
+          <InstructorPrivate>
+            <ManageAllClasses />
+          </InstructorPrivate>
         ),
       },
     ],
