@@ -191,15 +191,15 @@ const LeftMenu = ({ isAdmin }) => {
                       isPending
                         ? "pending"
                         : isActive
-                        ? `dark:text-blue-500 text-gray-200 block text-base text-center gap-3 md:flex px-2 md:px-3 rounded-lg border dark:border-none shadow-xl dark:shadow-gray-600 duration-300 dark:bg-gray-100 bg-gray-600 py-2 items-center font-semibold font-['Open Sans'] leading-normal tracking-wide`
-                        : `text-neutral-500 md:flex items-center px-3 rounded-lg gap-3 duration-300 hover:bg-gray-500 dark:hover:bg-gray-100 font-semibold py-2 text-base font-['Open Sans'] block leading-normal dark:hover:text-gray-700 hover:text-gray-200 tracking-wide`
+                        ? `dark:text-blue-500 text-gray-200 block text-base gap-3 md:flex md:px-3 rounded-lg border border-none shadow-xl dark:shadow-gray-600 transition-all duration-300 dark:bg-gray-100 bg-gray-600 py-2 items-center font-semibold font-['Open Sans'] leading-normal tracking-wide`
+                        : `text-neutral-500 md:flex items-center px-3 rounded-lg gap-3 hover:bg-gray-500 dark:hover:bg-gray-100 font-semibold py-2 text-base font-['Open Sans'] block leading-normal dark:hover:text-gray-700 transition-all duration-300 hover:text-gray-200 tracking-wide`
                     }
                   >
                     <span className={`${isActive ? "text-2xl" : "text-3xl"}`}>
                       {item.icon}
                     </span>
                     <span
-                      className={`transition-all duration-300 ${
+                      className={`${
                         !isActive && "hidden"
                       }`}
                     >
