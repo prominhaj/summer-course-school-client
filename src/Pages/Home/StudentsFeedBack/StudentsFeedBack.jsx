@@ -23,7 +23,7 @@ const StudentsFeedBack = () => {
   } = useQuery({
     queryKey: ["FeedBack"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:3000/students-feedback");
+      const res = await axios.get("https://summer-course-school-server.vercel.app/students-feedback");
       return res.data;
     },
   });

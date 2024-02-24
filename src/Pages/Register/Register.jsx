@@ -56,7 +56,7 @@ const Register = () => {
                       fbUid: result.user.uid,
                     };
                     axios
-                      .post("http://localhost:3000/users", user)
+                      .post("https://summer-course-school-server.vercel.app/users", user)
                       .then((res) => {
                         if (res.data) {
                           emailVerification().then(() => {

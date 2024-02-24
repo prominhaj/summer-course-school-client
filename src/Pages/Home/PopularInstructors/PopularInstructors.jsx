@@ -11,7 +11,7 @@ const PopularInstructors = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios("http://localhost:3000/instructors-popular?limit=4").then((res) => {
+    axios("https://summer-course-school-server.vercel.app/instructors-popular?limit=4").then((res) => {
       setData(res.data);
       setLoading(false);
     });
@@ -21,7 +21,7 @@ const PopularInstructors = () => {
 
   const handleAllInstructors = () => {
     setLoading(true);
-    axios("http://localhost:3000/instructors-popular").then((res) => {
+    axios("https://summer-course-school-server.vercel.app/instructors-popular").then((res) => {
       setData(res.data);
       setLoading(false);
     });

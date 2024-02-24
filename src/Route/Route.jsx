@@ -55,7 +55,7 @@ export const router = createBrowserRouter([
             element: <CategoryInstructors />,
             loader: ({ params }) =>
               fetch(
-                `http://localhost:3000/all-instructors?category=${params.category}`
+                `https://summer-course-school-server.vercel.app/all-instructors?category=${params.category}`
               ),
           },
         ],
@@ -64,7 +64,7 @@ export const router = createBrowserRouter([
         path: "/instructors/details/:id",
         element: <InstructorsDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/instructor-details/${params.id}`),
+          fetch(`https://summer-course-school-server.vercel.app/instructor-details/${params.id}`),
       },
       {
         path: "classes",
@@ -79,7 +79,7 @@ export const router = createBrowserRouter([
             element: <CategoryClasses />,
             loader: ({ params }) =>
               fetch(
-                `http://localhost:3000/all-classes?category=${params.category}`
+                `https://summer-course-school-server.vercel.app/all-classes?category=${params.category}`
               ),
           },
         ],
@@ -92,7 +92,7 @@ export const router = createBrowserRouter([
           </AuthPrivate>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/classes-details/${params.id}`),
+          fetch(`https://summer-course-school-server.vercel.app/classes-details/${params.id}`),
       },
       {
         path: "register",
@@ -118,7 +118,7 @@ export const router = createBrowserRouter([
           </AuthPrivate>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/classes-details/${params.id}`),
+          fetch(`https://summer-course-school-server.vercel.app/classes-details/${params.id}`),
       },
     ],
   },
@@ -226,7 +226,7 @@ export const router = createBrowserRouter([
           </InstructorPrivate>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/update-classes/${params.id}`),
+          fetch(`https://summer-course-school-server.vercel.app/update-classes/${params.id}`),
       },
     ],
   },

@@ -26,7 +26,7 @@ const AllInstructors = () => {
 
     const fetchPosts = async () => {
       const res = await axios.get(
-        `http://localhost:3000/all-instructors?page=${currentPage}&limit=${instructorsPerPage}`
+        `https://summer-course-school-server.vercel.app/all-instructors?page=${currentPage}&limit=${instructorsPerPage}`
       );
       if (isMounted) {
         setInstructors(res?.data);

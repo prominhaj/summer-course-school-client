@@ -8,7 +8,7 @@ const useLoadData = (url) => {
   useEffect(() => {
     let isMounted = true;
 
-    axios(`http://localhost:3000${url}`).then((res) => {
+    axios(`https://summer-course-school-server.vercel.app${url}`).then((res) => {
       if (isMounted) {
         setData(res.data);
         setDataLoading(false);

@@ -22,7 +22,7 @@ const AllClasses = () => {
 
     axios
       .get(
-        `http://localhost:3000/all-classes?page=${currentPage}&limit=${classesPerPage}`
+        `https://summer-course-school-server.vercel.app/all-classes?page=${currentPage}&limit=${classesPerPage}`
       )
       .then((res) => {
         if (isMounted) {

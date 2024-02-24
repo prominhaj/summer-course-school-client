@@ -13,7 +13,7 @@ const Home = () => {
 
   const handleSeeAllCourse = () => {
     setLoading(true);
-    axios.get("http://localhost:3000/classes-popular").then((res) => {
+    axios.get("https://summer-course-school-server.vercel.app/classes-popular").then((res) => {
       setData(res.data);
       setLoading(false);
     });
@@ -23,7 +23,7 @@ const Home = () => {
     let isMounted = true;
 
     setLoading(true);
-    axios.get(`http://localhost:3000/classes-popular?`).then((res) => {
+    axios.get(`https://summer-course-school-server.vercel.app/classes-popular?`).then((res) => {
       if (isMounted) {
         setData(res.data);
         setLoading(false);
