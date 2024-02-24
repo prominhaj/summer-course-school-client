@@ -1,16 +1,9 @@
-import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-} from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import useAuth from "../../../../Hooks/useAuth/useAuth";
 import { useForm } from "react-hook-form";
-import Button from "../../../../Components/Button/Button";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure/useAxiosSecure";
 import swal from "sweetalert";
+import FormItem from "../../Components/FormItem/FormItem";
 
 // Category Items
 const categoryItems = [
@@ -38,7 +31,6 @@ const AddNewClasses = () => {
 
   const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
-  const [category, setCategory] = useState("");
 
   const handleAddItem = (item) => {
     const { name, price, image, category, availableSeats, details } = item;
@@ -77,7 +69,14 @@ const AddNewClasses = () => {
 
   return (
     <div>
-      <form
+      <FormItem
+        handing={"Add New Course"}
+        handleSubmit={handleSubmit}
+        handleItem={handleAddItem}
+        register={register}
+        errors={errors}
+      />
+      {/* <form
         className="p-5 border rounded-lg shadow-md md:p-8"
         onSubmit={handleSubmit(handleAddItem)}
       >
@@ -193,7 +192,7 @@ const AddNewClasses = () => {
             Submit
           </Button>
         </div>
-      </form>
+      </form> */}
     </div>
   );
 };

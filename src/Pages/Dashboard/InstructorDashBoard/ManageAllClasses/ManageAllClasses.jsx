@@ -80,7 +80,10 @@ const ManageAllClasses = () => {
               </TableCell>
               <TableCell align="center">{item.enrollEmail?.length}</TableCell>
               <TableCell align="center">
-                <Link className="flex items-center justify-center">
+                <Link
+                  to={`/dashboard/update-classes/${item._id}`}
+                  className="flex items-center justify-center"
+                >
                   <FaRegEdit className="text-3xl" />
                 </Link>
               </TableCell>

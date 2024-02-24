@@ -31,6 +31,7 @@ import InstructorPrivate from "../PrivateRoute/InstructorPrivate";
 import InstructorDashBoard from "../Pages/Dashboard/InstructorDashBoard/InstructorDashboard/InstructorDashBoard";
 import AddNewClasses from "../Pages/Dashboard/InstructorDashBoard/AddNewClasses/AddNewClasses";
 import ManageAllClasses from "../Pages/Dashboard/InstructorDashBoard/ManageAllClasses/ManageAllClasses";
+import UpdateClasses from "../Pages/Dashboard/InstructorDashBoard/UpdateClasses/UpdateClasses";
 
 export const router = createBrowserRouter([
   {
@@ -216,6 +217,16 @@ export const router = createBrowserRouter([
             <ManageAllClasses />
           </InstructorPrivate>
         ),
+      },
+      {
+        path: "/dashboard/update-classes/:id",
+        element: (
+          <InstructorPrivate>
+            <UpdateClasses />
+          </InstructorPrivate>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/update-classes/${params.id}`),
       },
     ],
   },
